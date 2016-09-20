@@ -18,7 +18,7 @@ router.route('/project/:name')
     .delete((...args) => controllers.project.remove(...args));
 
 router.route('/project/:name/releases')
-    .get((...args) => controllers.project.releases(...args))
+    .get((...args) => controllers.project.releases(...args));
     
 
 

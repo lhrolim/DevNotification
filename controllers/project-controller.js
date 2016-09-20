@@ -15,8 +15,13 @@ class ProjectController extends Controller {
     }
 
     releases(req, res, next) {
-        return this.model.releases({ name: req.params.name })
-            .then(doc => res.status(200).json(doc))
+        return this.model.releases(req.params.name)
+            .then(doc => {
+                if (!doc) {
+                    return res.status(404).end();
+                }
+                res.status(200).json(doc);
+            })
             .catch(err => next(err));   
     }
 

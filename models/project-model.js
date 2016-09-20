@@ -1,5 +1,6 @@
 const Model = require('../utils/model');
-const ProjectSchema  = require('../schemas/project-schema');
+const q = require("bluebird");
+const ProjectSchema = require('../schemas/project-schema');
 
 
 // Business Model layer, in this instance you can manage your business logic. For example,
@@ -14,14 +15,19 @@ const ProjectSchema  = require('../schemas/project-schema');
 class ProjectModel extends Model {
 
     findByName(name) {
-        return this.find({ 'name': name });
+        return this.findOne({ 'name': name });
     }
 
     releases(name) {
-        const project = this.findByName(name);
-        if (!project) {
-            
-        }
+        return this.findByName(name)
+            .then(project => {
+                if (!project) {
+                    Promise.reject();
+                }
+                return project;
+            });
+
+
     }
 }
 

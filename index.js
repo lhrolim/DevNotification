@@ -16,6 +16,8 @@ require('./utils/promisify-all')(['mongoose']);
 
 mongoose.connect(config.mongo.url);
 
+mongoose.Promise = require('bluebird');
+
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
