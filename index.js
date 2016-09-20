@@ -12,7 +12,7 @@ const routes = require('./routes');
 const port = config.server.port;
 const app  = express();
 
-require('./libraries/promisify-all')(['mongoose']);
+require('./utils/promisify-all')(['mongoose']);
 
 mongoose.connect(config.mongo.url);
 
@@ -23,6 +23,6 @@ app.use(morgan('tiny'));
 
 app.use('/', routes);
 
-app.listen(port, () => { console.log(`Magic happens on port ${port}`); });
+app.listen(port, () => { console.log(`App started on port ${port}`); });
 
 module.exports = app;

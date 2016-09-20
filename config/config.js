@@ -3,7 +3,7 @@ const milieu = require('milieu');
 const config = milieu('dev-notification', {
   environment: 'dev',
   server: {
-    port: 8080
+    port: 8070
   },
   mongo: {
     url: 'mongodb://localhost/dev-notification'

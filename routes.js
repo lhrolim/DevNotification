@@ -10,12 +10,16 @@ router.get('/', (req, res) => {
 
 router.route('/project')
   .get((...args) => controllers.project.find(...args))
-  .post((...args) => controllers.project.create(...args));
+    .post((...args) => controllers.project.create(...args));
 
-router.route('/project/:id')
-  .put((...args) => controllers.project.update(...args))
-  .get((...args) => controllers.project.findById(...args))
-  .delete((...args) => controllers.project.remove(...args));
+router.route('/project/:name')
+    .put((...args) => controllers.project.update(...args))
+    .get((...args) => controllers.project.findByName(...args))
+    .delete((...args) => controllers.project.remove(...args));
+
+router.route('/project/:name/releases')
+    .get((...args) => controllers.project.releases(...args))
+    
 
 
 router.route('/user')

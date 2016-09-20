@@ -1,4 +1,4 @@
-const Model = require('../libraries/model');
+const Model = require('../utils/model');
 const UserSchema  = require('../schemas/user-schema');
 
 

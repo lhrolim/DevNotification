@@ -1,12 +1,25 @@
-const Controller = require('../libraries/controller');
+const Controller = require('../utils/controller');
 const ProjectModel  = require('../models/project-model');
 
 // HTTP layer, in this instance you can manage express request, response and next.
-// In libraries/controller you have the basic RESTful methods find, findOne, findById,
+// In utils/controller you have the basic RESTful methods find, findOne, findById,
 // create, update and remove. Because this class is extending from there, you got that solved.
 // You can overwrite extended methods or create custom ones here.
 
 class ProjectController extends Controller {
+
+    findByName(req,res,next) {
+        return this.model.findOne({name: req.params.name})
+            .then(doc => res.status(200).json(doc))
+            .catch(err => next(err));
+    }
+
+    releases(req, res, next) {
+        return this.model.releases({ name: req.params.name })
+            .then(doc => res.status(200).json(doc))
+            .catch(err => next(err));   
+    }
+
 
 	// Example of overwriting update method using findOneAndUpdate from mongoose
 

@@ -1,4 +1,4 @@
-const Model = require('../libraries/model');
+const Model = require('../utils/model');
 const ProjectSchema  = require('../schemas/project-schema');
 
 
@@ -11,6 +11,18 @@ const ProjectSchema  = require('../schemas/project-schema');
 // You can overwrite extended methods or create custom ones here. Also you can support
 // more mongoose functionality like skip, sort etc.
 
-class ProjectModel extends Model {}
+class ProjectModel extends Model {
+
+    findByName(name) {
+        return this.find({ 'name': name });
+    }
+
+    releases(name) {
+        const project = this.findByName(name);
+        if (!project) {
+            
+        }
+    }
+}
 
 module.exports = new ProjectModel(ProjectSchema);

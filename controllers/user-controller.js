@@ -1,4 +1,4 @@
-const Controller = require('../libraries/controller');
+const Controller = require('../utils/controller');
 const UserModel  = require('../models/user-model');
 
 // HTTP layer, in this instance you can manage express request, response and next.

@@ -2,11 +2,11 @@
   "name": "dev-notification",
   "version": "0.1.0",
   "description": "Dev Notification test",
-  "main": "src/server.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon --debug --harmony --use_strict index.js",
     "start": "node --harmony --use_strict index.js",
-    "debug": "node-inspector --debug --harmony --use_strict index.js"
+    "debug": "node-inspector -p 8070 --debug --harmony --use_strict index.js"
   },
   "engines": {
     "node": ">=6"
