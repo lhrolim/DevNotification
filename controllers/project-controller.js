@@ -1,5 +1,5 @@
 const Controller = require('../utils/controller');
-const ProjectModel  = require('../models/project-model');
+const ProjectModel = require('../models/project-model');
 
 // HTTP layer, in this instance you can manage express request, response and next.
 // In utils/controller you have the basic RESTful methods find, findOne, findById,
@@ -8,8 +8,8 @@ const ProjectModel  = require('../models/project-model');
 
 class ProjectController extends Controller {
 
-    findByName(req,res,next) {
-        return this.model.findOne({name: req.params.name})
+    findByName(req, res, next) {
+        return this.model.findOne({ name: req.params.name })
             .then(doc => res.status(200).json(doc))
             .catch(err => next(err));
     }
@@ -22,32 +22,32 @@ class ProjectController extends Controller {
                 }
                 res.status(200).json(doc);
             })
-            .catch(err => next(err));   
+            .catch(err => next(err));
     }
 
 
-	// Example of overwriting update method using findOneAndUpdate from mongoose
+    // Example of overwriting update method using findOneAndUpdate from mongoose
 
-	// update(req, res, next) {
-	// 	this.model.findOneAndUpdate({ _id: req.params.id }, req.body)
-	// 	.then(doc => {
-	// 		if (!doc) res.status(404).send();
-	// 		return res.status(200).json(doc);
-	// 	})
-	// 	.catch(err => next(err));
-	// }
+    // update(req, res, next) {
+    // 	this.model.findOneAndUpdate({ _id: req.params.id }, req.body)
+    // 	.then(doc => {
+    // 		if (!doc) res.status(404).send();
+    // 		return res.status(200).json(doc);
+    // 	})
+    // 	.catch(err => next(err));
+    // }
 
-	// Example of a custom method. Remember that you can use this method
-	// in a specific route in the router file
+    // Example of a custom method. Remember that you can use this method
+    // in a specific route in the router file
 
-	// customMethod(req, res, next) {
-	// 	this.model.geoNear([1,3], { maxDistance : 5, spherical : true })
-	// 	.then(doc => {
-	// 		if (!doc) res.status(404).send();
-	// 		return res.status(200).json(doc);
-	// 	})
-	// 	.catch(err => next(err));
-	// }
+    // customMethod(req, res, next) {
+    // 	this.model.geoNear([1,3], { maxDistance : 5, spherical : true })
+    // 	.then(doc => {
+    // 		if (!doc) res.status(404).send();
+    // 		return res.status(200).json(doc);
+    // 	})
+    // 	.catch(err => next(err));
+    // }
 }
 
 module.exports = new ProjectController(ProjectModel);

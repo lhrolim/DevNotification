@@ -1,6 +1,7 @@
 const Model = require('../utils/model');
 const q = require("bluebird");
 const ProjectSchema = require('../schemas/project-schema');
+const githubService = require("../services/githubService.js");
 
 
 // Business Model layer, in this instance you can manage your business logic. For example,
@@ -24,7 +25,9 @@ class ProjectModel extends Model {
                 if (!project) {
                     Promise.reject();
                 }
-                return project;
+
+                return githubService.listReleases(project.repourl);
+
             });
 
 
