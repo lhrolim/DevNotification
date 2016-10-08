@@ -13,8 +13,11 @@ router.route('/project')
     .post((...args) => controllers.project.create(...args));
 
 router.route('/project/:name')
+    .get((...args) => controllers.project.findByName(...args));
+
+
+router.route('/project/:id')
     .put((...args) => controllers.project.update(...args))
-    .get((...args) => controllers.project.findByName(...args))
     .delete((...args) => controllers.project.remove(...args));
 
 router.route('/project/:name/releases')

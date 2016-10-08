@@ -14,6 +14,8 @@ const app  = express();
 
 require('./utils/promisify-all')['bluebird'](['mongoose']);
 
+const mongooseErrorHandler = require('./utils/mongooseErrorHandler');
+
 require('./utils/stringutils');
 
 mongoose.connect(config.mongo.url);
@@ -26,6 +28,7 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
 app.use('/', routes);
+app.use(mongooseErrorHandler);
 
 app.listen(port, () => { console.log(`App started on port ${port}`); });
 

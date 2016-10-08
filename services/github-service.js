@@ -6,8 +6,7 @@ const baseGitURL = "https://github.com/";
 
 class GitHubService {
 
-
-
+    
     listReleases(repourl, token) {
         const idx = repourl.indexOf(baseGitURL);
         if (idx === -1) {
@@ -28,7 +27,7 @@ class GitHubService {
         };
         
         console.log(url);
-        return rp(options).then(res => {
+        return rp.get(options).then(res => {
             return res.map(r => r.name);
         });
     }

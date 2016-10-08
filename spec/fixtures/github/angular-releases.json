@@ -1,0 +1,272 @@
+﻿[
+  {
+    "name": "v1.5.8",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.8",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.8",
+    "commit": {
+      "sha": "22b669407c3547f1e7c62a32d401a4f60528ad7c",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/22b669407c3547f1e7c62a32d401a4f60528ad7c"
+    }
+  },
+  {
+    "name": "v1.5.7",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.7",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.7",
+    "commit": {
+      "sha": "cfbe1a701a7692aeaf31e08dc7099b4253634531",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/cfbe1a701a7692aeaf31e08dc7099b4253634531"
+    }
+  },
+  {
+    "name": "v1.5.6",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.6",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.6",
+    "commit": {
+      "sha": "60689afe1cf5451f6c0a18484e2705e609a5c484",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/60689afe1cf5451f6c0a18484e2705e609a5c484"
+    }
+  },
+  {
+    "name": "v1.5.5",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.5",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.5",
+    "commit": {
+      "sha": "25d4e5cca4fa615e49d65976223c6deb5b485b4c",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/25d4e5cca4fa615e49d65976223c6deb5b485b4c"
+    }
+  },
+  {
+    "name": "v1.5.4",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.4",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.4",
+    "commit": {
+      "sha": "f276ad0d5195a2956d9368556cfd20881b53d1de",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/f276ad0d5195a2956d9368556cfd20881b53d1de"
+    }
+  },
+  {
+    "name": "v1.5.3",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.3",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.3",
+    "commit": {
+      "sha": "514639b585affc218a6899f1b1755863647fa5a8",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/514639b585affc218a6899f1b1755863647fa5a8"
+    }
+  },
+  {
+    "name": "v1.5.2",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.2",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.2",
+    "commit": {
+      "sha": "f665968dafdc2e1f8fdd3ee466feecbdb137ee5d",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/f665968dafdc2e1f8fdd3ee466feecbdb137ee5d"
+    }
+  },
+  {
+    "name": "v1.5.1",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.1",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.1",
+    "commit": {
+      "sha": "a4e60cb6970d8b6fa9e0af4b9f881ee3ba7fdc99",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/a4e60cb6970d8b6fa9e0af4b9f881ee3ba7fdc99"
+    }
+  },
+  {
+    "name": "v1.5.0",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0",
+    "commit": {
+      "sha": "39eecd136f5782e85a92f611cf3e73ac6b97caf2",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/39eecd136f5782e85a92f611cf3e73ac6b97caf2"
+    }
+  },
+  {
+    "name": "v1.5.0-rc.2",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0-rc.2",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0-rc.2",
+    "commit": {
+      "sha": "5a3504abdce38b9ebb01b1f5a6e45e675ae4488c",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/5a3504abdce38b9ebb01b1f5a6e45e675ae4488c"
+    }
+  },
+  {
+    "name": "v1.5.0-rc.1",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0-rc.1",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0-rc.1",
+    "commit": {
+      "sha": "b77e14beea02599e61c496d04a446cdfd69fb043",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/b77e14beea02599e61c496d04a446cdfd69fb043"
+    }
+  },
+  {
+    "name": "v1.5.0-rc.0",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0-rc.0",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0-rc.0",
+    "commit": {
+      "sha": "23c4ae522ae72fe20114c3283ea90cefb3101bcc",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/23c4ae522ae72fe20114c3283ea90cefb3101bcc"
+    }
+  },
+  {
+    "name": "v1.5.0-beta.2",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0-beta.2",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0-beta.2",
+    "commit": {
+      "sha": "ca7f4a387c140199ca3d6de6459b4ddcde42ec81",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/ca7f4a387c140199ca3d6de6459b4ddcde42ec81"
+    }
+  },
+  {
+    "name": "v1.5.0-beta.1",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0-beta.1",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0-beta.1",
+    "commit": {
+      "sha": "6b123a0419d6cd2009f148e2f1c6be3b5465373f",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/6b123a0419d6cd2009f148e2f1c6be3b5465373f"
+    }
+  },
+  {
+    "name": "v1.5.0-beta.0",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.5.0-beta.0",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.5.0-beta.0",
+    "commit": {
+      "sha": "f8cf28a788f8a5b6c08849061e2216bf60674ba7",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/f8cf28a788f8a5b6c08849061e2216bf60674ba7"
+    }
+  },
+  {
+    "name": "v1.4.12",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.12",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.12",
+    "commit": {
+      "sha": "996c901ff9f24d0a93bba8eb9fdee943cc5150ad",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/996c901ff9f24d0a93bba8eb9fdee943cc5150ad"
+    }
+  },
+  {
+    "name": "v1.4.11",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.11",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.11",
+    "commit": {
+      "sha": "0d764b581d8b494190fa280f8870eee8fd039933",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/0d764b581d8b494190fa280f8870eee8fd039933"
+    }
+  },
+  {
+    "name": "v1.4.10",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.10",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.10",
+    "commit": {
+      "sha": "8dee8f1b9e0568cdeefd0b01dda1da31eca5e183",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/8dee8f1b9e0568cdeefd0b01dda1da31eca5e183"
+    }
+  },
+  {
+    "name": "v1.4.9",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.9",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.9",
+    "commit": {
+      "sha": "a84393eadb3fef6dce5d424978e27adec296eca2",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/a84393eadb3fef6dce5d424978e27adec296eca2"
+    }
+  },
+  {
+    "name": "v1.4.8",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.8",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.8",
+    "commit": {
+      "sha": "75e876424da5f569481488d03cf3a61441341513",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/75e876424da5f569481488d03cf3a61441341513"
+    }
+  },
+  {
+    "name": "v1.4.7",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.7",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.7",
+    "commit": {
+      "sha": "2f61145475e495e0f477fca091c51674f5cff935",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/2f61145475e495e0f477fca091c51674f5cff935"
+    }
+  },
+  {
+    "name": "v1.4.6",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.6",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.6",
+    "commit": {
+      "sha": "19ecdb54bf85fc4e7bd3cde453aa6843f869a1ab",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/19ecdb54bf85fc4e7bd3cde453aa6843f869a1ab"
+    }
+  },
+  {
+    "name": "v1.4.5",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.5",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.5",
+    "commit": {
+      "sha": "1d18e60ef7776c53716622c18f6a127284a58d92",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/1d18e60ef7776c53716622c18f6a127284a58d92"
+    }
+  },
+  {
+    "name": "v1.4.4",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.4",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.4",
+    "commit": {
+      "sha": "b497f3e47fbf93cfc2d8f184fd1c4dc26fbec9b7",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/b497f3e47fbf93cfc2d8f184fd1c4dc26fbec9b7"
+    }
+  },
+  {
+    "name": "v1.4.3",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.3",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.3",
+    "commit": {
+      "sha": "1622182737a41cf4619a514fd71529e07e82d594",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/1622182737a41cf4619a514fd71529e07e82d594"
+    }
+  },
+  {
+    "name": "v1.4.2",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.2",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.2",
+    "commit": {
+      "sha": "1f5e42e8821217026ef36a46d36f84d7cd32830a",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/1f5e42e8821217026ef36a46d36f84d7cd32830a"
+    }
+  },
+  {
+    "name": "v1.4.1",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.1",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.1",
+    "commit": {
+      "sha": "46b7cf7464ef7f37b3d2919847627e58ff7fdca8",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/46b7cf7464ef7f37b3d2919847627e58ff7fdca8"
+    }
+  },
+  {
+    "name": "v1.4.0",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.0",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.0",
+    "commit": {
+      "sha": "291d7c467fba51a9cb89cbeee62202d51fe64b09",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/291d7c467fba51a9cb89cbeee62202d51fe64b09"
+    }
+  },
+  {
+    "name": "v1.4.0-rc.2",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.0-rc.2",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.0-rc.2",
+    "commit": {
+      "sha": "0681a5400e4150a961f9c8651e55623ca23b0cc2",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/0681a5400e4150a961f9c8651e55623ca23b0cc2"
+    }
+  },
+  {
+    "name": "v1.4.0-rc.1",
+    "zipball_url": "https://api.github.com/repos/angular/angular.js/zipball/v1.4.0-rc.1",
+    "tarball_url": "https://api.github.com/repos/angular/angular.js/tarball/v1.4.0-rc.1",
+    "commit": {
+      "sha": "c10b249e3d08b3bf27a871138d7f587a46b244cb",
+      "url": "https://api.github.com/repos/angular/angular.js/commits/c10b249e3d08b3bf27a871138d7f587a46b244cb"
+    }
+  }
+]

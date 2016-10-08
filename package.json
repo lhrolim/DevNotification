@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon --debug --harmony --use_strict index.js",
     "start": "node --harmony --use_strict index.js",
-    "debug": "node-inspector -p 8070 --debug --harmony --use_strict index.js"
+    "debug": "node-inspector -p 8070 --debug --harmony --use_strict index.js",
+    "test": "jasmine-node",
+    "tdd": "jasmine-node spec --autotest --watch ."
   },
   "engines": {
     "node": ">=6"
@@ -17,13 +19,15 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "helmet": "^2.1.2",
+    "jasmine-node": "^1.14.5",
     "lodash": "^4.15.0",
     "milieu": "^1.4.0",
     "mongoose": "^4.5.9",
     "morgan": "^1.7.0",
     "promisify-node": "^0.4.0",
     "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "request-promise": "^4.1.1",
+    "rootpath": "^0.1.2"
   },
   "devDependencies": {
     "eslint": "^3.2.2",
@@ -31,6 +35,7 @@
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-react": "^6.0.0",
-    "nodemon": "^1.9.2"
+    "nodemon": "^1.9.2",
+    "use-strict": "^1.0.1"
   }
 }

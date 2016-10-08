@@ -1,7 +1,7 @@
 const Model = require('../utils/model');
 const q = require("bluebird");
 const ProjectSchema = require('../schemas/project-schema');
-const githubService = require("../services/githubService.js");
+const githubService = require("../services/github-service.js");
 
 
 // Business Model layer, in this instance you can manage your business logic. For example,
@@ -29,9 +29,43 @@ class ProjectModel extends Model {
                 return githubService.listReleases(project.repourl);
 
             });
-
-
     }
+
+    update(id, updatedModel) {
+        if (super.isObjectId(id)) {
+            return super.update(id, updatedModel);
+        } else if (isNaN(id)) {
+            return this.SchemaModel
+                .findOneAndUpdate({ 'name': id }, updatedModel, { new: true })
+                .execAsync();
+        }
+        throw { name: "InvalidIdError", id: id };
+    }
+
+    remove(id) {
+        if (super.isObjectId(id)) {
+            return super.remove(id);
+        } else if (isNaN(id)) {
+            return this.SchemaModel
+                .findOneAndRemove({ 'name': id })
+                .execAsync();
+        }
+        throw { name: "InvalidIdError", id: id };
+    }
+
+    create(project) {
+
+        return super.create(project).then(p => {
+            return githubService.listReleases(project.repourl).then(rels => {
+                if (!rels) {
+                    return Promise.resolve();
+                }
+                p.latestversion = rels[0];
+                return this.update(p.id, p);
+            });
+        });
+    }
+
 }
 
 module.exports = new ProjectModel(ProjectSchema);

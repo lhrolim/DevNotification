@@ -12,10 +12,10 @@ const ProjectSchema = new Schema({
     releasenotesurl: { type: String },
     // we won´t know it by the time of creation of the entry, therefore not required
     latestversion: { type: String },
-    //identifier for github api.  https://github.com/twbs/bootstrap --> twbs
-    ownerName: { type: String },
-    //identifier for github api.  https://github.com/twbs/bootstrap --> bootstrap
-    repoName: { type: String }
+//    //identifier for github api.  https://github.com/twbs/bootstrap --> twbs
+//    ownerName: { type: String },
+//    //identifier for github api.  https://github.com/twbs/bootstrap --> bootstrap
+//    repoName: { type: String }
 
 });
 
