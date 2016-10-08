@@ -8,12 +8,6 @@ const ProjectModel = require('../models/project-model');
 
 class ProjectController extends Controller {
 
-    findByName(req, res, next) {
-        return this.model.findOne({ name: req.params.name })
-            .then(doc => res.status(200).json(doc))
-            .catch(err => next(err));
-    }
-
     releases(req, res, next) {
         return this.model.releases(req.params.name)
             .then(doc => {

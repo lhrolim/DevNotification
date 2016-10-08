@@ -32,26 +32,9 @@ class ProjectModel extends Model {
     }
 
     update(id, updatedModel) {
-        if (super.isObjectId(id)) {
-            return super.update(id, updatedModel);
-        } else if (isNaN(id)) {
-            return this.SchemaModel
-                .findOneAndUpdate({ 'name': id }, updatedModel, { new: true })
-                .execAsync();
-        }
-        throw { name: "InvalidIdError", id: id };
+        return super.update(id, updatedModel);
     }
 
-    remove(id) {
-        if (super.isObjectId(id)) {
-            return super.remove(id);
-        } else if (isNaN(id)) {
-            return this.SchemaModel
-                .findOneAndRemove({ 'name': id })
-                .execAsync();
-        }
-        throw { name: "InvalidIdError", id: id };
-    }
 
     create(project) {
 

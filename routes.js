@@ -12,11 +12,12 @@ router.route('/project')
   .get((...args) => controllers.project.find(...args))
     .post((...args) => controllers.project.create(...args));
 
-router.route('/project/:name')
-    .get((...args) => controllers.project.findByName(...args));
+//router.route('/project/:name')
+//    .get((...args) => controllers.project.findByName(...args));
 
 
 router.route('/project/:id')
+    .get((...args) => controllers.project.findById(...args))
     .put((...args) => controllers.project.update(...args))
     .delete((...args) => controllers.project.remove(...args));
 

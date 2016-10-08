@@ -7,8 +7,9 @@ class Model {
 
 
 
-    constructor(SchemaModel) {
-        this.SchemaModel = SchemaModel;
+    constructor(mongooseData) {
+        this.SchemaModel = mongooseData.model;
+        this.Schema = mongooseData.schema;
     }
 
     isObjectId(id) {
@@ -22,9 +23,26 @@ class Model {
     }
 
     update(id, updatedModel) {
-        return this.SchemaModel
-            .findByIdAndUpdate(id, updatedModel, { new: true })
-            .execAsync();
+        
+        if (this.isObjectId(id)) {
+            return this.SchemaModel
+                .findByIdAndUpdate(id, updatedModel, { new: true })
+                .execAsync();
+        }
+
+        const paths = this.Schema.paths;
+        const internalPk = Object.keys(paths).find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+        if (!!internalPk) {
+            const type = paths.name.instance;
+            if ((type === "String" && isNaN(id)) || (type === "Number" && !isNaN(id))) {
+                return this.SchemaModel
+                    .findOneAndUpdate({ [internalPk]: id }, updatedModel, { new: true })
+                    .execAsync();
+            }
+        }
+
+        throw { name: "InvalidIdError", id: id };
+
     }
 
     find(query) {
@@ -41,17 +59,51 @@ class Model {
     }
 
     findById(id, populate) {
-        return this.SchemaModel
-            .findById(id)
-            .populate(populate || '')
-            .execAsync();
+
+        if (this.isObjectId(id)) {
+            return this.SchemaModel
+                .findById(id)
+                .populate(populate || '')
+                .execAsync();
+        }
+
+        const paths = this.Schema.paths;
+        const internalPk = Object.keys(paths).find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+        if (!!internalPk) {
+            const type = paths.name.instance;
+            if ((type === "String" && isNaN(id)) || (type === "Number" && !isNaN(id))) {
+                return this.findOne({ [internalPk]: id });
+            }
+        }
+
+        throw { name: "InvalidIdError", id: id };
+
     }
 
     remove(id) {
-        return this.SchemaModel
-            .findByIdAndRemove(id)
-            .execAsync();
+
+        if (this.isObjectId(id)) {
+            return this.SchemaModel
+                .findByIdAndRemove(id)
+                .execAsync();;
+        }
+
+        const paths = this.Schema.paths;
+        const internalPk = Object.keys(paths).find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+        if (!!internalPk) {
+            const type = paths.name.instance;
+            if ((type === "String" && isNaN(id)) || (type === "Number" && !isNaN(id))) {
+                return this.SchemaModel
+                    .findOneAndRemove({ [internalPk]: id })
+                    .execAsync();    
+            }
+        }
+        
+        throw { name: "InvalidIdError", id: id };
+
     }
+
+  
 }
 
 module.exports = Model;

@@ -37,4 +37,5 @@ const Application = new Schema({
 
 });
 
-module.exports = mongoose.Model("Application", Application)
+module.exports = { model: mongoose.model('Application', Application), schema: Application }
+

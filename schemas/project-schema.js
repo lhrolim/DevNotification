@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const ProjectSchema = new Schema({
-    name: { type: String, required: true, index: { unique: true } },
+    name: { type: String, required: true, index: { unique: true, internalpk: true } },
     //start page of the project
     startpage: { type: String, required: true },
     //the url of the code repository project (mainly on git)
@@ -20,4 +20,4 @@ const ProjectSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Project', ProjectSchema);
+module.exports = { model: mongoose.model('Project', ProjectSchema), schema: ProjectSchema }
