@@ -2,9 +2,12 @@
 
 require('rootpath')();
 
-var projectSchema = require("schemas/project-schema").model;
-var projectModel = require("models/project-model");
+const projectSchema = require("schemas/project-schema").model;
+const projectModel = require("models/project-model");
+const githubService = require("services/github-service");
 
+
+const allReleases = ["v1.5.8", "v1.5.7", "v1.5.6", "v1.4.3"];
 
 
 describe("project model Test", () => {
@@ -22,6 +25,65 @@ describe("project model Test", () => {
             done();
         });
   
+
+    });
+
+
+    it("asking for all releases", (done) => {
+
+
+        spyOn(githubService, "listTags").andReturn(Promise.resolve(allReleases));
+        spyOn(projectModel, "findById").andCallFake(() => {
+            return Promise.resolve({repourl:"angularjsrepo..."});
+        });
+        
+        projectModel.releases("angularjs").then(r => {
+            expect(projectModel.findById).toHaveBeenCalledWith("angularjs");
+            expect(githubService.listTags).toHaveBeenCalledWith("angularjsrepo...");
+            expect(r).toBe(allReleases);
+            done();
+        });
+
+
+    });
+
+
+    it("asking for one release", (done) => {
+
+        
+
+        spyOn(githubService, "listTags").andReturn(Promise.resolve(allReleases));
+        spyOn(projectModel, "findById").andCallFake(() => {
+            return Promise.resolve({ repourl: "angularjsrepo..." });
+        });
+
+        projectModel.releases("angularjs", "1.5.7").then(r => {
+            expect(projectModel.findById).toHaveBeenCalledWith("angularjs");
+            expect(githubService.listTags).toHaveBeenCalledWith("angularjsrepo...");
+            expect(r).toEqual(["v1.5.7"]);
+            done();
+        });
+
+
+    });
+
+
+    it("asking for releases greater than", (done) => {
+
+
+
+        spyOn(githubService, "listTags").andReturn(Promise.resolve(allReleases));
+        spyOn(projectModel, "findById").andCallFake(() => {
+            return Promise.resolve({ repourl: "angularjsrepo..." });
+        });
+
+        projectModel.releases("angularjs", "1.5.5+").then(r => {
+            expect(projectModel.findById).toHaveBeenCalledWith("angularjs");
+            expect(githubService.listTags).toHaveBeenCalledWith("angularjsrepo...");
+            expect(r).toEqual(["v1.5.8","v1.5.7","v1.5.6"]);
+            done();
+        });
+
 
     });
 

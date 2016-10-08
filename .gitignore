@@ -7,4 +7,5 @@ node_modules
 *.sublime-project
 bin/
 obj/
+coverage/
 .vs/

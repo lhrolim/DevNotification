@@ -9,7 +9,18 @@ const ProjectModel = require('../models/project-model');
 class ProjectController extends Controller {
 
     releases(req, res, next) {
-        return this.model.releases(req.params.name)
+        return this.model.releases(req.params.name, req.params.lower)
+            .then(doc => {
+                if (!doc) {
+                    return res.status(404).end();
+                }
+                res.status(200).json(doc);
+            })
+            .catch(err => next(err));
+    }
+
+    releaseNotes(req, res, next) {
+        return this.model.releaseNotes(req.params.name, req.params.lower)
             .then(doc => {
                 if (!doc) {
                     return res.status(404).end();

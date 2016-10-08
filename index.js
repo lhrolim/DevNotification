@@ -12,7 +12,7 @@ const routes = require('./routes');
 const port = config.server.port;
 const app  = express();
 
-require('./utils/promisify-all')['bluebird'](['mongoose']);
+require('./utils/promisify-all')['bluebird'](['mongoose','request','request-promise']);
 
 const mongooseErrorHandler = require('./utils/mongooseErrorHandler');
 

@@ -1,51 +1,62 @@
 const Model = require('../utils/model');
-const q = require("bluebird");
+const promise = require("bluebird");
 const ProjectSchema = require('../schemas/project-schema');
 const githubService = require("../services/github-service.js");
 
+const compareVersion = require('compare-version');
 
-// Business Model layer, in this instance you can manage your business logic. For example,
-// if you want to create a pet before creating a person, because you'll end up adding that
-// pet to the person, this is the place.
+function releasesByProject(project, lowerLimit) {
 
-// In libraries/model you have the basic support for RESTful methods. Because this class
-// is extending from there, you got that solved.
-// You can overwrite extended methods or create custom ones here. Also you can support
-// more mongoose functionality like skip, sort etc.
+    if (!project) {
+        Promise.reject();
+    }
+
+    return githubService.listTags(project.repourl).then(allVersions => {
+        if (lowerLimit == null) {
+            return allVersions;
+        }
+
+        let usingLowerBound = false;
+
+        if (lowerLimit.endsWith("+")) {
+            usingLowerBound = true;
+            lowerLimit = lowerLimit.substr(0, lowerLimit.length - 1);
+        }
+
+        return allVersions.filter(v => compareVersion(v, lowerLimit) === (usingLowerBound ? 1 : 0));
+    });
+}
+
 
 class ProjectModel extends Model {
 
-    findByName(name) {
-        return this.findOne({ 'name': name });
+    releases(name, lowerLimit) {
+        return this.findById(name).then(p => releasesByProject(p, lowerLimit));
     }
 
-    releases(name) {
-        return this.findByName(name)
-            .then(project => {
-                if (!project) {
-                    Promise.reject();
+    releaseNotes(name, lowerLimit) {
+        return this.findById(name).then(p => {
+            releasesByProject(p, lowerLimit).then(tags => {
+                if (p.usegitnativereleases) {
+                    return githubService.listNativeReleaseNotes(p.repourl, tags);
                 }
-
-                return githubService.listReleases(project.repourl);
-
             });
-    }
-
-    update(id, updatedModel) {
-        return super.update(id, updatedModel);
+        });
     }
 
 
     create(project) {
 
-        return super.create(project).then(p => {
-            return githubService.listReleases(project.repourl).then(rels => {
-                if (!rels) {
-                    return Promise.resolve();
-                }
-                p.latestversion = rels[0];
-                return this.update(p.id, p);
-            });
+        const repourl = project.repourl;
+        return promise.all([githubService.hasNativeReleaseNotes(repourl), githubService.listTags(repourl)]).then(results => {
+            const  hasNativeReleaseNotes = results[0];
+            const rels = results[1];
+
+            if (rels) {
+                project.latestversion = rels[0];
+            }
+            project.usegitnativereleases = hasNativeReleaseNotes;
+            return super.create(project);
         });
     }
 

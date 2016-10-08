@@ -12,9 +12,6 @@ router.route('/project')
   .get((...args) => controllers.project.find(...args))
     .post((...args) => controllers.project.create(...args));
 
-//router.route('/project/:name')
-//    .get((...args) => controllers.project.findByName(...args));
-
 
 router.route('/project/:id')
     .get((...args) => controllers.project.findById(...args))
@@ -23,7 +20,14 @@ router.route('/project/:id')
 
 router.route('/project/:name/releases')
     .get((...args) => controllers.project.releases(...args));
-    
+
+
+router.route('/project/:name/releases/:lower')
+    .get((...args) => controllers.project.releases(...args));
+
+router.route('/project/:name/releases/:lower/notes')
+    .get((...args) => controllers.project.releaseNotes(...args));
+
 
 
 router.route('/user')
