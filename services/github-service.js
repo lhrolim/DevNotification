@@ -1,10 +1,17 @@
 ﻿const rp = require('request-promise');
 
-const baseApiUrl = "https://api.github.com/repos/{0}/{1}/tags";
-const baseReleasesApiUrl = "https://api.github.com/repos/{0}/{1}/releases/tags/{2}";
-const latestReleaseUrl = "https://api.github.com/repos/{0}/{1}/releases/latest/";
+const clientId = "80071ed4f4759d28cc06";
+const secret = "444cc0123a97c6200b51f755eaed923f58e07aab";
+
+const baseApiUrl = "https://api.github.com/repos/{0}/{1}/tags?client_id=" + clientId + "&client_secret=" + secret;
+
+const baseReleasesApiUrl = "https://api.github.com/repos/{0}/{1}/releases/tags/{2}?client_id=" + clientId + "&client_secret=" + secret;
+const latestReleaseUrl = "https://api.github.com/repos/{0}/{1}/releases/latest?client_id=" + clientId + "&client_secret=" + secret;
 
 const baseGitURL = "https://github.com/";
+
+
+
 
 const gihubBaseHeader = { 'User-Agent': 'DevNotification' };
 
@@ -55,9 +62,13 @@ class GitHubService {
             headers: gihubBaseHeader,
             resolveWithFullResponse: true
         };
+        console.log(url);
         return rp.get(options).then(response => {
             return response.statusCode !== 404;
-        }).catch(err => false);
+        }).catch(err => {
+            console.log(err);
+            return false;
+        });
     }
 
     /**
@@ -70,7 +81,7 @@ class GitHubService {
      * @param token
      */
     listNativeReleaseNotes(repoUrl, tags, token) {
-        const ob = parseOwnerAndRepo(repourl);
+        const ob = parseOwnerAndRepo(repoUrl);
         if (!ob) {
             return [];
         }
@@ -79,7 +90,7 @@ class GitHubService {
             const url = baseReleasesApiUrl.format(ob.owner, ob.repo, t);
             const options = {
                 uri: url,
-                gihubBaseHeader,
+                headers:gihubBaseHeader,
                 json: true
             };
             return rp.get(options);
@@ -87,7 +98,7 @@ class GitHubService {
 
 
         return Promise.all(promises).then(results => {
-
+            return results.map(r => r.body);
         });
 
     }

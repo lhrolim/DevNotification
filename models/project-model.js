@@ -36,7 +36,7 @@ class ProjectModel extends Model {
 
     releaseNotes(name, lowerLimit) {
         return this.findById(name).then(p => {
-            releasesByProject(p, lowerLimit).then(tags => {
+            return releasesByProject(p, lowerLimit).then(tags => {
                 if (p.usegitnativereleases) {
                     return githubService.listNativeReleaseNotes(p.repourl, tags);
                 }
@@ -56,9 +56,10 @@ class ProjectModel extends Model {
                 project.latestversion = rels[0];
             }
             project.usegitnativereleases = hasNativeReleaseNotes;
-            return super.create(project);
+            return this.doCreate(project);
         });
     }
+  
 
 }
 

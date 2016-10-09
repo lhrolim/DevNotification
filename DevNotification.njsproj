@@ -46,6 +46,7 @@
     <Compile Include="utils\require-all.js" />
     <Compile Include="utils\stringutils.js" />
     <Content Include="obj\Debug\NodejsApp1.njsproj.FileListAbsolute.txt" />
+    <Content Include="spec\fixtures\twbs.json" />
     <Content Include="spec\fixtures\angular-project.json" />
     <Content Include="spec\fixtures\github\angular-releases.json" />
     <Content Include="tests\resources\angular-project.json" />

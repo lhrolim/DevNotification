@@ -4,6 +4,7 @@ require('rootpath')();
 
 const projectSchema = require("schemas/project-schema").model;
 const projectModel = require("models/project-model");
+const basemodel = require("utils/model");
 const githubService = require("services/github-service");
 
 
@@ -117,6 +118,38 @@ describe("project model Test", () => {
 
     });
 
-  
+
+    it("testing creation nativeurl", (done) => {
+        const twbs = require("spec/fixtures/twbs.json");
+        spyOn(githubService, "hasNativeReleaseNotes").andReturn(Promise.resolve(true));
+        spyOn(githubService, "listTags").andReturn(Promise.resolve(allReleases));
+        spyOn(projectModel, "doCreate").andReturn(Promise.resolve(true));
+
+        projectModel.create(twbs).then(r => {
+            expect(githubService.listTags).toHaveBeenCalledWith(twbs.repourl);
+            expect(githubService.hasNativeReleaseNotes).toHaveBeenCalledWith(twbs.repourl);
+            twbs.latestversion = "v1.5.8";
+            twbs.usegitnativereleases = true;
+            expect(projectModel.doCreate).toHaveBeenCalledWith(twbs);
+            done();
+        });
+    });
+
+
+    it("testing creation non nativeurl", (done) => {
+        const angular = require("spec/fixtures/angular-project.json");
+        spyOn(githubService, "hasNativeReleaseNotes").andReturn(Promise.resolve(false));
+        spyOn(githubService, "listTags").andReturn(Promise.resolve(allReleases));
+        spyOn(projectModel, "doCreate").andReturn(Promise.resolve(true));
+
+        projectModel.create(angular).then(r => {
+            expect(githubService.listTags).toHaveBeenCalledWith(angular.repourl);
+            expect(githubService.hasNativeReleaseNotes).toHaveBeenCalledWith(angular.repourl);
+            angular.latestversion = "v1.5.8";
+            angular.usegitnativereleases = false;
+            expect(projectModel.doCreate).toHaveBeenCalledWith(angular);
+            done();
+        });
+    });
 
 }); 

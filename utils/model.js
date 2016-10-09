@@ -16,12 +16,18 @@ class Model {
         return require('mongoose').Types.ObjectId.isValid(id);
     }
 
-
-    create(input) {
+    //TODO: find a better sulution
+    /// for mocking purposes
+    doCreate(input) {
         const newSchemaModel = new this.SchemaModel(input);
         return newSchemaModel.saveAsync();
     }
 
+    create(input) {
+        return this.doCreate(input);
+    }
+
+   
     update(id, updatedModel) {
         
         if (this.isObjectId(id)) {
