@@ -4,21 +4,19 @@
   "description": "Dev Notification test",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --debug --harmony --use_strict index.js",
-    "start": "node --harmony --use_strict index.js",
-    "debug": "node-inspector -p 8070 --debug --harmony --use_strict index.js",
+    "dev": "nodemon --debug  index.js",
+    "start": "node  index.js",
+    "debug": "node-inspector -p 8070 --debug index.js",
     "test": "istanbul cover --include-all-sources node_modules\\jasmine-node\\bin\\jasmine-node spec",
     "tdd": "jasmine-node spec --autotest  --watch ."
   },
   "engines": {
     "node": ">=6"
   },
-
   "repository": {
     "type": "git",
     "url": "https://github.com/lhrolim/DevNotification"
   },
-
   "author": "LHRolim <luizhenrique.rolim@gmail.com>",
   "dependencies": {
     "bluebird": "^3.4.1",
@@ -32,6 +30,7 @@
     "milieu": "^1.4.0",
     "mongoose": "^4.5.9",
     "morgan": "^1.7.0",
+    "npmlog": "^4.0.0",
     "promisify-node": "^0.4.0",
     "request": "^2.75.0",
     "request-promise": "^4.1.1",

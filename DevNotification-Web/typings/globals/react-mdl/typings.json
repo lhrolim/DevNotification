@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/8fb286186bd170e3abc1b1601a7e84eda00490fc/react-mdl/react-mdl.d.ts",
+    "raw": "registry:dt/react-mdl#0.0.0+20160830142027",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/8fb286186bd170e3abc1b1601a7e84eda00490fc/react-mdl/react-mdl.d.ts"
+  }
+}

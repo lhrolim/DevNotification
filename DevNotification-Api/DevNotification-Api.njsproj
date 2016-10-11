@@ -16,6 +16,7 @@
     <EnableTypeScript>true</EnableTypeScript>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>DevNotification-Api</Name>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -37,6 +38,7 @@
     <Compile Include="schemas\project-schema.js" />
     <Compile Include="schemas\user-schema.js" />
     <TypeScriptCompile Include="typings\index.d.ts" />
+    <Compile Include="spec\tests\models\project-model-spec.js" />
     <Compile Include="spec\tests\services\github-service-spec.js" />
     <Compile Include="utils\mongooseErrorHandler.js" />
     <Compile Include="utils\controller.js" />
@@ -45,6 +47,7 @@
     <Compile Include="utils\require-all.js" />
     <Compile Include="utils\stringutils.js" />
     <Content Include="obj\Debug\NodejsApp1.njsproj.FileListAbsolute.txt" />
+    <Content Include="spec\fixtures\twbs.json" />
     <Content Include="spec\fixtures\angular-project.json" />
     <Content Include="spec\fixtures\github\angular-releases.json" />
     <Content Include="tests\resources\angular-project.json" />
@@ -80,6 +83,7 @@
     <Folder Include="spec\fixtures\" />
     <Folder Include="spec\fixtures\github\" />
     <Folder Include="spec\tests\" />
+    <Folder Include="spec\tests\models\" />
     <Folder Include="spec\tests\services\" />
     <Folder Include="tests" />
     <Folder Include="tests\resources" />
