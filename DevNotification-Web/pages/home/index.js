@@ -19,23 +19,33 @@ class HomePage extends React.Component {
     articles: PropTypes.array.isRequired,
   };
 
+
+
   componentDidMount() {
+
+    // Initiating our Auth0Lock
+    const lock = new Auth0Lock('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.com', {
+      container: 'root',
+      auth: {
+        redirectUrl: 'http://localhost:3000/loginredirectcbk',
+        responseType: 'code',
+        params: {
+          scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+        }
+      }
+    });
+
+    lock.show();
+
+
+
     document.title = title;
   }
 
   render() {
     return (
       <Layout className={s.content}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <h4>Articles</h4>
-        <ul>
-          {this.props.articles.map((article, i) =>
-            <li key={i}><a href={article.url}>{article.title}</a> by {article.author}</li>
-          )}
-        </ul>
-        <p>
-          <br /><br />
-        </p>
+        <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
       </Layout>
     );
   }

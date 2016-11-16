@@ -12,6 +12,11 @@
     "page": "./pages/error",
     "chunk": "main"
   },
+ {
+    "path": "/loginredirectcbk",
+    "page": "./pages/error",
+    "chunk": "main"
+  },
   {
     "path": "/about",
     "page": "./pages/about"
