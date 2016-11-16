@@ -11,41 +11,44 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
-import { title, html } from './index.md';
+import history from '../../core/history';
 
 class HomePage extends React.Component {
-
-  static propTypes = {
-    articles: PropTypes.array.isRequired,
-  };
-
 
 
   componentDidMount() {
 
-    // Initiating our Auth0Lock
-    const lock = new Auth0Lock('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.com', {
-      container: 'root',
-      auth: {
-        redirectUrl: 'http://localhost:3000/loginredirectcbk',
-        responseType: 'code',
-        params: {
-          scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
-        }
-      }
-    });
 
-    lock.show();
-
-
-
-    document.title = title;
   }
 
   render() {
+
+    const auth0 = new Auth0({
+      domain: 'plg.auth0.com',
+      clientID: 'oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho',
+      responseType: 'token' // also 'id_token' and 'code' (default)
+    });
+    
+    var token = auth0.parseHash(history.getCurrentLocation().hash);
+
+    if (token && token.idToken) {
+      //response from auth0 --> user has just finished authenticating
+      auth0.getProfile(token.idToken, function (error, profile) {
+        if (error) {
+          // Handle error
+          return;
+        }
+
+        localStorage.setItem("idToken", token.idToken);
+        localStorage.setItem("profile", JSON.stringify(profile));
+
+        // Update DOM
+      });
+    }
+
     return (
       <Layout className={s.content}>
-        <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
+        <div />
       </Layout>
     );
   }
