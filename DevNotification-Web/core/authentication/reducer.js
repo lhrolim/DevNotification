@@ -1,7 +1,7 @@
 const authState = (state = {}, action) => {
     switch (action.type) {
-        case "redirectLogin":{
-            return Object.assign({}, state, { authenticated:false });
+        case "authenticationDenied":{
+            return Object.assign({}, state, { authenticationDenied:true });
         }
         case "initLogin":{
             return Object.assign({}, state, { showLock:true });
@@ -11,6 +11,8 @@ const authState = (state = {}, action) => {
         }
         case "logout":{
             return  { authenticated:false,logout:true };
+        }case "auth0redirected":{
+            return Object.assign({}, state, { auth0Redirected:true,idToken:action.idToken })
         }
 
         default:

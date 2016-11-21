@@ -14,9 +14,9 @@ const initLogin = () => {
     }
 }
 
-const redirectLogin = () => {
+const authenticationDenied = () => {
     return {
-        type: "redirectLogin"
+        type: "authenticationDenied"
     }
 }
 
@@ -35,14 +35,9 @@ const profileRecovered = (idToken, profile) => {
 }
 
 const auth0Redirected = () => {
-
-   const rawHash = history.getCurrentLocation().hash;
-
-    return dispatch => {
-        const token = auth0.parseHash(rawHash);
-        dispatch({ type:"auth0redirected"});
-        return dispatch(checkAuth(token.idToken));
-    }
+    const rawHash = history.getCurrentLocation().hash;
+    const {idToken} = auth0.parseHash(rawHash);
+    return { type: "auth0redirected", idToken };
 }
 
 
@@ -52,14 +47,14 @@ const checkAuth = (idToken) => {
 
         if (!idToken) {
             //no token at all, first time the app is opened on this browser
-            return dispatch(redirectLogin());
+            return dispatch(authenticationDenied());
         }
 
         return new Promise((resolve, reject) => {
             auth0.getProfile(idToken, function (error, profile) {
                 if (error) {
                     //token expired
-                    dispatch(redirectLogin());
+                    dispatch(authenticationDenied());
                     reject();
                 }
                 dispatch(profileRecovered(idToken, profile));
@@ -70,4 +65,4 @@ const checkAuth = (idToken) => {
     }
 }
 
-export {checkAuth,initLogin,logout,auth0Redirected};     
+export {checkAuth,initLogin,logout,auth0Redirected};          

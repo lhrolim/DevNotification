@@ -14,7 +14,9 @@ import thunkMiddleware from 'redux-thunk';
 /** Authentication module */
 import authSubscriber from './authentication/subscriber';
 import authState from './authentication/reducer';
+import createLogger from 'redux-logger';
 
+const logger = createLogger();
 
 const combinedReducers = combineReducers({
     authState
@@ -23,7 +25,7 @@ const combinedReducers = combineReducers({
 
 // Centralized application state
 // For more information visit http://redux.js.org/
-const store = createStore(combinedReducers, applyMiddleware(thunkMiddleware));
+const store = createStore(combinedReducers, applyMiddleware(thunkMiddleware,logger));
 store.subscribe(authSubscriber);
 
 export default store;

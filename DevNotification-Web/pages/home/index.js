@@ -14,27 +14,40 @@ import s from './styles.css';
 import history from '../../core/history';
 import store from '../../core/store'
 import { checkAuth } from '../../core/authentication/actions'
+import { connect } from 'react-redux'
 
 class HomePage extends React.Component {
 
   componentDidMount() {
     var idToken = localStorage.getItem("idToken");
-    if (idToken === "undefined") {
-      localStorage.removeItem("idToken");
-      idToken = null;
-    }
     store.dispatch(checkAuth(idToken));
   }
 
   render() {
 
+    const {authState} = this.props; 
+
     return (
-      <Layout className={s.content}>
+      <div>
+      {authState.authenticated && <Layout className={s.content}>
         <div />
       </Layout>
+      }
+      
+      </div>
+
+      
     );
   }
 
 }
 
-export default HomePage;
+function mapStateToProps(state){
+  const {authState} = state; 
+
+  return {
+    authState
+  }
+}
+
+export default connect(mapStateToProps)(HomePage);
