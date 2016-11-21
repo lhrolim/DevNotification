@@ -10,6 +10,13 @@
 
 import React from 'react';
 import Link from '../Link';
+import { logout } from '../../core/authentication/actions'
+import store from '../../core/store'
+
+function onClickHandler(event) {
+  store.dispatch(logout());
+  event.preventDefault();
+}
 
 class Navigation extends React.Component {
 
@@ -21,11 +28,14 @@ class Navigation extends React.Component {
     window.componentHandler.downgradeElements(this.root);
   }
 
+
+
   render() {
     return (
       <nav className="mdl-navigation" ref={node => (this.root = node)}>
         <Link className="mdl-navigation__link" to="/">Home</Link>
         <Link className="mdl-navigation__link" to="/about">About</Link>
+        <Link className="mdl-navigation__link" to="/" onClick={onClickHandler}>Logout</Link>
       </nav>
     );
   }

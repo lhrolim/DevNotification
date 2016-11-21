@@ -1,6 +1,11 @@
 [
   {
     "path": "/",
+    "page": "./pages/home",
+    "chunk": "main"
+  },
+  {
+    "path": "/signin",
     "page": "./pages/signin"
   },
   {
@@ -10,7 +15,7 @@
   },
   {
     "path": "/loginredirectcbk",
-    "page": "./pages/home",
+    "page": "./pages/redirectcbk",
     "chunk": "main"
   },
   {

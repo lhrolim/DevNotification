@@ -12,39 +12,21 @@ import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import s from './styles.css';
 import history from '../../core/history';
+import store from '../../core/store'
+import { checkAuth } from '../../core/authentication/actions'
 
 class HomePage extends React.Component {
 
-
   componentDidMount() {
-
-
+    var idToken = localStorage.getItem("idToken");
+    if (idToken === "undefined") {
+      localStorage.removeItem("idToken");
+      idToken = null;
+    }
+    store.dispatch(checkAuth(idToken));
   }
 
   render() {
-
-    const auth0 = new Auth0({
-      domain: 'plg.auth0.com',
-      clientID: 'oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho',
-      responseType: 'token' // also 'id_token' and 'code' (default)
-    });
-    
-    var token = auth0.parseHash(history.getCurrentLocation().hash);
-
-    if (token && token.idToken) {
-      //response from auth0 --> user has just finished authenticating
-      auth0.getProfile(token.idToken, function (error, profile) {
-        if (error) {
-          // Handle error
-          return;
-        }
-
-        localStorage.setItem("idToken", token.idToken);
-        localStorage.setItem("profile", JSON.stringify(profile));
-
-        // Update DOM
-      });
-    }
 
     return (
       <Layout className={s.content}>
