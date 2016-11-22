@@ -12,6 +12,7 @@ import React from 'react';
 import Link from '../Link';
 import { logout } from '../../core/authentication/actions'
 import store from '../../core/store'
+import { connect } from 'react-redux'
 
 function onClickHandler(event) {
   store.dispatch(logout());
@@ -31,10 +32,13 @@ class Navigation extends React.Component {
 
 
   render() {
+
+    const {authState} = this.props;
+
     return (
       <nav className="mdl-navigation" ref={node => (this.root = node)}>
         <Link className="mdl-navigation__link" to="/">Home</Link>
-        <Link className="mdl-navigation__link" to="/about">About</Link>
+        <img src={authState.profile.picture} style={{"height" : "50%"}} />
         <Link className="mdl-navigation__link" to="/" onClick={onClickHandler}>Logout</Link>
       </nav>
     );
@@ -42,4 +46,13 @@ class Navigation extends React.Component {
 
 }
 
-export default Navigation;
+function mapStateToProps(state) {
+  const {authState} = state;
+
+  return {
+    authState
+  }
+}
+
+
+export default connect(mapStateToProps)(Navigation);

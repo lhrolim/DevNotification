@@ -55,7 +55,7 @@ const checkAuth = (idToken) => {
                 if (error) {
                     //token expired
                     dispatch(authenticationDenied());
-                    reject();
+                    return reject();
                 }
                 dispatch(profileRecovered(idToken, profile));
                 resolve();

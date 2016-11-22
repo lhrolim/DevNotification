@@ -1,7 +1,7 @@
 const authState = (state = {}, action) => {
     switch (action.type) {
         case "authenticationDenied":{
-            return Object.assign({}, state, { authenticationDenied:true });
+            return Object.assign({}, state, { authenticationDenied:true, authenticated:false });
         }
         case "initLogin":{
             return Object.assign({}, state, { showLock:true });
