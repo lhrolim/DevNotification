@@ -37,10 +37,10 @@ app.use(morgan('tiny'));
 var authenticate = jwt({
   secret: new Buffer("oj8DLWEqvubHefqgIkeqJS30pfsTjQWpTCyheR6hIt0KWjRjjPG5wP02IkDLq6yu", 'base64'),
   audience: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho"
-});
+}).unless({path: ['/']});
 
-
-app.use(authenticate);
+//TODO: check environment
+//app.use(authenticate);
 
 
 

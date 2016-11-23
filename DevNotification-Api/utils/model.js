@@ -27,9 +27,9 @@ class Model {
         return this.doCreate(input);
     }
 
-   
+
     update(id, updatedModel) {
-        
+
         if (this.isObjectId(id)) {
             return this.SchemaModel
                 .findByIdAndUpdate(id, updatedModel, { new: true })
@@ -75,10 +75,19 @@ class Model {
 
         const paths = this.Schema.paths;
         const internalPk = Object.keys(paths).find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+        //locates the unique identifier from the given model
         if (!!internalPk) {
             const type = paths.name.instance;
-            if ((type === "String" && isNaN(id)) || (type === "Number" && !isNaN(id))) {
+            if (type === "Number" && !isNaN(id)) {
                 return this.findOne({ [internalPk]: id });
+            }
+            if (type === "String" && isNaN(id)) {
+                if (id.endsWith('%')) {
+                    //var regexp =new RegExp(".*" + id.replace(/(\W)/g, "\\$1") + ".*")
+                    return this.findOne({ [internalPk]: { "$regex": id.slice(0, -1), "$options": "i" } });
+                }
+                return this.findOne({ [internalPk]: id });
+
             }
         }
 
@@ -101,15 +110,15 @@ class Model {
             if ((type === "String" && isNaN(id)) || (type === "Number" && !isNaN(id))) {
                 return this.SchemaModel
                     .findOneAndRemove({ [internalPk]: id })
-                    .execAsync();    
+                    .execAsync();
             }
         }
-        
+
         throw { name: "InvalidIdError", id: id };
 
     }
 
-  
+
 }
 
 module.exports = Model;

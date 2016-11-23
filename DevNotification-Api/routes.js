@@ -18,6 +18,10 @@ router.route('/project/:id')
     .put((...args) => controllers.project.update(...args))
     .delete((...args) => controllers.project.remove(...args));
 
+
+router.route('/project/:name')
+    .get((...args) => controllers.project.findById(...args))
+
 router.route('/project/:name/releases')
     .get((...args) => controllers.project.releases(...args));
 

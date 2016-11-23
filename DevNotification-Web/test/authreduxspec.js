@@ -19,6 +19,7 @@ describe('authentication store suite', () => {
     const result = reducer(undefined, {});
     expect(result).to.deep.equal({ authenticated: false });
   });
+  
 
   it('test reducer, applying init login', () => {
     const result = reducer({ authenticated: false }, { type: INIT_LOGIN });

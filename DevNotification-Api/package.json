@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --debug  index.js",
-    "start": "node  index.js",
-    "debug": "node-inspector -p 8070 --debug index.js",
+    "start": "node index.js",
+    "debug": "node --inspect index.js",
     "test": "istanbul cover --include-all-sources node_modules\\jasmine-node\\bin\\jasmine-node spec",
     "tdd": "jasmine-node spec --autotest  --watch ."
   },
