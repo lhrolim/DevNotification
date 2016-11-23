@@ -1,4 +1,5 @@
 import history from '../history';
+import {INIT_LOGIN,AUTH_DENIED,LOGOUT,INIT_PROFILE,AUTH0_REDIRECTED} from './actionconstants'
 
 const auth0 = new Auth0({
     domain: 'plg.auth0.com',
@@ -10,25 +11,25 @@ const auth0 = new Auth0({
 
 const initLogin = () => {
     return {
-        type: "initLogin"
+        type: INIT_LOGIN
     }
 }
 
 const authenticationDenied = () => {
     return {
-        type: "authenticationDenied"
+        type: AUTH_DENIED
     }
 }
 
 const logout = () => {
     return {
-        type: "logout"
+        type: LOGOUT
     }
 }
 
 const profileRecovered = (idToken, profile) => {
     return {
-        type: "initProfile",
+        type: INIT_PROFILE,
         idToken,
         profile
     }
@@ -37,7 +38,7 @@ const profileRecovered = (idToken, profile) => {
 const auth0Redirected = () => {
     const rawHash = history.getCurrentLocation().hash;
     const {idToken} = auth0.parseHash(rawHash);
-    return { type: "auth0redirected", idToken };
+    return { type: AUTH0_REDIRECTED, idToken };
 }
 
 
