@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const ProjectSchema = new Schema({
+    
     name: { type: String, required: true, index: { unique: true, internalpk: true } },
     //start page of the project
     startpage: { type: String, required: true },

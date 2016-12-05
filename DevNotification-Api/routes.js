@@ -1,16 +1,18 @@
 const controllers = require('./controllers');
+var guard = require('express-jwt-permissions')()
+
 
 const Router = require('express').Router;
 const router = new Router();
 
 
 router.get('/', (req, res) => {
-  res.json({ message: 'Welcome to dev-notification API!' });
+    res.json({ message: 'Welcome to dev-notification API!' });
 });
 
 router.route('/project')
-  .get((...args) => controllers.project.find(...args))
-    .post((...args) => controllers.project.create(...args));
+    .get((...args) => controllers.project.find(...args))
+    .post(guard.check('admin'),(...args) => controllers.project.create(...args));
 
 
 router.route('/project/:id')
@@ -35,13 +37,13 @@ router.route('/project/:name/releases/:lower/notes')
 
 
 router.route('/user')
-  .get((...args) => controllers.user.find(...args))
-  .post((...args) => controllers.user.create(...args));
+    .get((...args) => controllers.user.find(...args))
+    .post((...args) => controllers.user.create(...args));
 
 router.route('/user/:id')
-  .put((...args) => controllers.user.update(...args))
-  .get((...args) => controllers.user.findById(...args))
-  .delete((...args) => controllers.user.remove(...args));
+    .put((...args) => controllers.user.update(...args))
+    .get((...args) => controllers.user.findById(...args))
+    .delete((...args) => controllers.user.remove(...args));
 
 
 module.exports = router;

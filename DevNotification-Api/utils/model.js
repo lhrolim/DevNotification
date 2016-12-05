@@ -83,7 +83,7 @@ class Model {
             }
             if (type === "String" && isNaN(id)) {
                 if (id.endsWith('%')) {
-                    //var regexp =new RegExp(".*" + id.replace(/(\W)/g, "\\$1") + ".*")
+                    //use %25 to encode this on browser
                     return this.findOne({ [internalPk]: { "$regex": id.slice(0, -1), "$options": "i" } });
                 }
                 return this.findOne({ [internalPk]: id });
