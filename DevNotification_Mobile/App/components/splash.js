@@ -18,13 +18,13 @@ export default class Splash extends Component {
 	}
 
 	componentDidMount(){
-		setTimeout(() => this.nav(), 3000);
+		setTimeout(() => this.nav(), 15000);
 		
 	}
 
 	nav(){
 	  this.props.navigator.replace({
-			 id: 'Dashboard'
+			 id: 'Lock'
 		});
 	}
 

@@ -14,6 +14,7 @@ import {Router, Route, Scene, Animations, TabBar} from 'react-native-router-flux
 
 
 import Splash from './splash';
+import Lock from './lock';
 
 import { connect } from 'react-redux'; 
 import {bindActionCreators} from 'redux';
@@ -37,6 +38,13 @@ class RootRouter extends Component {
           navigator={navigator} />
       );
     }
+    if (routeId === 'Lock') {
+      return (
+        <Lock
+          {...this.props}
+          navigator={navigator} />
+      );
+    }
     
     }
     
@@ -46,7 +54,7 @@ class RootRouter extends Component {
       
         <Navigator
         style={{flex: 1}}
-        initialRoute={{id: 'Splash', name: 'Splash'}}
+        initialRoute={{id: 'Lock', name: 'Lock'}}
           renderScene={this.renderScene.bind(this)}
       /></View>
     );
