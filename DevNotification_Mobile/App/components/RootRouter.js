@@ -10,65 +10,39 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import {Router, Route, Scene, Animations, TabBar} from 'react-native-router-flux';
+import { Router, Route, Scene, Animations, TabBar, Actions } from 'react-native-router-flux';
 
 
 import Splash from './splash';
-import Lock from './lock';
+import Login from './login';
+import Home from './home';
 
-import { connect } from 'react-redux'; 
-import {bindActionCreators} from 'redux';
-import * as actions from '../actions/actions';
-const RouterWithRedux = connect()(Router);
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+const scenes = Actions.create(
+  <Scene key="root">
+    <Scene key="splash" title={'Dev Notification'} component={Splash} initial={true} />
+    <Scene key="login" title={'Login'} component={Login} />
+    <Scene key="home" title={'Home'} component={Home} />
+  </Scene>
+);
+
+const ConnectedRouter = connect()(Router)
 
 class RootRouter extends Component {
-	constructor(props) {
+  constructor(props) {
     super(props);
-    	
   }
 
- renderScene(route, navigator) {
-    var {state,actions} = this.props;
-    var routeId = route.id;
-    if (routeId === 'Splash') {
-      return (
-        <Splash
-          {...this.props}
-          navigator={navigator} />
-      );
-    }
-    if (routeId === 'Lock') {
-      return (
-        <Lock
-          {...this.props}
-          navigator={navigator} />
-      );
-    }
-    
-    }
-    
+
+
   render() {
-    return (
-      <View style={{flex:1}}>
-      
-        <Navigator
-        style={{flex: 1}}
-        initialRoute={{id: 'Lock', name: 'Lock'}}
-          renderScene={this.renderScene.bind(this)}
-      /></View>
-    );
+    return <ConnectedRouter scenes={scenes} />
   }
-  
-  
-
-
-
 }
+
 export default connect(state => ({
-    state: state.SnapChat
-  }),
-  (dispatch) => ({
-    actions: bindActionCreators(actions, dispatch)
-  })
+  state: state.authState
+})
 )(RootRouter);
