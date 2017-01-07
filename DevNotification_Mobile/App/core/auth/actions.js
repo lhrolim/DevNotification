@@ -32,7 +32,7 @@ const authDenied = () => {
   }
 }
 
-const gatherProfile = (idToken, refreshToken, allowRefresh) => {
+const gatherProfile = (dispatch,idToken, refreshToken, allowRefresh) => {
 
   return new Promise((resolve, reject) => {
     lock.authenticationAPI().userInfo(idToken)
@@ -42,20 +42,18 @@ const gatherProfile = (idToken, refreshToken, allowRefresh) => {
       }).catch(error => {
         if (!allowRefresh) {
           //idtoken has just been refreshed
-          dispatch(authDenied());
-          return reject();
+           return reject();
         }
-
         lock.authenticationAPI()
           .refreshToken(refreshToken)
           .then(response => {
             let returnedIdToken = response.idToken;
-            return gatherProfile(refreshToken, returnedIdToken, false);
+            return gatherProfile(dispatch,refreshToken, returnedIdToken, false);
           })
           .catch(error => {
             //refresh token is invalid... it might have been revoked
             dispatch(authDenied());
-            return reject();
+            reject();
           });
       })
 
@@ -73,7 +71,7 @@ const init = () => {
         const value = JSON.parse(valueST);
         const idToken = value.idToken;
         const refreshToken = value.refreshToken;
-        return gatherProfile(idToken, refreshToken, true);
+        return gatherProfile(dispatch,idToken, refreshToken, true);
       }
       return dispatch(initNoTokens());
     }).catch(error => { console.log(error) });
