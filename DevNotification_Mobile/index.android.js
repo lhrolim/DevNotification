@@ -13,5 +13,6 @@ import {
 } from 'react-native';
 import DevNotificationMobile from './App/containers/app';
 
+//GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest
 
 AppRegistry.registerComponent('DevNotification_Mobile', () => DevNotificationMobile);

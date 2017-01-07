@@ -34,7 +34,7 @@ class LoginComponent extends Component {
                 console.log(err);
                 return;
             }
-            dispatch(redirectFromLockScreen(token.refreshToken,token.idToken,profile))
+            dispatch(redirectFromLockScreen(token.refreshToken,token.accessToken,profile))
         });
     }
 
