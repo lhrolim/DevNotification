@@ -28,9 +28,20 @@ const authState = (state = initialState, action) => {
             return {...state, showLock: true, authenticated:false, clearstorage:true }
         }
         case REDIRECT_NO_INPUT:{
-            return {...state, showLock: false, authenticated:true,idToken: action.idToken, refreshToken: action.refreshToken,profile: action.profile }
+            return {...state, showLock: false, 
+                authenticated:true,
+                idToken: action.idToken,
+                accessToken: action.accessToken , 
+                refreshToken: action.refreshToken,
+                profile: action.profile }
         }case REDIRECT_FROM_LOCK_SCREEN:{
-            return {...state, showLock: false, authenticated:true,idToken: action.idToken, refreshToken: action.refreshToken,profile: action.profile, updateStorage:true }
+            return {...state, showLock: false, 
+                authenticated:true,
+                idToken: action.idToken,
+                accessToken: action.accessToken, 
+                refreshToken: action.refreshToken,
+                profile: action.profile, 
+                updateStorage:true }
         }
         
         case LOGOUT:{

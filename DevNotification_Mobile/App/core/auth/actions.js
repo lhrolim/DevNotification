@@ -32,23 +32,24 @@ const authDenied = () => {
   }
 }
 
-const gatherProfile = (dispatch,idToken, refreshToken, allowRefresh) => {
+const gatherProfile = (dispatch,refreshToken,accessToken,idToken, allowRefresh) => {
 
   return new Promise((resolve, reject) => {
-    lock.authenticationAPI().userInfo(idToken)
+    lock.authenticationAPI().userInfo(accessToken)
       .then(profile => {
-        dispatch(authSuceeded(refreshToken, idToken, profile));
+        dispatch(authSuceeded(refreshToken,accessToken,idToken, profile));
         resolve();
       }).catch(error => {
         if (!allowRefresh) {
-          //idtoken has just been refreshed
+          //actionToken has just been refreshed
            return reject();
         }
         lock.authenticationAPI()
           .refreshToken(refreshToken)
           .then(response => {
+            let returnedAccessToken = response.accessToken;
             let returnedIdToken = response.idToken;
-            return gatherProfile(dispatch,refreshToken, returnedIdToken, false);
+            return gatherProfile(dispatch,refreshToken, returnedAccessToken,returnedIdToken, false);
           })
           .catch(error => {
             //refresh token is invalid... it might have been revoked
@@ -71,18 +72,20 @@ const init = () => {
         const value = JSON.parse(valueST);
         const idToken = value.idToken;
         const refreshToken = value.refreshToken;
-        return gatherProfile(dispatch,idToken, refreshToken, true);
+        const accessToken = value.accessToken;
+        return gatherProfile(dispatch,refreshToken, accessToken, idToken, true);
       }
       return dispatch(initNoTokens());
     }).catch(error => { console.log(error) });
   }
 }
 
-const redirectFromLockScreen = (refreshToken, idToken, profile) => {
+const redirectFromLockScreen = (refreshToken,accessToken, idToken, profile) => {
   return {
     type: types.REDIRECT_FROM_LOCK_SCREEN,
     idToken,
     refreshToken,
+    accessToken,
     profile
   }
 }

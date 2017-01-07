@@ -31,7 +31,7 @@ const authSubscriber = () => {
             console.log(err);
         });
     } else if (authState.updateStorage) {
-        var tokenToStore = { idToken: authState.idToken, refreshToken: authState.refreshToken };
+        var tokenToStore = { idToken: authState.idToken, refreshToken: authState.refreshToken, accessToken: authState.accessToken };
         AsyncStorage.setItem(AuthStorageToken, JSON.stringify(tokenToStore)).catch(err => {
             console.log(err);
         });
