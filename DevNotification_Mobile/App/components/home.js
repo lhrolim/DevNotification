@@ -27,7 +27,7 @@ class HomeComponent extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View>
             </View>
         );
     }

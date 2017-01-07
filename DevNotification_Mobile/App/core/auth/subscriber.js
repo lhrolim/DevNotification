@@ -1,7 +1,3 @@
-const Auth0Lock = require('react-native-lock');
-
-const lock = new Auth0Lock({ clientId: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho", domain: "plg.auth0.com" });
-
 const ReactNative = require('react-native');
 
 const {  AsyncStorage, Navigator } = ReactNative;
@@ -36,7 +32,7 @@ const authSubscriber = () => {
         });
     } else if (authState.updateStorage) {
         var tokenToStore = { idToken: authState.idToken, refreshToken: authState.refreshToken };
-        AsyncStorage.setItem(AuthStorageToken, tokenToStore).catch(err => {
+        AsyncStorage.setItem(AuthStorageToken, JSON.stringify(tokenToStore)).catch(err => {
             console.log(err);
         });
     }
