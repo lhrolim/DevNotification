@@ -27,6 +27,7 @@ class LoginComponent extends Component {
             closable: true,
             authParams: {
                 scope: "openid email offline_access",
+                device: "test"
             },
         }, (err, profile, token) => {
             if (err) {
