@@ -20,11 +20,21 @@ import Home from './home';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { COLOR, ThemeProvider } from 'react-native-material-ui';
+
+
+const uiTheme = {
+  palette: {
+    primaryColor: COLOR.green500,
+    accentColor: COLOR.pink500,
+  },
+};
+
 const scenes = Actions.create(
   <Scene key="root">
     <Scene key="splash" title={'Dev Notification'} component={Splash} initial={true} />
     <Scene key="login" title={'Login'} component={Login} />
-    <Scene key="home" title={'Home'} component={Home} />
+    <Scene key="home" title={'Home'} component={Home} hideNavBar={true} />
   </Scene>
 );
 
@@ -38,7 +48,12 @@ class RootRouter extends Component {
 
 
   render() {
-    return <ConnectedRouter scenes={scenes} />
+    return (
+      <ThemeProvider uiTheme={uiTheme}>
+        <ConnectedRouter scenes={scenes} />
+      </ThemeProvider>
+
+    )
   }
 }
 

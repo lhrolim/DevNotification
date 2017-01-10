@@ -1,8 +1,8 @@
 'use strict';
 
-var Auth0Lock = require('react-native-lock');
+import Container from '../containers';
 
-var lock = new Auth0Lock({ clientId: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho", domain: "plg.auth0.com" });
+import { ActionButton, Avatar, ListItem, Toolbar } from 'react-native-material-ui'
 
 import {
     AppRegistry,
@@ -12,6 +12,7 @@ import {
     Image,
     TouchableHighlight,
     Alert,
+    ToastAndroid
 } from 'react-native';
 
 import React, {
@@ -25,23 +26,47 @@ import { init } from '../core/auth/actions'
 
 class HomeComponent extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selected: [],
+            searchText: ''
+        }
+
+    }
+
     render() {
         return (
-            <View>
-            </View>
+            <Container>
+                <Toolbar
+                    key="toolbar"
+                    leftElement="menu"
+                    onLeftElementPress={() => this.props.navigator.pop()}
+                    centerElement="Dashboard"
+                    searchable={{
+                        autoFocus: true,
+                        placeholder: 'Search',
+                        onChangeText: value => this.setState({ searchText: value }),
+                        onSearchClosed: () => this.setState({ searchText: '' }),
+                    }}
+                />
+
+                <ActionButton
+                    actions={[
+                        { icon: 'email', label: 'Add Subscription' },
+                    ]}
+                    icon="share"
+                    transition="speedDial"
+                    onPress={(action) => {
+                        ToastAndroid.show(action, ToastAndroid.SHORT);
+                    }}
+                />
+
+            </Container>
         );
     }
 
 }
 
-
-
-function mapStateToProps(state){
-  const {authState} = state; 
-
-  return {
-    authState
-  }
-}
-
-export default connect(mapStateToProps)(HomeComponent);
+export default HomeComponent;
