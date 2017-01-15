@@ -5,7 +5,6 @@ const initialState = {
     idToken:null,
     profile:null,
     showSpin:false,
-    showLock:false,
     clearStorage:false,
     updateStorage:false
     
@@ -20,13 +19,13 @@ const authState = (state = initialState, action) => {
     switch (action.type) {
 
         case INIT_NO_TOKENS:{
-            return {...state, showLock: true, showSpin:false,authenticated:false };
+            return {...state, showSpin:false,authenticated:false };
         }
         case REDIRECT_AUTH_DENIED:{
-            return {...state, showLock: true, authenticated:false, clearstorage:true }
+            return {...state, authenticated:false, clearstorage:true }
         }
         case REDIRECT_NO_INPUT:{
-            return {...state, showLock: false, 
+            return {...state, 
                 authenticated:true,
                 idToken: action.idToken,
                 accessToken: action.accessToken , 
@@ -34,7 +33,6 @@ const authState = (state = initialState, action) => {
                 profile: action.profile }
         }case REDIRECT_FROM_LOCK_SCREEN:{
             return {...state, 
-                showLock: false, 
                 authenticated:true,
                 idToken: action.idToken,
                 accessToken: action.accessToken, 

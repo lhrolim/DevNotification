@@ -40,15 +40,12 @@ class LoginComponent extends Component {
 
 
     componentDidUpdate() {
-        const { isAuthenticated, showLock } = this.props
+        const { isAuthenticated } = this.props
         if (isAuthenticated) {
             return Actions.home();
-        }
-
-        if (showLock) {
+        }else{
             return Actions.login();
         }
-
     }
 
 
@@ -67,7 +64,6 @@ class LoginComponent extends Component {
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.authState.authenticated,
-        showLock: state.authState.showLock
     }
 }
 

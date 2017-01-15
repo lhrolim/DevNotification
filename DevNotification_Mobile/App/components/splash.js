@@ -14,12 +14,11 @@ import { Actions } from 'react-native-router-flux';
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.authState.authenticated,
-        showLock: state.authState.showLock
     }
 }
 
 class Splash extends Component {
-    
+
     constructor(props) {
         super(props)
     }
@@ -29,33 +28,24 @@ class Splash extends Component {
         dispatch(init());
     }
 
-    navigateToHome(){
-        Actions.home();
-    }
 
-    navigateToLogin(){
-        Actions.login();
-    }
-
-    componentDidUpdate(){
-        const { isAuthenticated, showLock } = this.props
-        if (isAuthenticated){
-            return this.navigateToHome();
+    componentDidUpdate() {
+        const { isAuthenticated } = this.props
+     
+        if (isAuthenticated) {
+            return Actions.home();
         }
 
-        if (showLock){
-            this.navigateToLogin();
-        }
+        return Actions.login();
 
     }
 
     render() {
 
-        
 
         return (
             <View>
-               
+
             </View>
 
         );
