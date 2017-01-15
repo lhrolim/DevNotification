@@ -10,12 +10,12 @@ import {
     Alert,
 } from 'react-native';
 
-import React, {
-    Component,
-} from 'react';
+import React, { Component, } from 'react';
+
+import { Actions } from 'react-native-router-flux';
 
 import { connect } from 'react-redux'
-import { lock,redirectFromLockScreen } from '../core/auth/actions'
+import { lock, redirectFromLockScreen } from '../core/auth/actions'
 
 //import store from '../actions/root/store'
 
@@ -34,9 +34,24 @@ class LoginComponent extends Component {
                 console.log(err);
                 return;
             }
-            dispatch(redirectFromLockScreen(token.refreshToken,token.accessToken, token.idToken,profile))
+            dispatch(redirectFromLockScreen(token.refreshToken, token.accessToken, token.idToken, profile))
         });
     }
+
+
+    componentDidUpdate() {
+        const { isAuthenticated, showLock } = this.props
+        if (isAuthenticated) {
+            return Actions.home();
+        }
+
+        if (showLock) {
+            return Actions.login();
+        }
+
+    }
+
+
 
     render() {
         return (
@@ -49,11 +64,10 @@ class LoginComponent extends Component {
 
 
 
-function mapStateToProps(state) {
-    const {authState} = state;
-
+const mapStateToProps = (state) => {
     return {
-        authState
+        isAuthenticated: state.authState.authenticated,
+        showLock: state.authState.showLock
     }
 }
 

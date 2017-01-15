@@ -22,6 +22,8 @@ import React, {
 import { connect } from 'react-redux'
 import { init } from '../core/auth/actions'
 
+import { Actions } from 'react-native-router-flux';
+
 //import store from '../actions/root/store'
 
 class HomeComponent extends Component {
@@ -42,7 +44,7 @@ class HomeComponent extends Component {
                 <Toolbar
                     key="toolbar"
                     leftElement="menu"
-                    onLeftElementPress={() => this.props.navigator.pop()}
+                    onLeftElementPress={() => Actions.drawer()}
                     centerElement="Dashboard"
                     searchable={{
                         autoFocus: true,

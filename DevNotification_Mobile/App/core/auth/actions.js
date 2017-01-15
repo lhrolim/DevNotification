@@ -90,5 +90,9 @@ const redirectFromLockScreen = (refreshToken,accessToken, idToken, profile) => {
   }
 }
 
+const logout =()=>{
+  return {type: types.LOGOUT}
+}
 
-export { init, initNoTokens, authSuceeded, authDenied, redirectFromLockScreen }
+
+export { init, initNoTokens,logout, authSuceeded, authDenied, redirectFromLockScreen }

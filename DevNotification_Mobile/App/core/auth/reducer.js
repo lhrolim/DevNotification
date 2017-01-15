@@ -4,7 +4,6 @@ const initialState = {
     refreshToken:null,
     idToken:null,
     profile:null,
-    logout:false,
     showSpin:false,
     showLock:false,
     clearStorage:false,
@@ -20,7 +19,6 @@ import { ActionConst } from 'react-native-router-flux';
 const authState = (state = initialState, action) => {
     switch (action.type) {
 
-
         case INIT_NO_TOKENS:{
             return {...state, showLock: true, showSpin:false,authenticated:false };
         }
@@ -35,7 +33,8 @@ const authState = (state = initialState, action) => {
                 refreshToken: action.refreshToken,
                 profile: action.profile }
         }case REDIRECT_FROM_LOCK_SCREEN:{
-            return {...state, showLock: false, 
+            return {...state, 
+                showLock: false, 
                 authenticated:true,
                 idToken: action.idToken,
                 accessToken: action.accessToken, 
@@ -45,7 +44,7 @@ const authState = (state = initialState, action) => {
         }
         
         case LOGOUT:{
-            return {...initialState,clearstorage:true,logout:true};
+            return {...initialState,clearstorage:true,authenticated:false};
         }
         default:
             return state;

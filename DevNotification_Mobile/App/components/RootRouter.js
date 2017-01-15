@@ -16,6 +16,7 @@ import { Router, Route, Scene, Animations, TabBar, Actions } from 'react-native-
 import Splash from './splash';
 import Login from './login';
 import Home from './home';
+import MainDrawer from './maindrawer';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,7 +26,7 @@ import { COLOR, ThemeProvider } from 'react-native-material-ui';
 
 const uiTheme = {
   palette: {
-    primaryColor: COLOR.green500,
+    primaryColor: COLOR.blue500,
     accentColor: COLOR.pink500,
   },
 };
@@ -35,6 +36,7 @@ const scenes = Actions.create(
     <Scene key="splash" title={'Dev Notification'} component={Splash} initial={true} />
     <Scene key="login" title={'Login'} component={Login} />
     <Scene key="home" title={'Home'} component={Home} hideNavBar={true} />
+    <Scene key="drawer" component={MainDrawer} hideNavBar={true} />
   </Scene>
 );
 
