@@ -11,6 +11,8 @@ import { init } from "../core/auth/actions"
 
 import { Actions } from 'react-native-router-flux';
 
+import Container from '../containers';
+
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.authState.authenticated,
@@ -44,9 +46,9 @@ class Splash extends Component {
 
 
         return (
-            <View>
-
-            </View>
+            <Container>
+                
+            </Container>
 
         );
     }

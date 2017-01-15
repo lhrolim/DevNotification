@@ -1,7 +1,10 @@
 import * as types from './actionTypes';
+import {showSpinner, hideSpinner} from '../navigation/nav_actions'
 
-var React = require('react');
-var ReactNative = require('react-native');
+
+import React from 'react';
+import ReactNative from 'react-native';
+
 var Auth0Lock = require('react-native-lock');
 
 export const lock = new Auth0Lock({ clientId: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho", domain: "plg.auth0.com" });
@@ -32,24 +35,25 @@ const authDenied = () => {
   }
 }
 
-const gatherProfile = (dispatch,refreshToken,accessToken,idToken, allowRefresh) => {
+const gatherProfile = (dispatch, refreshToken, accessToken, idToken, allowRefresh) => {
+
 
   return new Promise((resolve, reject) => {
     lock.authenticationAPI().userInfo(accessToken)
       .then(profile => {
-        dispatch(authSuceeded(refreshToken,accessToken,idToken, profile));
+        dispatch(authSuceeded(refreshToken, accessToken, idToken, profile));
         resolve();
       }).catch(error => {
         if (!allowRefresh) {
           //actionToken has just been refreshed
-           return reject();
+          return reject();
         }
         lock.authenticationAPI()
           .refreshToken(refreshToken)
           .then(response => {
             let returnedAccessToken = response.accessToken;
             let returnedIdToken = response.idToken;
-            return gatherProfile(dispatch,refreshToken, returnedAccessToken,returnedIdToken, false);
+            return gatherProfile(dispatch, refreshToken, returnedAccessToken, returnedIdToken, false);
           })
           .catch(error => {
             //refresh token is invalid... it might have been revoked
@@ -67,20 +71,24 @@ const init = () => {
 
   return dispatch => {
 
-    const value = AsyncStorage.getItem(AuthStorageToken).then(valueST => {
-      if (valueST !== null) {
-        const value = JSON.parse(valueST);
-        const idToken = value.idToken;
-        const refreshToken = value.refreshToken;
-        const accessToken = value.accessToken;
-        return gatherProfile(dispatch,refreshToken, accessToken, idToken, true);
-      }
-      return dispatch(initNoTokens());
-    }).catch(error => { console.log(error) });
+    dispatch(showSpinner());
+    const value = AsyncStorage.getItem(AuthStorageToken)
+      .then(valueST => {
+        if (valueST !== null) {
+          const value = JSON.parse(valueST);
+          const idToken = value.idToken;
+          const refreshToken = value.refreshToken;
+          const accessToken = value.accessToken;
+          return gatherProfile(dispatch, refreshToken, accessToken, idToken, true);
+        }
+        return dispatch(initNoTokens());
+      })
+      .catch(error => { console.log(error) })
+      .finally(()=>dispatch(hideSpinner()));
   }
 }
 
-const redirectFromLockScreen = (refreshToken,accessToken, idToken, profile) => {
+const redirectFromLockScreen = (refreshToken, accessToken, idToken, profile) => {
   return {
     type: types.REDIRECT_FROM_LOCK_SCREEN,
     idToken,
@@ -90,9 +98,9 @@ const redirectFromLockScreen = (refreshToken,accessToken, idToken, profile) => {
   }
 }
 
-const logout =()=>{
-  return {type: types.LOGOUT}
+const logout = () => {
+  return { type: types.LOGOUT }
 }
 
 
-export { init, initNoTokens,logout, authSuceeded, authDenied, redirectFromLockScreen }
+export { init, initNoTokens, logout, authSuceeded, authDenied, redirectFromLockScreen }

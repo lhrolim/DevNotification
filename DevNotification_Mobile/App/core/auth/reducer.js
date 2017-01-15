@@ -4,7 +4,6 @@ const initialState = {
     refreshToken:null,
     idToken:null,
     profile:null,
-    showSpin:false,
     clearStorage:false,
     updateStorage:false
     
@@ -19,7 +18,7 @@ const authState = (state = initialState, action) => {
     switch (action.type) {
 
         case INIT_NO_TOKENS:{
-            return {...state, showSpin:false,authenticated:false };
+            return {...state, authenticated:false };
         }
         case REDIRECT_AUTH_DENIED:{
             return {...state, authenticated:false, clearstorage:true }

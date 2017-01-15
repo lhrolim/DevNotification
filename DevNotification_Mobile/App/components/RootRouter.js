@@ -52,7 +52,10 @@ class RootRouter extends Component {
   render() {
     return (
       <ThemeProvider uiTheme={uiTheme}>
-        <ConnectedRouter scenes={scenes} />
+
+        <ConnectedRouter scenes={scenes} >
+          
+        </ConnectedRouter>
       </ThemeProvider>
 
     )

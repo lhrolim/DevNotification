@@ -38,13 +38,17 @@ class HomeComponent extends Component {
 
     }
 
+    showDrawer(){
+        Actions.drawer();
+    }
+
     render() {
         return (
             <Container>
                 <Toolbar
                     key="toolbar"
                     leftElement="menu"
-                    onLeftElementPress={() => Actions.drawer()}
+                    onLeftElementPress={() => this.showDrawer() }
                     centerElement="Dashboard"
                     searchable={{
                         autoFocus: true,
