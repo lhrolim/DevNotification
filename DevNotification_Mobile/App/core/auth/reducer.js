@@ -1,6 +1,6 @@
 
 const initialState = {
-    authenticated: false,
+    authenticated: null,
     refreshToken:null,
     idToken:null,
     profile:null,
