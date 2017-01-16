@@ -4,7 +4,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import * as reducers from '../reducers';
-import Root from '../components/rootrouter';
+import Root from '../components/RootRouter';
 
 import store from '../core/root/store'
 
