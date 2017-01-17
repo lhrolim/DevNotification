@@ -8,6 +8,13 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     // focus action is dispatched when a new screen comes into focus
+    case ActionConst.FOCUS:
+      return {
+        ...state,
+        scene: action.scene,
+      };
+
+
     case types.ShowSpin: {
       return { ...state, showSpin: true };
     }

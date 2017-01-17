@@ -51,7 +51,7 @@ class MainDrawer extends Component {
                             divider
                             items={[
                                 { icon: 'home', value: 'Home' },
-                                { icon: 'loyalty', value: 'My Projects' },
+                                { icon: 'loyalty', value: 'My Projects' , onPress: () => Actions.projects() },
                                 { icon: 'polymer', value: 'My Apps' }
                             ]}
                         />

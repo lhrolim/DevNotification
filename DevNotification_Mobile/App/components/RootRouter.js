@@ -13,10 +13,10 @@ import {
 import { Router, Route, Scene, Animations, TabBar, Actions } from 'react-native-router-flux';
 
 
-
 import Splash from './splash';
 import Login from './login';
 import Home from './home';
+import Projects from './projects';
 import MainDrawer from './maindrawer';
 
 import { connect } from 'react-redux';
@@ -37,6 +37,7 @@ const scenes = Actions.create(
     <Scene key="splash" title={'Dev Notification'} component={Splash} initial={true} />
     <Scene key="login" title={'Login'} component={Login} />
     <Scene key="home" title={'Home'} component={Home} hideNavBar={true} />
+    <Scene key="projects" component={Projects} hideNavBar={true} />
     <Scene key="drawer" component={MainDrawer} hideNavBar={true} />
   </Scene>
 );

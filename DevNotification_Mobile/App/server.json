@@ -1,0 +1,4 @@
+{
+    "dev": "localhost:8070/api/",
+    "prod": ""
+}
