@@ -11,6 +11,14 @@ const UserSchema  = require('../schemas/user-schema');
 // You can overwrite extended methods or create custom ones here. Also you can support
 // more mongoose functionality like skip, sort etc.
 
-class UserModel extends Model {}
+class UserModel extends Model {
+
+    create(input) {
+        const newSchemaModel = new this.SchemaModel(input);
+        newSchemaModel.creationDate = new Date();
+        return newSchemaModel.saveAsync();
+    }
+
+}
 
 module.exports = new UserModel(UserSchema);

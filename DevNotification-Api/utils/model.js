@@ -28,9 +28,9 @@ class Model {
     }
 
 
-    update(id, updatedModel) {
+    update(id, updatedModel, ignoreIdCheck = false) {
 
-        if (this.isObjectId(id)) {
+        if (this.isObjectId(id) && !ignoreIdCheck) {
             return this.SchemaModel
                 .findByIdAndUpdate(id, updatedModel, { new: true })
                 .execAsync();
@@ -64,9 +64,9 @@ class Model {
             .execAsync();
     }
 
-    findById(id, populate) {
+    findById(id, populate, ignoreIdCheck = false) {
 
-        if (this.isObjectId(id)) {
+        if (this.isObjectId(id) && !ignoreIdCheck) {
             return this.SchemaModel
                 .findById(id)
                 .populate(populate || '')

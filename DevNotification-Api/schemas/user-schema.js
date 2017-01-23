@@ -4,10 +4,13 @@ const Schema   = mongoose.Schema;
 
 const UserSchema = new Schema({
   
-  username: { type: String, required: true },
-  password:  { type: String, required: true },
-  creation_date: {type:Date, required:true},
-  
+  /**
+   * The userId shall come from auth0
+   */
+  userId: { type: String, required: true, index: { unique: true, internalpk: true } },
+  email:{type:String, required:true, index:{unique:true}},
+  creationDate: {type:Date, required:true},
+    
   projects:[{
   	 //has to match a ProjectSchema defined name
   	 name: {type:String, required:true},

@@ -23,31 +23,51 @@ class HomePage extends React.Component {
     store.dispatch(checkAuth(idToken));
   }
 
+  componentDidUpdate() {
+    const {isAuthenticated, idToken,profile} = this.props
+    if (isAuthenticated && profile) {
+
+      //make sure to create the user at the api-side after the login suceeded
+      fetch(`http://localhost:8070/api/user/${profile.user_id}`, {
+        method: "PUT",
+        headers: {
+          'Authorization': 'Bearer ' + idToken,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userId: profile.user_id,
+            email: profile.email
+        })
+      })
+    }
+  }
+
   render() {
 
-    const {authState} = this.props; 
+    const {isAuthenticated} = this.props;
 
     return (
       <div>
-      {authState.authenticated && <Layout className={s.content}>
-        <div />
-      </Layout>
-      }
-      
+        {isAuthenticated && <Layout className={s.content}>
+          <div />
+        </Layout>
+        }
+
       </div>
 
-      
+
     );
   }
 
 }
 
-function mapStateToProps(state){
-  const {authState} = state; 
-
+const mapStateToProps = (state) => {
   return {
-    authState
+    isAuthenticated: state.authState.authenticated,
+    idToken: state.authState.idToken,
+    profile: state.authState.profile,
   }
 }
+
 
 export default connect(mapStateToProps)(HomePage);

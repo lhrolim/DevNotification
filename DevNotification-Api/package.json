@@ -4,10 +4,9 @@
   "description": "Dev Notification test",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --debug  index.js",
-    "devna": "nodemon --debug  index_no_auth.js",
+    "dev": "node --inspect  index.js",
+    "devna": "node --inspect  index_no_auth.js",
     "start": "node index.js",
-    "debug": "node-inspector -p 8070 --debug index.js",
     "test": "istanbul cover --include-all-sources node_modules\\jasmine-node\\bin\\jasmine-node spec",
     "tdd": "jasmine-node spec --autotest  --watch ."
   },

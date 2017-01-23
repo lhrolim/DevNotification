@@ -30,6 +30,17 @@ class ProjectController extends Controller {
             .catch(err => next(err));
     }
 
+    subscribed(req,res,next){
+           return this.model.subscribed(req.params.name, req.params.lower)
+            .then(doc => {
+                if (!doc) {
+                    return res.status(404).end();
+                }
+                res.status(200).json(doc);
+            })
+            .catch(err => next(err));
+    }
+
 
     // Example of overwriting update method using findOneAndUpdate from mongoose
 

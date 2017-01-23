@@ -27,6 +27,8 @@ router.route('/project/:name')
 router.route('/project/:name/releases')
     .get((...args) => controllers.project.releases(...args));
 
+router.route('/project/:name/subscribed')
+    .get((...args) => controllers.project.subscribed(...args));
 
 router.route('/project/:name/releases/:lower')
     .get((...args) => controllers.project.releases(...args));
