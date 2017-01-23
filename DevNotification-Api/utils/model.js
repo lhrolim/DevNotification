@@ -39,7 +39,7 @@ class Model {
         const paths = this.Schema.paths;
         const internalPk = Object.keys(paths).find(p => (paths[p]._index != null && paths[p]._index.internalpk));
         if (!!internalPk) {
-            const type = paths.name.instance;
+            const type = paths[internalPk].instance;
             if ((type === "String" && isNaN(id)) || (type === "Number" && !isNaN(id))) {
                 return this.SchemaModel
                     .findOneAndUpdate({ [internalPk]: id }, updatedModel, { new: true })
@@ -77,7 +77,7 @@ class Model {
         const internalPk = Object.keys(paths).find(p => (paths[p]._index != null && paths[p]._index.internalpk));
         //locates the unique identifier from the given model
         if (!!internalPk) {
-            const type = paths.name.instance;
+            const type = paths[internalPk].instance;
             if (type === "Number" && !isNaN(id)) {
                 return this.findOne({ [internalPk]: id });
             }
