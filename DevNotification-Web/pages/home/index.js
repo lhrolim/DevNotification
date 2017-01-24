@@ -15,6 +15,7 @@ import history from '../../core/history';
 import store from '../../core/store'
 import { checkAuth } from '../../core/authentication/actions'
 import { connect } from 'react-redux'
+import restService from '../../core/navigation/restService'
 
 class HomePage extends React.Component {
 
@@ -26,19 +27,11 @@ class HomePage extends React.Component {
   componentDidUpdate() {
     const {isAuthenticated, idToken,profile} = this.props
     if (isAuthenticated && profile) {
-
       //make sure to create the user at the api-side after the login suceeded
-      fetch(`http://localhost:8070/api/user/${profile.user_id}`, {
-        method: "PUT",
-        headers: {
-          'Authorization': 'Bearer ' + idToken,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            userId: profile.user_id,
-            email: profile.email
-        })
-      })
+      restService.putPromise(`user/${profile.user_id}`, {
+        userId: profile.user_id,
+        email: profile.email
+      });
     }
   }
 
