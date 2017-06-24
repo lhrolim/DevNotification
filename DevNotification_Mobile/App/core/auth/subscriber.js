@@ -1,6 +1,6 @@
 const ReactNative = require('react-native');
 
-const {  AsyncStorage, Navigator } = ReactNative;
+const {  AsyncStorage} = ReactNative;
 
 import { AuthStorageToken } from './actions'
 
