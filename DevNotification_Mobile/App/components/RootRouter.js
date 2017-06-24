@@ -6,11 +6,11 @@ import React, {
 
 import {
   View,
-  Navigator,
   Text,
   StatusBar,
 } from 'react-native';
 import { Router, Route, Scene, Animations, TabBar, Actions } from 'react-native-router-flux';
+import NavigationExperimental from 'react-native-deprecated-custom-components';
 
 
 import Splash from './splash';
@@ -56,7 +56,7 @@ class RootRouter extends Component {
       <ThemeProvider uiTheme={uiTheme}>
 
         <ConnectedRouter scenes={scenes} >
-          
+
         </ConnectedRouter>
       </ThemeProvider>
 

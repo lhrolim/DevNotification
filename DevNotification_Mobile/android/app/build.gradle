@@ -111,6 +111,12 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+	
+	packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/NOTICE'
+	}
+	
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
@@ -133,6 +139,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-lock')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
