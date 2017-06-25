@@ -42,7 +42,11 @@ class HomePage extends React.Component {
     return (
       <div>
         {isAuthenticated && <Layout className={s.content}>
-          <div />
+          <div >
+
+test
+
+            </div>
         </Layout>
         }
 

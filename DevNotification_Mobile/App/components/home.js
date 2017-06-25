@@ -2,7 +2,7 @@
 
 import Container from '../containers';
 
-import { ActionButton, Avatar, ListItem, Toolbar } from 'react-native-material-ui'
+import { ActionButton, Avatar,  Toolbar } from 'react-native-material-ui'
 
 import {
     AppRegistry,
@@ -12,8 +12,11 @@ import {
     Image,
     TouchableHighlight,
     Alert,
-    ToastAndroid
+    ToastAndroid,
+    FlatList
 } from 'react-native';
+
+import { List, ListItem } from 'react-native-elements'
 
 import React, {
     Component,
@@ -31,14 +34,29 @@ class HomeComponent extends Component {
     constructor(props) {
         super(props);
 
+
         this.state = {
             selected: [],
-            searchText: ''
+            searchText: '',
         }
+
+          this.list = [
+            {
+                name: 'Amy Farha',
+                avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                subtitle: 'Vice President'
+            },
+            {
+                name: 'Chris Jackson',
+                avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+                subtitle: 'Vice Chairman'
+            },
+
+        ]
 
     }
 
-    showDrawer(){
+    showDrawer() {
         Actions.drawer();
     }
 
@@ -48,7 +66,7 @@ class HomeComponent extends Component {
                 <Toolbar
                     key="toolbar"
                     leftElement="menu"
-                    onLeftElementPress={() => this.showDrawer() }
+                    onLeftElementPress={() => this.showDrawer()}
                     centerElement="Dashboard"
                     searchable={{
                         autoFocus: true,
@@ -57,6 +75,22 @@ class HomeComponent extends Component {
                         onSearchClosed: () => this.setState({ searchText: '' }),
                     }}
                 />
+
+                <List containerStyle={{ marginBottom: 30 }}>
+                    
+                    {
+                        this.list.map((l, i) => (
+                            <ListItem
+                                roundAvatar
+                                avatar={{ uri: l.avatar_url }}
+                                key={i}
+                                title={l.name}
+                                subtitle={l.subtitle}
+                            />
+                        ))
+                    }
+                </List>
+
 
                 <ActionButton
                     actions={[
