@@ -1,0 +1,7 @@
+{
+  "name": "CommandBar",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CommandBar.js"
+}
+

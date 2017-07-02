@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
 
 router.route('/project')
     .get((...args) => controllers.project.find(...args))
-    .post(guard.check('admin'),(...args) => controllers.project.create(...args));
+    // .post(guard.check('admin'),(...args) => controllers.project.create(...args));
+    .post((...args) => controllers.project.create(...args));
 
 
 router.route('/project/:id')

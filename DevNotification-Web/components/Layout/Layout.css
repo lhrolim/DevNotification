@@ -13,3 +13,25 @@
   max-width: 1000px;
   width: 100%;
 }
+
+.mdl-layout__drawer-button {
+    display: block;
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    border: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 56px;
+    font-family: Helvetica,Arial,sans-serif;
+    margin: 4px 16px;
+    top: 0;
+    left: 0;
+    color: #fff;
+    z-index: 4;
+}

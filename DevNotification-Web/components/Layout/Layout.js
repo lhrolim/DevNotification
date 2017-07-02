@@ -12,7 +12,9 @@ import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Header from './Header';
 import Footer from '../Footer';
+import CommandBar from '../CommandBar';
 import s from './Layout.css';
+import { Drawer, Navigation } from 'react-mdl'
 
 class Layout extends React.Component {
 
@@ -28,19 +30,31 @@ class Layout extends React.Component {
     window.componentHandler.downgradeElements(this.root);
   }
 
+
   render() {
     return (
       <div className="mdl-layout mdl-js-layout" ref={node => (this.root = node)}>
+        
         <div className="mdl-layout__inner-container">
+          <Drawer title="Menu">
+            <Navigation>
+              <a href="#">My Applications</a>
+              <a href="#">My Projects</a>
+            </Navigation>
+          </Drawer>
           <Header />
+          <CommandBar/>
+
           <main className="mdl-layout__content">
             <div {...this.props} className={cx(s.content, this.props.className)} />
           </main>
           <Footer />
+
         </div>
       </div>
     );
   }
 }
+
 
 export default Layout;

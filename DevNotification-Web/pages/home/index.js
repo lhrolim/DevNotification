@@ -9,15 +9,26 @@
  */
 
 import React, { PropTypes } from 'react';
-import Layout from '../../components/Layout';
 import s from './styles.css';
 import history from '../../core/history';
 import store from '../../core/store'
 import { checkAuth } from '../../core/authentication/actions'
 import { connect } from 'react-redux'
 import restService from '../../core/navigation/restService'
+import Layout from '../../components/Layout';
+import ProjectListContainer from '../../components/Projects/ProjectListContainer'
 
 class HomePage extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+
+    }
+
+  }
 
   componentDidMount() {
     var idToken = localStorage.getItem("idToken");
@@ -25,7 +36,7 @@ class HomePage extends React.Component {
   }
 
   componentDidUpdate() {
-    const {isAuthenticated, idToken,profile} = this.props
+    const { isAuthenticated, idToken, profile } = this.props
     if (isAuthenticated && profile) {
       //make sure to create the user at the api-side after the login suceeded
       restService.putPromise(`user/${profile.user_id}`, {
@@ -35,18 +46,18 @@ class HomePage extends React.Component {
     }
   }
 
+  
   render() {
 
-    const {isAuthenticated} = this.props;
+
+    const { isAuthenticated } = this.props;
 
     return (
       <div>
         {isAuthenticated && <Layout className={s.content}>
           <div >
-
-test
-
-            </div>
+            <ProjectListContainer/>
+          </div>
         </Layout>
         }
 
