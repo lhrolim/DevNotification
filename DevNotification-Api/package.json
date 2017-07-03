@@ -7,7 +7,7 @@
     "devold": "nodemon --debug  index.js",
     "debug": "node-inspector -p 8070 --debug index.js",
     "dev": "nodemon --inspect  index.js",
-    "devna": "node --inspect  index_no_auth.js",
+    "devna": "nodemon --inspect  index_no_auth.js",
     "start": "node index.js",
     "test": "istanbul cover --include-all-sources node_modules\\jasmine-node\\bin\\jasmine-node spec",
     "tdd": "jasmine-node spec --autotest  --watch ."

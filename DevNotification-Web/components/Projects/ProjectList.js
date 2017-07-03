@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Project from './Project';
+import {List} from 'react-mdl'
 
 class ProjectList extends Component {
 
@@ -8,8 +9,8 @@ class ProjectList extends Component {
         super(props);
     }
 
-    renderProject({ _id, name, repoUrl, avatar }) {
-        return (<Project name={name} key={_id} repoUrl={repoUrl} />);
+    renderProject({ _id, name, repoUrl, deviconpath, description }) {
+        return (<Project name={name} key={_id} repoUrl={repoUrl} description={description} avatar={deviconpath} />);
     }
 
     render() {
@@ -17,7 +18,7 @@ class ProjectList extends Component {
         const projects = this.props.projects;
         if (projects.length > 0) {
             return (
-                <ul> {projects.map(this.renderProject)} </ul>
+                <List> {projects.map(this.renderProject)} </List>
             );
         } else {
             return (
