@@ -1,0 +1,13 @@
+[data-layout="empty-view-1"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: calc(100%);
+  width: calc(100%);
+  overflow: hidden;
+  background: url(/assets/images/empty-view-1-dark.jpg) no-repeat center center
+    fixed;
+  background-size: cover;
+}

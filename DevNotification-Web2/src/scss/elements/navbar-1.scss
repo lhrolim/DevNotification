@@ -1,0 +1,159 @@
+@import "../variables";
+@import "../mixins";
+@import "../palettes/navbar";
+.navbar {
+  &.navbar-1 {
+    min-height: 0;
+    height: $navbar-height;
+    border: none;
+    .nav {
+      .nav-item {
+        position: relative;
+        .nav-link {
+          font-weight: normal;
+          padding-left: $side-margin;
+          padding-right: $side-margin;
+          &.nav-link-badge {
+            position: relative;
+            .badge {
+              position: absolute;
+              top: 0;
+              right: 0;
+            }
+          }
+          &.nav-link-avatar {
+            img {
+              max-width: 40px;
+              border-style: solid;
+              border-width: 2px;
+              border-color: #fff;
+              @include box-shadow;
+              position: absolute;
+              top: -2px;
+              left: -15px;
+              z-index: 1;
+            }
+            .badge {
+              border: 0;
+              box-shadow: none;
+              position: absolute;
+              top: -5px;
+              right: 5px;
+              z-index: 2;
+            }
+          }
+        }
+        &.nav-item-dropdown {
+          .navbar-dropdown {
+            z-index: $zindex-navbar-fixed + 9;
+            @include box-shadow;
+            width: 280px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+            transition: all 0.35s ease;
+            .dropdown-title {
+              width: 100%;
+              font-weight: normal;
+              padding: 10px;
+              margin-bottom: 10px;
+            }
+            .dropdown-header {
+              width: 100%;
+              font-weight: normal;
+              padding: 10px;
+            }
+            .dropdown-item {
+              width: 100%;
+              font-weight: normal;
+              padding: 5px 10px;
+            }
+          }
+          &:hover {
+            .navbar-dropdown {
+              visibility: visible;
+              pointer-events: auto;
+              opacity: 1;
+              transform: translate3d(0, 0, 0);
+            }
+          }
+        }
+      }
+    }
+    .nav {
+      &.nav-toggle-layout-1 {
+        padding-left: $side-margin + 10px;
+      }
+      &.nav-toggle-layout-2 {
+        padding-right: $side-margin;
+      }
+    }
+    .navbar-search-form {
+      flex: 0 0 240px;
+      margin-left: $side-margin;
+      margin-right: 60px;
+      .form-group {
+        margin: 0 0 3px 0;
+        .input-group {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+@each $key, $value in $navbar-palettes {
+  [data-navbar="#{$key}"] {
+    .navbar {
+      &.navbar-1 {
+        background: map-get($value, "background-color");
+        color: map-get($value, "color");
+        .nav-link {
+          color: map-get($value, "color");
+        }
+        .input-group {
+          .input-group-addon {
+            color: map-get($value, "color");
+            background-color: map-get($value, "even-color");
+            border-color: map-get($value, "even-color");
+            cursor: pointer;
+          }
+          .form-control {
+            color: map-get($value, "color");
+            background-color: map-get($value, "even-color");
+            border-color: map-get($value, "even-color");
+          }
+        }
+        .navbar-search {
+          .form-control {
+            @include placeholder {
+              color: map-get($value, "color");
+            }
+          }
+        }
+        .navbar-dropdown {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+          .dropdown-title {
+            background: map-get($value, "background-color");
+            color: map-get($value, "color");
+          }
+          .dropdown-item {
+            background: map-get($value, "background-color");
+            color: map-get($value, "color");
+            a {
+              color: map-get($value, "color");
+            }
+            &:hover {
+              background: map-get($value, "odd-color");
+              color: map-get($value, "color");
+            }
+          }
+        }
+      }
+    }
+  }
+}

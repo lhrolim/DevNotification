@@ -1,0 +1,26 @@
+@import "../variables";
+@import "../mixins";
+.icon-widget-9 {
+  padding: 15px;
+  .number {
+    padding-top: 3px;
+    font-weight: 400;
+    @include font-size(18px);
+  }
+  .text {
+    @include font-size(13px);
+  }
+  .btn {
+    cursor: none;
+    pointer-events: none;
+    i {
+      font-weight: 400;
+      @include font-size(24px);
+    }
+  }
+  .list-group {
+    .list-group-item {
+      border: 0;
+    }
+  }
+}

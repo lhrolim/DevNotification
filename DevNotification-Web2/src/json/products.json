@@ -1,0 +1,71 @@
+[{
+    "sku": 63157685,
+    "name": "Panasonic DMC-ZS60S LUMIX 4K Digital Camera 18 Megapixels",
+    "brand": "Panasonic",
+    "price": 447.99,
+    "rating": 5,
+    "img": "p1.png"
+}, {
+    "sku": 23147621,
+    "name": "GoPro HERO4 SILVER",
+    "brand": "GoPro",
+    "price": 399.95,
+    "rating": 4,
+    "img": "p2.png"
+}, {
+    "sku": 13125111,
+    "name": "Nikon Coolpix L340 Digital Camera",
+    "brand": "Nikon",
+    "price": 131,
+    "rating": 5,
+    "img": "p3.png"
+}, {
+    "sku": 63123111,
+    "name": "Fujifilm FinePix XP80 Waterproof Digital Camera with 2.7-Inch LCD",
+    "brand": "Fujifilm",
+    "price": 154.94,
+    "rating": 3,
+    "img": "p10.png"
+}, {
+    "sku": 22125151,
+    "name": "Sony DSCW800/B 20.1 MP Digital Camera ",
+    "brand": "Sony",
+    "price": 100,
+    "rating": 4,
+    "img": "p5.png"
+}, {
+    "sku": 93125191,
+    "name": "Canon PowerShot SX400 Digital Camera with 30x Optical Zoom",
+    "brand": "Canon",
+    "price": 124,
+    "rating": 5,
+    "img": "p6.png"
+}, {
+    "sku": 777125111,
+    "name": "Nikon COOLPIX S33 Waterproof Digital Camera",
+    "brand": "Nikon",
+    "price": 106.95,
+    "rating": 4,
+    "img": "p7.png"
+}, {
+    "sku": 888251331,
+    "name": "Sony DSCW830 20.1 MP Digital Camera with 2.7-Inch LCD",
+    "brand": "Sony",
+    "price": 128,
+    "rating": 5,
+    "img": "p8.png"
+}, {
+    "sku": 98945745,
+    "name": "Nikon COOLPIX AW130 Waterproof Digital Camera with Built-In Wi-Fi ",
+    "brand": "Nikon",
+    "price": 279.11,
+    "rating": 5,
+    "img": "p9.png"
+}, {
+    "sku": 33425131,
+    "name": "Uncharted 4",
+    "brand": "Sony",
+    "price": 59.88,
+    "rating": 3,
+    "img": "p4.png"
+}]

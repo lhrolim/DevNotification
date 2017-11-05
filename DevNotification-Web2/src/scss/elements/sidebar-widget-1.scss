@@ -1,0 +1,38 @@
+@import "../variables";
+@import "../palettes/left-sidebar";
+@import "../mixins";
+.sidebar-widget-1 {
+  margin-top: $side-margin;
+  margin-bottom: $side-margin * 2;
+  .section-title {
+    margin-bottom: 10px;
+  }
+  .project-status {
+    padding: 0 25px;
+    > .row {
+      margin-bottom: 20px;
+      p {
+        @include font-size(14px);
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  [data-collapsed="true"] & {
+    display: none;
+  }
+}
+@each $key, $value in $left-sidebar-palettes {
+  [data-left-sidebar="#{$key}"] {
+    .sidebar-widget-1 {
+      background: map-get($value, "background-color");
+      color: map-get($value, "color");
+      .progress {
+        background-color: map-get($value, "background-color");
+      }
+    }
+  }
+}

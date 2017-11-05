@@ -1,0 +1,27 @@
+@import "../variables";
+.table-widget-10 {
+  td {
+    font-size: 0.9rem;
+    &:nth-child(1) {
+      width: 50%;
+      font-weight: normal;
+    }
+    &:nth-child(2) {
+      text-align: right;
+      span {
+        margin-left: 10px;
+      }
+      .variation {
+        font-size: 0.85rem;
+      }
+    }
+  }
+  .fa-caret-up,
+  .variation-up {
+    color: map-get($bootstrap-colors, "success");
+  }
+  .fa-caret-down,
+  .variation-down {
+    color: map-get($bootstrap-colors, "danger");
+  }
+}

@@ -1,0 +1,14 @@
+@import "../variables";
+.user-profile {
+  .widget {
+    padding: $side-margin 0;
+  }
+  .tab-content {
+    p {
+      margin-bottom: 10px;
+    }
+    .form-group {
+      margin-bottom: $side-margin + 10px;
+    }
+  }
+}

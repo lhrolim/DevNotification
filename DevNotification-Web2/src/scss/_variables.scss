@@ -1,0 +1,47 @@
+@import "colors";
+@import "palettes/default";
+@import "animations";
+
+//fonts
+$font-family: "Roboto", sans-serif;
+$monospace-font-family: "Inconsolata", monospace;
+
+//z-index
+$zindex-navbar-fixed: 1030;
+$zindex-navbar: $zindex-navbar-fixed;
+$zindex-left-sidebar-placeholder: $zindex-navbar - 2;
+$zindex-left-sidebar-backdrop: $zindex-navbar - 2;
+$zindex-left-sidebar: $zindex-navbar - 1;
+$zindex-right-sidebar-backdrop: $zindex-navbar + 5;
+$zindex-right-sidebar: $zindex-navbar + 6;
+
+//navbar
+$navbar-height: 70px;
+
+//navbar
+$top-navigation-height: 70px;
+
+//left sidebar
+$left-sidebar-width: 280px;
+$left-sidebar-section-title-height: 50px;
+$left-sidebar-item-height: 45px;
+$left-sidebar-collapsed-width: 80px;
+$left-sidebar-collapsed-item-height: $navbar-height;
+$right-sidebar-width: 280px;
+
+//logo
+$logo-width: $left-sidebar-width;
+
+//global variables
+$side-margin: 20px;
+$margin-left: 20px;
+$margin-right: 20px;
+$margin-bottom: 20px;
+$border-radius: 12px;
+
+//responsive breakpoint
+$breakpoint: 768px;
+
+//transform
+$default-transform: transform 0.25s ease;
+$alt-transform: transform 0.25s ease-in-out;

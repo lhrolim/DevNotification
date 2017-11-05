@@ -1,0 +1,10 @@
+@import "../variables";
+@import "../mixins";
+
+.unlock-account-img {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #fff;
+  @include box-shadow;
+  margin: 10px 0 30px 0;
+}

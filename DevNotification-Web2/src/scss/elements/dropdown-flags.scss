@@ -1,0 +1,21 @@
+@import "../variables";
+
+.nav-item-dropdown {
+  .navbar-dropdown.dropdown-flags {
+    margin-left: -200px;
+    width: 240px !important;
+    .dropdown-inner {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .dropdown-item {
+        width: 50% !important;
+        .flag {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

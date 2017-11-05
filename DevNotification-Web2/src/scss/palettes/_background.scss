@@ -1,0 +1,6 @@
+@import "../palettes";
+$light: map-get($default-palette, "light");
+//$light: map-set($light, "background-color", map-get($bootstrap-colors, "light"));
+//$light: map-set($light, "color", map-get($material-design-colors, "grey-700"));
+
+$background-palettes: ("light": $light);

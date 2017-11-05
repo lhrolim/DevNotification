@@ -1,0 +1,34 @@
+@import "../variables";
+@import "../palettes/background";
+@import "../mixins";
+
+.jumbotron {
+  &.jumbotron-2 {
+    padding: $side-margin;
+    .title {
+      @include font-size(24px);
+      font-weight: normal;
+      color: map-get($bootstrap-colors, "dark");
+    }
+    .subtitle {
+      @include font-size(16px);
+      margin-bottom: 10px;
+      color: map-get($material-design-colors, "grey-700");
+    }
+    .breadcrumb {
+      justify-content: flex-end;
+      padding-right: 0;
+    }
+  }
+}
+
+@each $key, $value in $background-palettes {
+  [data-background="#{$key}"] {
+    .jumbotron {
+      &.jumbotron-2 {
+        background-color: map-get($value, "background-color");
+        color: map-get($value, "color");
+      }
+    }
+  }
+}

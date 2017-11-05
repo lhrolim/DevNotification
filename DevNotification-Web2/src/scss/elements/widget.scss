@@ -1,0 +1,45 @@
+@import "../variables";
+@import "../palettes/widget";
+@import "../mixins";
+.widget {
+  width: 100%;
+  padding: $side-margin;
+  margin-bottom: $margin-bottom;
+  > .row {
+    margin-bottom: $margin-bottom;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .title {
+    margin-bottom: $margin-bottom / 4;
+    @include font-size(16px);
+    font-weight: normal;
+    color: map-get($bootstrap-colors, "dark");
+  }
+  .description {
+    margin-bottom: $side-margin / 2;
+    @include font-size(14px);
+    font-weight: normal;
+    color: map-get($material-design-colors, "grey-700");
+  }
+  &.dashboard-widget {
+    .right-icons {
+      > i {
+        color: map-get($material-design-colors, "grey-700");
+        cursor: pointer;
+        margin-top: 10px;
+        margin-left: 10px;
+        @include font-size(18px);
+      }
+    }
+  }
+}
+@each $key, $value in $widget-palettes {
+  [data-background="#{$key}"] {
+    .widget {
+      background-color: map-get($value, "background-color");
+      color: map-get($value, "color");
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import "colors";
+@import "functions";
+
+@function palette(
+	$background-color, 
+	$odd-color, 
+	$even-color, 
+	$hover-color, 
+	$border-color,
+	$color,
+	$highlight-color
+) {
+  @return ("background-color": $background-color,
+		"odd-color": $odd-color,
+		"even-color": $even-color,
+		"hover-color": $hover-color,
+		"border-color": $border-color,
+		"color": $color,
+		"highlight-color": $highlight-color);
+}
+
+@function light-palette($background-color, $amount, $color, $highlight-color) {
+  @return palette(
+		#ffffff,
+		darken(map-get($bootstrap-colors, $background-color), $amount * 1),
+		darken(map-get($bootstrap-colors, $background-color), $amount * 2),
+		darken(map-get($bootstrap-colors, $background-color), $amount * 3),
+		darken(map-get($bootstrap-colors, $background-color), $amount * 4),
+		map-get($bootstrap-colors, $color),
+		map-get($bootstrap-colors, $highlight-color)
+	);
+}
+
+@function dark-palette($background-color, $amount, $color, $highlight-color) {
+  @return palette(
+		map-get($bootstrap-colors, $background-color),
+		lighten(map-get($bootstrap-colors, $background-color), $amount * 1),
+		lighten(map-get($bootstrap-colors, $background-color), $amount * 2),
+		lighten(map-get($bootstrap-colors, $background-color), $amount * 3),
+		lighten(map-get($bootstrap-colors, $background-color), $amount * 4),
+		map-get($bootstrap-colors, $color),
+		map-get($bootstrap-colors, $highlight-color)
+	);
+}
+
+$amount: 3%;
+//default colors for palettes
+$default-palette: (
+  "light": light-palette("light", $amount, "dark", "danger"),
+  "dark": dark-palette("dark", $amount, "light", "warning"),
+  "primary": dark-palette("primary", $amount, "light", "warning"),
+  "secondary": dark-palette("secondary", $amount, "light", "warning"),
+  "info": dark-palette("info", $amount, "light", "warning"),
+  "success": dark-palette("success", $amount, "light", "warning"),
+  "warning": dark-palette("warning", $amount, "light", "info"),
+  "danger": dark-palette("danger", $amount, "light", "warning")
+);

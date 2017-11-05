@@ -1,0 +1,62 @@
+[
+  {
+    "code": "br",
+    "name": "Brasil",
+    "amount": 605,
+    "percent": 41
+  },
+  {
+    "code": "us",
+    "name": "USA",
+    "amount": 428,
+    "percent": 51
+  },
+  {
+    "code": "es",
+    "name": "España",
+    "amount": 585,
+    "percent": 80
+  },
+  {
+    "code": "ru",
+    "name": "Россия",
+    "amount": 416,
+    "percent": 78
+  },
+  {
+    "code": "cn",
+    "name": "China",
+    "amount": 709,
+    "percent": 89
+  },
+  {
+    "code": "in",
+    "name": "India",
+    "amount": 583,
+    "percent": 68
+  },
+  {
+    "code": "ca",
+    "name": "Canada",
+    "amount": 235,
+    "percent": 74
+  },
+  {
+    "code": "au",
+    "name": "Australia",
+    "amount": 196,
+    "percent": 55
+  },
+  {
+    "code": "jp",
+    "name": "Japan",
+    "amount": 287,
+    "percent": 40
+  },
+  {
+    "code": "kr",
+    "name": "Korea",
+    "amount": 471,
+    "percent": 80
+  }
+]

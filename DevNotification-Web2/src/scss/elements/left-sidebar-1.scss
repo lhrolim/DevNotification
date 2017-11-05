@@ -1,0 +1,269 @@
+@import "../variables";
+@import "../mixins";
+@import "../palettes/left-sidebar";
+
+.left-sidebar {
+  &.left-sidebar-1 {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    .section-title {
+      [data-layout="default-sidebar-1"] & {
+        display: flex;
+        height: $left-sidebar-section-title-height;
+        margin-left: 25px;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      [data-layout="collapsed-sidebar-1"] & {
+        display: none;
+      }
+    }
+    .btn-sidebar {
+      display: flex;
+      height: $left-sidebar-item-height;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      position: relative;
+      border: none;
+      @include font-size(14px);
+      font-weight: 400;
+      i {
+        [data-layout="default-sidebar-1"] & {
+          width: 40px;
+          margin-right: 10px;
+          @include font-size(16px);
+        }
+        [data-layout="collapsed-sidebar-1"] & {
+          width: $left-sidebar-collapsed-width;
+          margin: 0;
+          @include font-size(20px);
+        }
+      }
+    }
+    .btn-sidebar.btn-sidebar-1 {
+      [data-layout="default-sidebar-1"] & {
+        position: relative;
+        text-transform: capitalize;
+        @include font-size(14px);
+      }
+      [data-layout="collapsed-sidebar-1"] & {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+        height: $left-sidebar-collapsed-item-height;
+        width: $left-sidebar-collapsed-width;
+      }
+      &.has-children {
+        [data-layout="default-sidebar-1"] & {
+          &:before {
+            font-family: "simple-line-icons";
+            content: "\e606";
+            position: absolute;
+            top: 17px;
+            right: $side-margin;
+            font-size: 10px;
+            transition: #{$default-transform};
+            transform: rotate(-720deg);
+          }
+          &.is-open {
+            &:before {
+              transform: rotate(90deg);
+            }
+            + ul {
+              display: block;
+            }
+          }
+        }
+        [data-layout="collapsed-sidebar-1"] & {
+          &:before {
+            display: none;
+          }
+        }
+      }
+      .title {
+        [data-layout="collapsed-sidebar-1"] & {
+          display: none;
+        }
+      }
+      .badge {
+        [data-layout="default-sidebar-1"] & {
+          margin-right: 25px;
+        }
+        [data-layout="collapsed-sidebar-1"] & {
+          display: none;
+          &.badge-rounded {
+            display: block;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+          }
+        }
+      }
+    }
+    .btn-sidebar.btn-sidebar-2 {
+      text-transform: capitalize;
+      @include font-size(14px);
+      font-weight: 400;
+    }
+    .section {
+      [data-layout="default-sidebar-1"] & {
+        ul {
+          > li {
+            position: relative;
+            > ul {
+              display: none;
+              > li {
+                i {
+                  visibility: hidden;
+                }
+              }
+            }
+          }
+        }
+      }
+      [data-layout="collapsed-sidebar-1"] & {
+        ul {
+          > li {
+            position: relative;
+            > ul {
+              position: absolute;
+              top: 0;
+              left: 100%;
+              z-index: $zindex-navbar-fixed + 3;
+              width: $left-sidebar-width;
+              pointer-events: none;
+              opacity: 0;
+              > li {
+                i {
+                  visibility: hidden;
+                  display: none;
+                }
+              }
+            }
+            &:hover {
+              > ul {
+                @include box-shadow;
+                pointer-events: auto;
+                opacity: 1;
+                width: $left-sidebar-width; //$left-sidebar-width * X for wider
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: flex-start;
+                > li {
+                  width: $left-sidebar-width;
+                  flex: 0 0 $left-sidebar-width;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $key, $value in $left-sidebar-palettes {
+  [data-left-sidebar="#{$key}"][data-layout="default-sidebar-1"] {
+    .left-sidebar-placeholder {
+      background: map-get($value, "background-color");
+      color: map-get($value, "color");
+    }
+    .left-sidebar {
+      &.left-sidebar-1 {
+        background: map-get($value, "background-color");
+        color: map-get($value, "color");
+        .section > ul > li:hover > .btn-default.btn-flat.btn-sidebar {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+          @include sideline(4px, map-get($value, "highlight-color"));
+          i {
+            color: map-get($value, "highlight-color");
+          }
+          &:hover {
+            background: map-get($value, "background-color");
+            @include sideline(4px, map-get($value, "highlight-color"));
+            i {
+              color: map-get($value, "color");
+            }
+          }
+        }
+        .section > ul > li:hover > ul {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+        }
+        .btn-default.btn-flat.btn-sidebar {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+          transition: none;
+          i {
+            color: map-get($value, "color");
+          }
+          &.is-open,
+          &:hover,
+          &:active,
+          &:focus,
+          &:visited,
+          &.focus {
+            background: map-get($value, "background-color");
+            @include sideline(4px, map-get($value, "highlight-color"));
+            i {
+              color: map-get($value, "highlight-color");
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $key, $value in $left-sidebar-palettes {
+  [data-left-sidebar="#{$key}"][data-layout="collapsed-sidebar-1"] {
+    .left-sidebar-placeholder {
+      background: map-get($value, "background-color");
+      color: map-get($value, "color");
+    }
+    .left-sidebar {
+      &.left-sidebar-1 {
+        background: map-get($value, "background-color");
+        color: map-get($value, "color");
+        .section > ul > li:hover > .btn-default.btn-flat.btn-sidebar {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+          @include sideline(4px, map-get($value, "highlight-color"));
+          &:hover {
+            background: map-get($value, "background-color");
+            @include sideline(4px, map-get($value, "highlight-color"));
+          }
+        }
+        .section > ul > li:hover > ul {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+        }
+        .btn-default.btn-flat.btn-sidebar {
+          background: map-get($value, "background-color");
+          color: map-get($value, "color");
+          transition: none;
+          //&.is-open,
+          &:hover,
+          &:active,
+          &:focus,
+          &:visited,
+          &.focus {
+            background: map-get($value, "background-color");
+            @include sideline(4px, map-get($value, "highlight-color"));
+          }
+        }
+      }
+    }
+  }
+}

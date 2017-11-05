@@ -1,0 +1,53 @@
+@import "../variables";
+.ion-icon {
+  display: inline-block;
+  font-size: 16px;
+  &.ion-icon-1x {
+    font-size: 16px;
+  }
+  &.ion-icon-2x {
+    font-size: 28px;
+  }
+  &.ion-icon-3x {
+    font-size: 40px;
+  }
+}
+.ionicons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  .icon {
+    text-align: center;
+    width: 150px;
+    min-height: 100px;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    i {
+      margin: 0 5px;
+    }
+    .icons {
+      display: block;
+      margin-bottom: 20px;
+    }
+    .icon-class {
+      display: block;
+      font-size: 13px;
+      font-family: $font-family;
+    }
+  }
+}
+@each $key, $value in $default-palette {
+  [data-background="#{$key}"] {
+    .ionicons {
+      .icon {
+        color: map-get($value, "color");
+        i,
+        .icon-class {
+          color: map-get($value, "color");
+        }
+      }
+    }
+  }
+}

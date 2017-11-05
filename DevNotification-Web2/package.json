@@ -1,0 +1,53 @@
+{
+  "name": "sigma",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "approvejs": "^3.1.1",
+    "chartist": "^0.11.0",
+    "d3": "^4.9.1",
+    "font-awesome": "^4.7.0",
+    "ionicons": "^3.0.0",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
+    "rc-slider": "^8.3.1",
+    "react": "^15.6.0",
+    "react-chartist": "^0.13.0",
+    "react-datamaps": "^0.3.0",
+    "react-datetime": "^2.9.0",
+    "react-dom": "^15.6.0",
+    "react-google-maps": "^7.1.0",
+    "react-loadable": "^4.0.5",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.0.0-beta.8",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "react-scripts": "^1.0.11",
+    "react-select": "^1.0.0-rc.5",
+    "react-transition-group": "^1.1.2",
+    "reactable": "^0.14.1",
+    "reactstrap": "^4.8.0",
+    "reapop": "^1.1.2",
+    "recharts": "^1.0.0-alpha.3",
+    "recompose": "^0.25.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "source-map": "^0.5.6",
+    "source-map-explorer": "^1.4.0"
+  },
+  "devDependencies": {
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2"
+  },
+  "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar --include-path ./src/scss --include-path ./node_modules src/scss -o src/css",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/scss --include-path ./node_modules src/scss -o src/css --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build"
+  }
+}

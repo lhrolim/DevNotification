@@ -1,0 +1,60 @@
+@import "../variables";
+
+.hoverinfo {
+  padding: 4px;
+  font-size: 12px;
+}
+
+@each $key, $value in $default-palette {
+  [data-background="#{$key}"] {
+    .hoverinfo {
+      background: map-get($value, "background-color");
+      color: map-get($value, "color");
+      border: 1px solid map-get($value, "border-color");
+      box-shadow: none;
+      border-radius: 5px;
+    }
+  }
+}
+
+.Example {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.Example-map {
+  height: 500px;
+  width: 750px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+.ResponsiveExample {
+  width: 405px;
+  height: 270px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .ResponsiveExample {
+    width: 570px;
+    height: 380px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .ResponsiveExample {
+    width: 660px;
+    height: 440px;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .ResponsiveExample {
+    width: 750px;
+    height: 500px;
+  }
+}

@@ -1,0 +1,36 @@
+[{
+    "icon": "sli-envelope",
+    "iconColor": "default",
+    "name": "Inbox",
+    "badge": true,
+    "badgeText": "New",
+    "badgeClass": "badge badge-pill badge-raised badge-danger badge-sm"
+}, {
+    "icon": "sli-star",
+    "iconColor": "default",
+    "name": "Messages",
+    "badge": true,
+    "badgeText": "5",
+    "badgeClass": "badge badge-info badge-rounded badge-sm"
+}, {
+    "icon": "sli-settings",
+    "iconColor": "default",
+    "name": "Profile",
+    "badge": false,
+    "badgeText": false,
+    "badgeClass": false
+}, {
+	"icon": "sli-clock",
+	"iconColor": "default",
+	"name": "Lock screen",
+    "badge": false,
+    "badgeText": false,
+    "badgeClass": false
+}, {
+	"icon": "sli-power",
+	"iconColor": "default",
+	"name": "Logout",
+    "badge": false,
+    "badgeText": false,
+    "badgeClass": false
+}]

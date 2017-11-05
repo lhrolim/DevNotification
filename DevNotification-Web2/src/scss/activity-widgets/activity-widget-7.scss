@@ -1,0 +1,17 @@
+@import "../variables";
+@import "../mixins";
+.activity-widget-7 {
+  .title {
+    @include font-size(13px);
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+  .subtitle {
+    @include font-size(13px);
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .progress {
+    margin-top: 10px;
+  }
+}

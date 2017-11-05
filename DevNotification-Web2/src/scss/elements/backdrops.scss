@@ -1,0 +1,10 @@
+@import "../mixins";
+@import "../variables";
+.left-sidebar-backdrop {
+  @include backdrop($zindex-left-sidebar-backdrop);
+}
+.right-sidebar-backdrop {
+  @include backdrop($zindex-right-sidebar-backdrop);
+  background: #fff;
+  opacity: 0;
+}

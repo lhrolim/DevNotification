@@ -1,0 +1,18 @@
+@import "../mixins";
+
+@mixin sample-form($height, $width, $padding, $margin) {
+  position: relative;
+  min-height: $height;
+  width: $width;
+  form {
+    padding: 0 $padding $padding $padding;
+  }
+  .btn {
+    margin-bottom: $margin;
+  }
+  .links {
+    a {
+      font-weight: normal;
+    }
+  }
+}

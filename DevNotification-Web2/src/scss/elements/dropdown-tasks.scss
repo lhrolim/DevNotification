@@ -1,0 +1,48 @@
+@import "../variables";
+@import "../palettes/navbar";
+
+.nav-item-dropdown {
+  .navbar-dropdown.dropdown-tasks {
+    width: 400px !important;
+    padding-bottom: 10px;
+    .dropdown-inner {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .dropdown-item {
+        flex-direction: column;
+        p {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 0;
+          .title {
+          }
+          .value {
+            align-self: flex-end;
+            font-weight: normal;
+          }
+        }
+        .progress {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@each $key, $value in $navbar-palettes {
+  [data-navbar="#{$key}"] {
+    .navbar-dropdown.dropdown-tasks {
+      .dropdown-item {
+        .progress {
+          background-color: map-get($value, "background-color");
+        }
+      }
+    }
+  }
+}

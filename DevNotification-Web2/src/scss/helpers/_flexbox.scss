@@ -1,0 +1,6 @@
+//flex width
+@for $i from 0 through 20 {
+  .flex-#{$i * 10} {
+    flex: 0 0 #{$i * 10}px !important;
+  }
+}

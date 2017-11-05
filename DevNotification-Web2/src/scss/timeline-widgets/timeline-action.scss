@@ -1,0 +1,15 @@
+@import "../variables";
+@import "../mixins";
+
+.timeline-action {
+  @include font-size(13px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .text,
+  i {
+    margin-right: 10px;
+  }
+}

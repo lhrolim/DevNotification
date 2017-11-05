@@ -1,0 +1,15 @@
+@import "../mixins";
+
+.text-widget-1 {
+  padding: 10px;
+  .title {
+    @include font-size(16px);
+  }
+  .subtitle {
+    @include font-size(13px);
+  }
+  .percent {
+    padding-left: 5px;
+    @include font-size(12px);
+  }
+}

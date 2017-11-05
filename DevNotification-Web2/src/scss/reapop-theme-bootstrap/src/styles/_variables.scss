@@ -1,0 +1,42 @@
+@import "../../../variables";
+
+// Media queries breakpoints
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-xs-max: ($screen-sm-min - 1);
+
+$window-padding: 20px;
+
+// Notification variables
+$notification-max-width: 360px;
+$notification-button-width: 90px;
+$notification-close-button: "\f00d";
+
+$notification-success-bg: map-get($bootstrap-colors, "success");
+$notification-success-border: darken(map-get($bootstrap-colors, "success"), 3);
+$notification-success-color: map-get($bootstrap-colors, "light");
+$notification-success-icon: "\f00c";
+
+$notification-default-bg: map-get($bootstrap-colors, "light");
+$notification-default-border: darken(map-get($bootstrap-colors, "light"), 3);
+$notification-default-color: map-get($bootstrap-colors, "dark");
+
+$notification-info-bg: map-get($bootstrap-colors, "info");
+$notification-info-border: darken(map-get($bootstrap-colors, "info"), 3);
+$notification-info-color: map-get($bootstrap-colors, "light");
+$notification-info-icon: "\f129";
+
+$notification-warning-bg: map-get($bootstrap-colors, "warning");
+$notification-warning-border: darken(map-get($bootstrap-colors, "warning"), 3);
+$notification-warning-color: map-get($bootstrap-colors, "light");
+$notification-warning-icon: "\f071";
+
+$notification-error-bg: map-get($bootstrap-colors, "danger");
+$notification-error-border: darken(map-get($bootstrap-colors, "danger"), 3);
+$notification-error-color: map-get($bootstrap-colors, "light");
+$notification-error-icon: "\f071";
+
+$notification-loading-bg: map-get($bootstrap-colors, "primary");
+$notification-loading-border: darken(map-get($bootstrap-colors, "primary"), 3);
+$notification-loading-color: map-get($bootstrap-colors, "light");
+$notification-loading-icon: "\f021";

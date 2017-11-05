@@ -1,0 +1,67 @@
+{
+  "_from": "reapop-theme-bootstrap",
+  "_id": "reapop-theme-bootstrap@0.3.0",
+  "_inBundle": false,
+  "_integrity": "sha1-ezMGjNNkM8kipzAvURNg9hRAu1Q=",
+  "_location": "/reapop-theme-bootstrap",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "reapop-theme-bootstrap",
+    "name": "reapop-theme-bootstrap",
+    "escapedName": "reapop-theme-bootstrap",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/reapop-theme-bootstrap/-/reapop-theme-bootstrap-0.3.0.tgz",
+  "_shasum": "7b33068cd36433c922a7302f511360f61440bb54",
+  "_spec": "reapop-theme-bootstrap",
+  "_where": "/private/var/www/templates/react/max",
+  "author": {
+    "name": "Louis Barranqueiro"
+  },
+  "bugs": {
+    "url": "https://github.com/LouisBarranqueiro/reapop-theme-bootstrap/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Bootstrap theme for Reapop",
+  "devDependencies": {
+    "node-sass": "^3.10.1"
+  },
+  "homepage": "https://github.com/LouisBarranqueiro/reapop-theme-bootstrap#readme",
+  "keywords": [
+    "reapop",
+    "theme",
+    "bootstrap",
+    "react",
+    "redux",
+    "notifications",
+    "notification",
+    "component"
+  ],
+  "license": "GPL-3.0",
+  "main": "index.js",
+  "name": "reapop-theme-bootstrap",
+  "peerDependencies": {
+    "bootstrap": "3.x.x",
+    "font-awesome": "^4.6.1",
+    "reapop": "0.6.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LouisBarranqueiro/reapop-theme-bootstrap.git"
+  },
+  "scripts": {
+    "build": "node-sass src/styles/styles.scss -o lib",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.3.0"
+}

@@ -1,0 +1,20 @@
+@import "../variables";
+@import "../mixins";
+.user-data {
+  .title {
+    font-weight: 400;
+    @include font-size(15px);
+    margin-bottom: 10px;
+  }
+  .subtitle,
+  .description,
+  .location {
+    @include font-size(13px);
+    margin-bottom: 10px;
+  }
+  .location {
+    i {
+      margin-right: 10px;
+    }
+  }
+}
