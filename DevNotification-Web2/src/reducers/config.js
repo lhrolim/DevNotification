@@ -1,6 +1,6 @@
 export function config(
   state = {
-    layout: 'default-sidebar-1',
+    layout: 'collapsed-sidebar-1',
     background: 'light',
     navbar: 'light',
     topNavigation: 'light',

@@ -99,7 +99,7 @@ import UserWidgets from './widgets/user-widgets'
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/" component={Demo4} />
     <Route path="/charts/chartist" component={Chartist} />
     <Route path="/charts/recharts" component={Recharts} />
     <Route path="/dashboards/analytics" component={Analytics} />

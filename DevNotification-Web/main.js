@@ -11,6 +11,10 @@
 import 'babel-polyfill';
 import 'whatwg-fetch';
 
+//global css
+import './css/bootstrap.css';
+import './css/main.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';

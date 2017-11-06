@@ -7,7 +7,7 @@ const Logo = () => (
     to="/"
     className="logo d-flex justify-content-start align-items-center flex-nowrap">
     <i className="fa fa-code" />
-    <span className="title">Sigma</span>
+    <span className="title">DevNotification</span>
   </Link>
 )
 

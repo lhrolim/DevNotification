@@ -4,26 +4,40 @@ const urls = [
     items: [
       {
         url: '/dashboards/analytics',
-        icon: '',
-        title: 'My Projects',
+        icon: 'home',
+        title: 'Home',
         items: []
       },
 
       {
         url: '/dashboards/analytics',
-        icon: '',
-        title: 'Books',
+        icon: 'trending_up',
+        title: 'Trending',
         items: []
       },
 
       {
         url: '/dashboards/analytics',
-        icon: '',
+        icon: 'featured_video',
         title: 'Videos',
         items: []
       },
+
+      {
+        url: '/dashboards/analytics',
+        icon: 'library_books',
+        title: 'Courses',
+        items: []
+      },
+
+    
     ]
-  }
+  },
+
+  {
+    title: "My Projects",
+    items:[]
+  },
 ]
 
 

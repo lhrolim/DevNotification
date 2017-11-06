@@ -11,7 +11,7 @@ const StoredLayout = compose(
     componentDidMount() {
       let layout = this.props.config.layout
       if (layout === 'home' || layout === 'empty-view-1') {
-        layout = 'default-sidebar-1'
+        layout = 'collapsed-sidebar-1'
       }
       this.props.dispatch({
         type: 'SET_CONFIG',

@@ -14,8 +14,10 @@ import {accountSettings} from './pages/account-settings'
 import {emailPreferences} from './pages/email-preferences'
 import {securitySettings} from './pages/security-settings'
 import {reducer as notificationsReducer} from 'reapop'
+import authState from '../core/authentication/reducer';
 
 const rootReducer = combineReducers({
+  authState,
   config,
   colors,
   backgroundColors,

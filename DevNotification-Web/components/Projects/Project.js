@@ -10,10 +10,9 @@ class Project extends Component {
     }
 
 
-    render() {
-        return (
+  render() {
+      return (
             <ListItem twoLine>
-
                 <span className="mdl-list__item-primary-content">
                     <i className={this.props.avatar}></i>
                     <span>{this.props.name}</span><span className="mdl-list__item-sub-title">{this.props.description}</span></span>
