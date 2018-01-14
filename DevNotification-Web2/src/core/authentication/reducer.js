@@ -7,13 +7,13 @@ const initialState = {
 const authState = (state = initialState, action) => {
     switch (action.type) {
         case AUTH_DENIED: {
-            return Object.assign({}, state, { authenticationDenied: true, authenticated: false });
+            return Object.assign({}, state, { authenticationDenied: true, authenticated: false, showLock: true });
         }
         case INIT_LOGIN: {
             return {...state, showLock: true };
         }
         case INIT_PROFILE: {
-            return Object.assign({}, state, { authenticated: true, idToken: action.idToken, profile: action.profile })
+            return Object.assign({}, state, { authenticated: true, showLock:false, idToken: action.idToken, profile: action.profile })
         }
         case LOGOUT: {
             return { authenticated: false, logout: true };

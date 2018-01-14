@@ -8,7 +8,7 @@ import App from './App'
 
 // store.subscribe(() => console.log('state', store.getState()));
 
-store.subscribe(authSubscriber);
+// store.subscribe(authSubscriber);
 
 const Component = () => (
   <Provider store={store}>

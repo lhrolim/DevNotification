@@ -1,8 +1,7 @@
 'use strict';
+import store from '../../configureStore'
 
 const props = require("../../serverapi.json")
-
-import store from '../store'
 
 class RestService {
 

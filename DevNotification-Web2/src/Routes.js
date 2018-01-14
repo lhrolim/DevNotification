@@ -57,6 +57,7 @@ import EmptyPage from './pages/empty-page'
 import CreateAccount from './pages/create-account'
 import ErrorPage from './pages/error-page'
 import Login from './pages/login'
+import RedirectCbk from './pages/redirectcbk'
 import ResetPassword from './pages/reset-password'
 import Subscribe from './pages/subscribe'
 import UnderMaintenance from './pages/under-maintenance'
@@ -99,7 +100,9 @@ import UserWidgets from './widgets/user-widgets'
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Demo4} />
+    <Route exact path="/" component={Home} />
+    <Route path="/signin" component={Login} />
+    <Route path="/loginredirectcbk" component={RedirectCbk} />
     <Route path="/charts/chartist" component={Chartist} />
     <Route path="/charts/recharts" component={Recharts} />
     <Route path="/dashboards/analytics" component={Analytics} />

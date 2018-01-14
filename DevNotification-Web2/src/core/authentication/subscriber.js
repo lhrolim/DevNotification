@@ -1,21 +1,5 @@
-
-
-
 import history from '../../history';
 import store from '../../configureStore';
-import Auth0Lock from 'auth0-lock';
-
-const lock = new Auth0Lock('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.com', {
-    container: 'root',
-    auth: {
-        redirectUrl: 'http://localhost:3000/loginredirectcbk',
-        responseType: 'token',
-        params: {
-            scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
-        },
-    }
-});
-
 
 
 const authSubscriber = () => {
@@ -38,10 +22,6 @@ const authSubscriber = () => {
         localStorage.setItem("idToken", authState.idToken);
         localStorage.setItem("profile", JSON.stringify(authState.profile));
         history.push("/");
-    }
-
-    if (authState.showLock) {
-        lock.show();
     }
 }
 

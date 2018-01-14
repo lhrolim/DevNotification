@@ -2,12 +2,11 @@
 import history from '../../history';
 import { INIT_LOGIN, AUTH_DENIED, LOGOUT, INIT_PROFILE, AUTH0_REDIRECTED } from './actionconstants'
 import Auth0 from 'auth0-lock';
+import {parseHash} from 'auth0-lock';
 
 const auth0 = new Auth0('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.com', {
     responseType: 'token' // also 'id_token' and 'code' (default)
 });
-
-
 
 
 const initLogin = () => {
@@ -36,9 +35,7 @@ const profileRecovered = (idToken, profile) => {
     }
 }
 
-const auth0Redirected = () => {
-    const rawHash = history.getCurrentLocation().hash;
-    const { idToken } = auth0.parseHash(rawHash);
+const auth0Redirected = (idToken) => {
     return { type: AUTH0_REDIRECTED, idToken };
 }
 

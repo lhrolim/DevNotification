@@ -9,17 +9,26 @@
  */
 
 import React, { PropTypes } from 'react';
-import store from '../../core/store'
-import {auth0Redirected} from '../../core/authentication/actions'
+import store from '../../configureStore'
+import { auth0Redirected } from '../../core/authentication/action'
+import { connect } from 'react-redux'
+import history from '../../history';
 
 class AuthRedirectPage extends React.Component {
 
   componentDidMount() {
-     store.dispatch(auth0Redirected());
+    store.dispatch(auth0Redirected());
+  }
+
+  componentDidUpdate() {
+    const { auth0Redirected,idToken } = this.props.authState;
+    if (auth0Redirected){
+      history.push("/");
+    }
   }
 
   render() {
-  
+
     return (
       <div></div>
     );
@@ -27,4 +36,15 @@ class AuthRedirectPage extends React.Component {
 
 }
 
-export default AuthRedirectPage;
+
+function mapStateToProps(state) {
+  const {authState} = state;
+
+  return {
+    authState
+  }
+}
+
+
+export default connect(mapStateToProps)(AuthRedirectPage);
+
