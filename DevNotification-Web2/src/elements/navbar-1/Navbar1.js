@@ -38,6 +38,7 @@ const Navbar1 = () => (
     </ul>
     <div className="separator" />
     <Search />
+    <div style={{paddingBottom:'20px'}}>
     <ul className="nav nav-inline nav-inline-2">
       <li className="nav-item nav-item-dropdown">
         <a className="nav-link nav-link-avatar">
@@ -50,15 +51,8 @@ const Navbar1 = () => (
         </a>
         <DropdownUser />
       </li>
-      <li className="nav-item nav-item-dropdown">
-        <a className="nav-link">
-          <span className="flag flag-icon-background flag-icon flag-icon-gb" />
-        </a>
-        <DropdownFlags />
-      </li>
-      <ToggleRightSidebar />
     </ul>
-    <ToggleLayout2 />
+    </div>
   </nav>
 )
 

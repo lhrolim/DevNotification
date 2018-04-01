@@ -23,7 +23,7 @@ const Home = compose(
     },
 
     componentDidUpdate() {
-      const { authenticated, idToken, profile,authenticationDenied } = this.props.auth;
+      const { authenticated, idToken, profile,authenticationDenied,logout } = this.props.auth;
       if (authenticated && profile) {
         // make sure to create the user at the api-side after the login suceeded
      /*    restService.putPromise(`user/${profile.user_id}`, {
@@ -31,9 +31,11 @@ const Home = compose(
           email: profile.email,
         }); */
       }
-      if (authenticationDenied) {
+      if (authenticationDenied || logout) {
         localStorage.removeItem("idToken");
         localStorage.removeItem("profile");
+        localStorage.removeItem("accessToken");
+        
         history.push("/signin");
       }
 

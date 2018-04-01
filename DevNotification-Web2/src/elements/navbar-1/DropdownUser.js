@@ -1,11 +1,14 @@
 import React from 'react'
 import '../../css/elements/dropdown-user.css'
+import { logout } from '../../core/authentication/action'
+import {connect} from 'react-redux'
 
-const DropdownUser = ({items}) => (
+
+const DropdownUser = (props) => (
   <div className="navbar-dropdown dropdown-user">
     <div className="dropdown-title">My account</div>
-    {items.map((item, i) => (
-      <div className="dropdown-item" key={i}>
+    {props.items.map((item, i) => (
+      <div className="dropdown-item" key={i} onClick={props.logoutAction}>
         <i className={item.icon} />
         <span className="title">{item.name}</span>
         <div className="separator" />
@@ -18,7 +21,7 @@ const DropdownUser = ({items}) => (
 )
 
 let items = [
-  {
+ /*  {
     icon: 'sli-envelope',
     iconColor: 'default',
     name: 'Inbox',
@@ -49,17 +52,31 @@ let items = [
     badge: false,
     badgeText: false,
     badgeClass: false
-  },
+  }, */
   {
     icon: 'sli-power',
     iconColor: 'default',
     name: 'Logout',
     badge: false,
     badgeText: false,
-    badgeClass: false
+    badgeClass: false,
+    action: ()=>{
+      logout();
+    }
   }
 ]
 
-const SampleDropdownUser = () => <DropdownUser items={items} />
+const mapStateToProps = (state, ownProps) => {
+  return {}
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    logoutAction: () => {
+      console.log("logout");
+      dispatch(logout())
+  }
+}}
 
-export default SampleDropdownUser
+const ConnectedDropDown = connect(mapStateToProps,mapDispatchToProps)(DropdownUser)
+
+export default () => <ConnectedDropDown items={items} />

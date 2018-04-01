@@ -101,6 +101,7 @@ import UserWidgets from './widgets/user-widgets'
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
+    <Route exact path="/home" component={Home} />
     <Route path="/signin" component={Login} />
     <Route path="/loginredirectcbk" component={RedirectCbk} />
     <Route path="/charts/chartist" component={Chartist} />

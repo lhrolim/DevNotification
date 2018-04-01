@@ -44,6 +44,7 @@ const checkAuth = (idToken) => {
 
     return dispatch => {
 
+        
         if (!idToken) {
             //no token at all, first time the app is opened on this browser
             return dispatch(authenticationDenied());

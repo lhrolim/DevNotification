@@ -13,7 +13,7 @@ const authState = (state = initialState, action) => {
             return {...state, showLock: true };
         }
         case INIT_PROFILE: {
-            return Object.assign({}, state, { authenticated: true, showLock:false, idToken: action.idToken, profile: action.profile })
+            return Object.assign({}, state, { authenticationDenied: false, authenticated: true, showLock:false, idToken: action.idToken, profile: action.profile })
         }
         case LOGOUT: {
             return { authenticated: false, logout: true };
