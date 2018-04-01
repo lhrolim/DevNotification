@@ -23,10 +23,7 @@ const lock = new Auth0Lock('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.com', 
   }
 });
 
-const auth0JS = new auth0.WebAuth({
-  domain: "plg.auth0.com",
-  clientID: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho"
-});
+
 
 
 lock.on("authenticated", function (authResult) {
@@ -63,7 +60,7 @@ const StoredLayout = compose(
 
     componentDidMount() {
       const idToken = localStorage.getItem('idToken');
-      this.props.dispatch(checkAuth(idToken));
+      this.props.dispatch(checkAuth(idToken, this.props.location.hash));
     },
 
 
@@ -76,18 +73,7 @@ const StoredLayout = compose(
         this.props.location.hash = "";
         return;
       }
-
-      if (this.props.location.hash !== "") {
-        //this is needed cause auth0 redirects the user to that same component without any callback rather just the hash on the screen, 
-        // hence we cannot rely on redux at this point
-        const hash = auth0JS.parseHash(this.props.location.hash, (err, token) => {
-          if (err) {
-            //testing against a fake hash
-            setTimeout(() => lock.show(), 0);
-            return;
-          }
-        });
-      } else if (showLock) {
+      if (showLock) {
         //timeout to avoid a react warning
         setTimeout(() => lock.show(), 0);
       } else {

@@ -19,7 +19,8 @@ const Home = compose(
       }) */
 
       const idToken = localStorage.getItem('idToken');
-      this.props.dispatch(checkAuth(idToken));
+
+      this.props.dispatch(checkAuth(idToken,this.props.location.hash));
     },
 
     componentDidUpdate() {
