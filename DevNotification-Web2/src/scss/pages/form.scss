@@ -1,0 +1,30 @@
+@import "../variables";
+@import "../pages/mixins";
+
+$padding: 30px;
+$margin: 20px;
+.sample-form {
+  background-color: #fff;
+  padding: $padding $padding + 10;
+  @include box-shadow;
+  h3 {
+    @include font-size(17px);
+    text-transform: uppercase;
+    margin-bottom: $margin / 2;
+    font-weight: normal;
+  }
+  .description {
+    margin-bottom: $margin;
+    @include font-size(15px);
+  }
+  label {
+    font-weight: normal;
+    margin-bottom: $margin / 2;
+  }
+  .input-group {
+    margin-bottom: $margin;
+  }
+  textarea {
+    height: 120px;
+  }
+}

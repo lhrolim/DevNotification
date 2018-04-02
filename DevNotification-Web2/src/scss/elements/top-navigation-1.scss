@@ -1,0 +1,78 @@
+@import "../variables";
+@import "../mixins";
+@import "../palettes/top-navigation";
+
+.top-navigation-1 {
+	min-height: 0;
+  height: $top-navigation-height;
+  > ul {
+    margin: 0;
+    padding: 0;
+    > li {
+      position: relative;
+      padding: 25px 20px;
+      > a {
+        white-space: nowrap;
+      }
+      > ul {
+        @include box-shadow;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        //transform: translate3d(0, 20px, 0);
+        transition: all 0.35s ease;
+        position: absolute;
+        top: calc(100% - 2px);
+        left: 0;
+        min-width: 160px;
+        z-index: $zindex-navbar-fixed;
+        > li {
+          padding: 10px;
+          white-space: nowrap;
+        }
+      }
+      &:hover {
+        > ul {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+          //transform: translate3d(0, 0, 0);
+        }
+      }
+    }
+  }
+}
+
+@each $key, $value in $top-navigation-palettes {
+  [data-top-navigation="#{$key}"] {
+    .top-navigation-1 {
+      background: map-get($value, "background-color");
+      color: map-get($value, "color");
+      .list-link {
+        color: map-get($value, "color");
+      }
+      > ul {
+        li {
+          > ul {
+            > li {
+              background: map-get($value, "background-color");
+              color: map-get($value, "color");
+            }
+          }
+          &:hover {
+            > ul {
+              > li {
+                background: map-get($value, "background-color");
+                color: map-get($value, "color");
+                &:hover {
+                  background: map-get($value, "odd-color");
+                  color: map-get($value, "color");
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

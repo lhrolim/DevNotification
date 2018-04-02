@@ -1,0 +1,127 @@
+[{
+    "name": "Lucas smith",
+    "company": "Apple, Inc.",
+    "description": "Vital Database Dude",
+    "img": "/assets/faces/m1.png",
+    "color": "success",
+    "country": "Australia"
+}, {
+    "name": "Janet Abshire",
+    "company": "Pinterest",
+    "description": "Lead Innovation Officer",
+    "img": "/assets/faces/w1.png",
+    "color": "info",
+    "country": "USA"
+}, {
+    "name": "Lucas Koch",
+    "company": "Reddit",
+    "description": "Incomparable UX Editor",
+    "img": "/assets/faces/m2.png",
+    "color": "success",
+    "country": "England"
+}, {
+    "name": "Gladys Schuster",
+    "description": "Primary Product Pioneer",
+    "company": "Coursera",
+    "img": "/assets/faces/w2.png",
+    "color": "warning",
+    "country": "USA"
+}, {
+    "name": "George Clinton",
+    "company": "Facebook",
+    "description": "World Class API Genius",
+    "img": "/assets/faces/m3.png",
+    "color": "success",
+    "country": "Canada"
+}, {
+    "name": "Jennifer Weber",
+    "description": "World Class Innovation Controller",
+    "company": "Lyft",
+    "img": "/assets/faces/w3.png",
+    "color": "info",
+    "country": "New Zealand"
+}, {
+    "name": "Thomas Lee",
+    "description": "Client Side Press Tester",
+    "company": "Quora",
+    "img": "/assets/faces/m4.png",
+    "color": "success",
+    "country": "USA"
+}, {
+    "name": "Courtney Dickens",
+    "description": "Principal Integration Ninja",
+    "company": "Yelp",
+    "img": "/assets/faces/w5.png",
+    "color": "danger",
+    "country": "Australia"
+}, {
+    "name": "James Smith",
+    "description": "Project Management Champ",
+    "company": "Apple, Inc.",
+    "img": "/assets/faces/m6.png",
+    "color": "primary",
+    "country": "Germany"
+}, {
+    "name": "Clorinda Murphy",
+    "description": "Social Media Writer",
+    "company": "Tinder",
+    "img": "/assets/faces/w6.png",
+    "color": "warning",
+    "country": "Canada"
+}, {
+    "name": "Eric Simpson",
+    "description": "Innovation Pioneer",
+    "company": "Facebook",
+    "img": "/assets/faces/m7.png",
+    "color": "danger",
+    "country": "USA"
+}, {
+    "name": "Monica White",
+    "description": "iOS Strategist",
+    "company": "Twitter",
+    "img": "/assets/faces/w7.png",
+    "color": "success",
+    "country": "Argentina"
+}, {
+    "name": "Michael Jenkins",
+    "description": "Ruby On Rails Developer",
+    "company": "Microsoft Inc.",
+    "img": "/assets/faces/m8.png",
+    "color": "info",
+    "country": "Brazil"
+}, {
+    "name": "Jackie Perkins",
+    "description": "Executive PR Evangelist",
+    "company": "Uber",
+    "img": "/assets/faces/w8.png",
+    "color": "danger",
+    "country": "England"
+}, {
+    "name": "Melvin Hicks",
+    "description": "Primary PHP Monkey",
+    "company": "Google Inc.",
+    "img": "/assets/faces/m9.png",
+    "color": "warning",
+    "country": "USA"
+}, {
+    "name": "Hannah Cook",
+    "description": "Wise Email Captain",
+    "company": "Pinterest",
+    "img": "/assets/faces/w9.png",
+    "color": "success",
+    "country": "Sweden"
+}, {
+    "name": "Jerome Lynch",
+    "description": "Android Engineer",
+    "company": "LG Electronics",
+    "img": "/assets/faces/m10.png",
+    "color": "danger",
+    "country": "France"
+}, {
+    "name": "Kirsten Perez",
+    "description": "UI Expert",
+    "company": "Facebook",
+    "img": "/assets/faces/w10.png",
+    "color": "danger",
+    "country": "Mexico"
+}]

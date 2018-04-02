@@ -1,0 +1,11 @@
+@import "../variables";
+@import "../mixins";
+.user-image {
+  .rounded-circle {
+    border: 3px solid #fff;
+    height: 80px;
+    width: 80px;
+    @include box-shadow;
+    margin-bottom: $side-margin;
+  }
+}

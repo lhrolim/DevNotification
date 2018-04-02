@@ -1,0 +1,45 @@
+@import "../variables";
+@import "../mixins";
+@import "../palettes/typography";
+a,
+.btn {
+  font-family: $font-family;
+  &:hover,
+  &:focus,
+  &:active,
+  &.focus,
+  &.active {
+    cursor: pointer;
+    outline: none !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+  }
+}
+.blockquote {
+  @each $key, $value in $bootstrap-colors {
+    &.blockquote-#{$key}:not(.blockquote-reverse) {
+      border-left: 0.25rem solid $value;
+      padding-left: $side-margin;
+    }
+    &.blockquote-#{$key} {
+      &.blockquote-reverse {
+        border-right: 0.25rem solid $value;
+        padding-right: $side-margin;
+      }
+    }
+  }
+}
+@each $key, $value in $typography-palettes {
+  [data-background="#{$key}"] {
+    a {
+      color: map-get($value, "link-color");
+    }
+    pre,
+    code {
+      font-family: $monospace-font-family;
+      @include font-size(14px);
+      background: map-get($value, "odd-color");
+      color: map-get($value, "highlight-color");
+    }
+  }
+}

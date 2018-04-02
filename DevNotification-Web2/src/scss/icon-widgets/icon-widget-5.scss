@@ -1,0 +1,17 @@
+@import "../mixins";
+
+.icon-widget-5 {
+  padding: 10px;
+  i {
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 24px;
+  }
+  .text {
+    white-space: nowrap;
+    @include font-size(14px);
+  }
+  .number {
+    @include font-size(18px);
+  }
+}

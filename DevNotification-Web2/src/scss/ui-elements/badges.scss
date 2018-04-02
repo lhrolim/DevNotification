@@ -1,0 +1,62 @@
+@import "../variables";
+@import "../mixins";
+.sample-badges {
+  .badge {
+    margin-right: 10px;
+  }
+}
+
+.badge {
+  border-radius: 8px;
+  border: 0;
+  @include font-size(12px) text-align: center;
+  line-height: 0.8;
+  padding: 8px 12px;
+  font-weight: normal;
+  &.badge-sm {
+    @include font-size(10px) line-height: 0.6;
+  }
+  &.badge-lg {
+    @include font-size(14px) line-height: 1;
+  }
+  &.badge-rounded {
+    padding: 0;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    &.badge-sm {
+      height: 18px;
+      width: 18px;
+      line-height: 18px;
+      border-radius: 50%;
+      &.badge-outline {
+        line-height: 16px;
+      }
+    }
+    &.badge-lg {
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
+      border-radius: 50%;
+      &.badge-outline {
+        line-height: 28px;
+      }
+    }
+  }
+  @each $key, $value in $bootstrap-colors {
+    &.badge-#{$key}:not(.badge-outline) {
+      background-color: $value;
+      color: #fff;
+    }
+    &.badge-outline {
+      &.badge-#{$key} {
+        border: 1px solid $value;
+        background-color: transparent;
+        color: $value;
+      }
+    }
+  }
+}

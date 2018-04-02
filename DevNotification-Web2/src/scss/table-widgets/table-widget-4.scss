@@ -1,0 +1,9 @@
+@import "../variables";
+@import "../mixins";
+.table-widget-4 {
+  .table {
+    td {
+      @include font-size(14px);
+    }
+  }
+}

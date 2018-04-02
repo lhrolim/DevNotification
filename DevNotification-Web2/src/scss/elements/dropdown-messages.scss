@@ -1,0 +1,31 @@
+@import "../variables";
+
+.nav-item-dropdown {
+  .navbar-dropdown.dropdown-messages {
+    width: 350px !important;
+    padding-bottom: 10px;
+    .dropdown-inner {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .dropdown-item {
+        flex-direction: column;
+        p {
+          margin-bottom: 5px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .badge {
+          margin-right: 10px;
+        }
+        .date {
+          font-size: 0.8rem;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

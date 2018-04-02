@@ -1,0 +1,11 @@
+@import "../variables";
+.icon-search {
+  .input-group-addon {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+  input {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+}

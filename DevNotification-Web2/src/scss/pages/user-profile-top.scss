@@ -1,0 +1,36 @@
+@import "../variables";
+@import "../mixins";
+$image-width: 100px;
+$profile-description-left: 150px;
+.user-profile-top {
+  position: relative;
+  padding: $side-margin $side-margin 0 $side-margin;
+  .rounded-circle {
+    width: $image-width;
+    border: 2px solid #fff;
+    @include box-shadow;
+    margin-bottom: $margin-bottom;
+  }
+  h5 {
+    position: absolute;
+    top: 32px;
+    left: $profile-description-left;
+    @include font-size(16px);
+    font-weight: normal;
+  }
+  p {
+    position: absolute;
+    top: 55px;
+    left: $profile-description-left;
+    @include font-size(13px);
+  }
+  .buttons {
+    position: absolute;
+    top: 82px;
+    left: $profile-description-left;
+    .btn {
+      margin-right: 5px;
+      @include box-shadow;
+    }
+  }
+}

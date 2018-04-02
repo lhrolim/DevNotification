@@ -1,0 +1,13 @@
+@import "../mixins";
+
+.icon-widget-3 {
+  padding: 15px 10px;
+  i {
+    vertical-align: middle;
+    display: inline-flex;
+  }
+  .text {
+    vertical-align: middle;
+    display: inline-flex;
+  }
+}

@@ -1,0 +1,14 @@
+@import "../mixins";
+
+.text-widget-10 {
+  padding: 10px;
+  &.bg-transparent {
+    padding: 0;
+  }
+  .title {
+    @include font-size(13px);
+  }
+  .subtitle {
+    @include font-size(16px);
+  }
+}

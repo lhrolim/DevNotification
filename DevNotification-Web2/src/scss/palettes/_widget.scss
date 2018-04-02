@@ -1,0 +1,13 @@
+@import "../palettes";
+$light: map-get($default-palette, "light");
+$light: map-set($light, "background-color", #ffffff);
+$border: 1px solid map-get($light, "border-color");
+$light: map-set($light, "border", $border);
+
+$dark: map-get($default-palette, "dark");
+$dark: map-set($dark, "border", "none");
+
+$primary: map-get($default-palette, "primary");
+$primary: map-set($primary, "border", "none");
+
+$widget-palettes: ("light": $light, "dark": $dark, "primary": $primary);

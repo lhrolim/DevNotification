@@ -1,0 +1,50 @@
+@import "../variables";
+@import "../palettes/tables";
+
+.reactable-pagination {
+  td {
+    a {
+      padding: 8px 12px;
+    }
+  }
+}
+
+.reactable-header-sortable {
+  outline: none;
+  cursor: pointer;
+  &.reactable-header-sort-asc {
+    position: relative;
+    &:before {
+      font-family: "simple-line-icons";
+      content: "\e607";
+      display: block;
+      position: absolute;
+      top: 14px;
+      right: 0px;
+      font-size: 10px;
+    }
+  }
+  &.reactable-header-sort-desc {
+    position: relative;
+    &:before {
+      font-family: "simple-line-icons";
+      content: "\e604";
+      display: block;
+      position: absolute;
+      top: 14px;
+      right: 0px;
+      font-size: 10px;
+    }
+  }
+}
+
+@each $key, $value in $table-palettes {
+  [data-background="#{$key}"] {
+    .reactable-pagination {
+      .reactable-current-page {
+        background-color: map-get($value, "highlight-color");
+        color: #fff;
+      }
+    }
+  }
+}

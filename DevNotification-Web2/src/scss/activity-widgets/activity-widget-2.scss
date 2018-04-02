@@ -1,0 +1,22 @@
+@import "../variables";
+@import "../mixins";
+
+.activity-widget-2 {
+  padding: 10px;
+  .title,
+  .number {
+    @include font-size(16px);
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  .subtitle,
+  .percent {
+    @include font-size(14px);
+    font-weight: 500;
+    margin-bottom: 10px;
+    i {
+      padding-left: 10px;
+      @include font-size(18px);
+    }
+  }
+}
