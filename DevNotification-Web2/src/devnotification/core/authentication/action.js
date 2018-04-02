@@ -32,10 +32,11 @@ const logout = () => {
     }
 }
 
-const profileRecovered = (idToken, profile) => {
+const profileRecovered = (idToken,accessToken, profile) => {
     return {
         type: INIT_PROFILE,
         idToken,
+        accessToken,
         profile
     }
 }
@@ -45,44 +46,28 @@ const auth0Redirected = (idToken) => {
 }
 
 
-const checkAuth = (idToken, tokenHash) => {
+const checkAuth = (accessToken, idToken) => {
 
     return dispatch => {
 
-        if (!idToken && !tokenHash) {
+        if (!accessToken) {
             //no token at all, first time the app is opened on this browser
             return dispatch(authenticationDenied());
         }
         return new Promise((resolve, reject) => {
-
-            const verifyProfile = (idToken, resolve, reject) => {
-                auth0Lock.getProfile(idToken, function (error, profile) {
-                    if (error) {
-                        //token expired
-                        dispatch(authenticationDenied());
-                        return reject();
-                    }
-                    dispatch(profileRecovered(idToken, profile));
-                    resolve();
-                });
-            }
-
-            if (tokenHash !== "") {
-                //this is needed cause auth0 redirects the user to that same component without any callback rather just the hash on the screen, 
-                // hence we cannot rely on redux at this point
-                const hash = auth0JS.parseHash(tokenHash, (err, token) => {
-                    if (err) {
-                        //testing against a fake hash
-                        dispatch(authenticationDenied());
-                        return reject();
-                    }
-                    return resolve();
-                    // verifyProfile(token.idToken,resolve,reject);
-                });
-            }
-            else if (idToken) {
-                verifyProfile(idToken,resolve,reject);
-            }
+            auth0Lock.getUserInfo(accessToken, function (error, profile) {
+                if (error) {
+                    //token expired
+                    dispatch(authenticationDenied());
+                    return reject();
+                }
+                localStorage.setItem("idToken", idToken);
+                localStorage.setItem("accessToken", accessToken);
+                localStorage.setItem("profile", JSON.stringify(profile));
+                dispatch(profileRecovered(idToken,accessToken, profile));
+                history.push("/");
+                resolve();
+            });
         });
 
     }

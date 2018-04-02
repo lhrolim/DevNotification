@@ -21,7 +21,6 @@ import Backdrops from './elements/backdrops'
 import Routes from './Routes'
 
 import restService from './devnotification/util/restservice'
-import { checkAuth } from './devnotification/core/authentication/action'
 
 class App extends Component {
 
