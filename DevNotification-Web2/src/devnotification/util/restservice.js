@@ -71,6 +71,10 @@ class RestService {
         return this.doPromise("PUT", endpoint, body);
     }
 
+    postPromise(endpoint, body) {
+        return this.doPromise("POST", endpoint, body);
+    }
+
 
 
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../css/elements/dropdown-user.css'
-import { logout } from '../../core/authentication/action'
+import { logout } from '../../devnotification/core/authentication/action'
 import {connect} from 'react-redux'
 
 

@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import store from './configureStore'
-import authSubscriber from './core/authentication/subscriber'
 
 import App from './App'
 

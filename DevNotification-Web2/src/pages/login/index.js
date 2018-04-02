@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { compose, lifecycle } from 'recompose'
-import { initLogin, checkAuth, logout } from '../../core/authentication/action'
+import { initLogin, checkAuth, logout } from '../../devnotification/core/authentication/action'
 import Login from './login'
 import Auth0Lock from 'auth0-lock';
 import auth0 from 'auth0-js';

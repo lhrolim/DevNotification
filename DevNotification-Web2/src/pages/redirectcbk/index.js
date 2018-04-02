@@ -10,7 +10,7 @@
 
 import React, { PropTypes } from 'react';
 import store from '../../configureStore'
-import { auth0Redirected } from '../../core/authentication/action'
+import { auth0Redirected } from '../../devnotification/core/authentication/action'
 import { connect } from 'react-redux'
 import history from '../../history';
 

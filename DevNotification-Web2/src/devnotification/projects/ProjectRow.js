@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
     return {
-        detailexpanded : state.projectstate.detailexpanded
+        detailexpanded : state.projects.detailexpanded
     };
 }
 
