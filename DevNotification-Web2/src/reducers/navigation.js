@@ -3,7 +3,7 @@ const urls = [
     title: "Applications",
     items: [
       {
-        url: '/dashboards/analytics',
+        url: '/home',
         icon: 'home',
         title: 'Home',
         items: []

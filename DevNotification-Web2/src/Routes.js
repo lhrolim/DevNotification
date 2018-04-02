@@ -23,6 +23,9 @@ import Analytics from './dashboards/analytics'
 import Geographic from './dashboards/geographic'
 import ECommerce from './dashboards/e-commerce'
 
+//Projects
+import ProjectHome from './devnotification/projects/ProjectHome'
+
 //documentation
 import Installation from './documentation/installation'
 import CodeStructure from './documentation/code-structure'
@@ -101,9 +104,12 @@ import UserWidgets from './widgets/user-widgets'
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route exact path="/home" component={Home} />
+    <Route exact path="/projects/home" component={ProjectHome} />
+    <Route exact path="/home" component={ProjectHome} />
+
     <Route path="/signin" component={Login} />
     <Route path="/loginredirectcbk" component={RedirectCbk} />
+    
     <Route path="/charts/chartist" component={Chartist} />
     <Route path="/charts/recharts" component={Recharts} />
     <Route path="/dashboards/analytics" component={Analytics} />

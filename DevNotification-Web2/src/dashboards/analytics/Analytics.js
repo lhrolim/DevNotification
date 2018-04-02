@@ -18,7 +18,7 @@ const Dashboard = () => (
         <Section3 />
       </div>
     </div>
-    <div className="row">
+   {/*  <div className="row">
       <div className="col-12 col-md-12 col-xl-4">
         <Section4 />
       </div>
@@ -29,7 +29,7 @@ const Dashboard = () => (
         <Section6 />
       </div>
     </div>
-    <Section7 />
+    <Section7 /> */}
   </div>
 )
 export default Dashboard
