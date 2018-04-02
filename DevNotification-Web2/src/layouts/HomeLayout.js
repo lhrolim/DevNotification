@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { compose, lifecycle } from 'recompose'
-import restService from '../core/util/restservice'
+import restService from '../devnotification/util/restservice'
 import { checkAuth } from '../devnotification/core/authentication/action'
 import history from '../history';
 

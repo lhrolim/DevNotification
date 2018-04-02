@@ -26,7 +26,7 @@ class RestService {
         const token = state.authState.idToken;
         const headers = { 'Authorization': 'Bearer ' + token };
 
-        if (!!body) {
+        if (body) {
             headers['Content-Type'] = 'application/json';
             if (!(body instanceof String)) {
                 body = JSON.stringify(body);

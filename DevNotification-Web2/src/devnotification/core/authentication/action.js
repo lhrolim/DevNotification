@@ -1,5 +1,5 @@
 
-import history from '../../history';
+import history from '../../../history';
 import { INIT_LOGIN, AUTH_DENIED, LOGOUT, INIT_PROFILE, AUTH0_REDIRECTED } from './actionconstants'
 
 import Auth0Lock from 'auth0-lock';

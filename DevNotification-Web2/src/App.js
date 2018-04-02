@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {ConnectedRouter} from 'react-router-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
 import history from './history'
 import NotificationsSystem from 'reapop'
 import theme from './notifications/reapop/reapop-theme-bootstrap'
@@ -20,7 +20,11 @@ import Backdrops from './elements/backdrops'
 
 import Routes from './Routes'
 
+import restService from './devnotification/util/restservice'
+import { checkAuth } from './devnotification/core/authentication/action'
+
 class App extends Component {
+
   render() {
     let {
       layout,
@@ -48,6 +52,7 @@ class App extends Component {
           <Navbar1 />
           <Navbar2 />
           <TopNavigation1 />
+
           <div className={isEmptyView ? '' : 'container-fluid'}>
             <div className={isEmptyView ? '' : 'row'}>
               <LeftSidebar />

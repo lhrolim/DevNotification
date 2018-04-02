@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router'
+import PrivateRoute from './PrivateRoute'
 
 //layouts
 import DefaultSidebar1 from './layouts/DefaultSidebar1'
@@ -103,11 +104,11 @@ import UserWidgets from './widgets/user-widgets'
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/projects/home" component={ProjectHome} />
-    <Route exact path="/home" component={ProjectHome} />
-
+    <PrivateRoute exact path="/" component={Home} />
+    <PrivateRoute exact path="/projects/home" component={ProjectHome} />
+    <PrivateRoute exact path="/home" component={ProjectHome} />
     <Route path="/signin" component={Login} />
+    
     <Route path="/loginredirectcbk" component={RedirectCbk} />
     
     <Route path="/charts/chartist" component={Chartist} />

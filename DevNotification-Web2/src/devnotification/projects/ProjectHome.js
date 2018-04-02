@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ProjectsGrid from './ProjectsGrid';
 import { RingLoader } from 'react-spinners';
 
-import {loadProjectData} from '../core/user/useraction'
+import { loadProjectData } from '../core/user/useraction'
 
 function mapStateToProps(state) {
     return {
@@ -32,16 +32,13 @@ class ProjectHome extends Component {
 
     render() {
         const loaded = this.props.loaded;
+        const projects = this.props.projects;
+
 
         return (
-            () => {
-                if (!!loaded) {
-                    { <ProjectsGrid projects={projects} /> }
-                } else {
-                    <RingLoader />
-                }
-            }
-
+            <div>
+                {loaded ? (<ProjectsGrid projects={projects} /> ) : (<RingLoader />)}
+            </div>
         );
     }
 }

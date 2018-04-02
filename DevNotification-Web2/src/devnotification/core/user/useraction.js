@@ -8,13 +8,15 @@ const projectDataLoaded = (projects) => {
     }
 }
 
-const loadData = async () => {
+const loadProjectData = async () => {
+
+    const projects = await restService.getPromise("/Project/Subscribed");
 
     return dispatch => {
 
-        const projects = await restService.getPromise("/Project/Subscribed");
         dispatch(projectDataLoaded(projects));
+        
     }
 }
 
-export { loadData };
+export { loadProjectData };
