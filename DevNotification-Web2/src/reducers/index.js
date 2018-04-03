@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
 import {routerReducer} from 'react-router-redux'
 import {config} from './config'
+
 import {colors, backgroundColors} from './colors'
 import {navigation} from './navigation'
 import {contactUs} from './pages/contact-us'
@@ -14,11 +15,14 @@ import {accountSettings} from './pages/account-settings'
 import {emailPreferences} from './pages/email-preferences'
 import {securitySettings} from './pages/security-settings'
 import {reducer as notificationsReducer} from 'reapop'
+
+import global from '../devnotification/core/global/globalreducer'
 import authState from '../devnotification/core/authentication/reducer';
 import user from '../devnotification/core/user/reducer';
 
 const rootReducer = combineReducers({
   authState,
+  global,
   user,
   config,
   colors,
@@ -35,7 +39,6 @@ const rootReducer = combineReducers({
   emailPreferences,
   securitySettings,
   router: routerReducer,
-  
   notifications: notificationsReducer()
 })
 export default rootReducer

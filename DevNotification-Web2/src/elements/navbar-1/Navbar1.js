@@ -10,8 +10,9 @@ import DropdownMessages from './DropdownMessages'
 import DropdownUser from './DropdownUser'
 import DropdownFlags from './DropdownFlags'
 import '../../css/elements/navbar-1.css'
+import {connect} from 'react-redux'
 
-const Navbar1 = () => (
+const Navbar1 = (props) => (
   <nav className="navbar navbar-1 d-flex justify-content-around align-items-center flex-nowrap">
     <Logo />
     <ToggleLayout1 />
@@ -44,7 +45,7 @@ const Navbar1 = () => (
         <a className="nav-link nav-link-avatar">
           <span className="badge badge-sm badge-rounded badge-warning">1</span>
           <img
-            src="/assets/faces/m7.png"
+            src= {props.avatar}
             className="rounded-circle"
             alt="avatar"
           />
@@ -56,4 +57,10 @@ const Navbar1 = () => (
   </nav>
 )
 
-export default Navbar1
+const mapStateToProps = (state, ownProps) => {
+  return {
+    avatar: state.user.authProfile.picture
+  }
+}
+
+export default connect(mapStateToProps)(Navbar1)

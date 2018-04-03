@@ -10,11 +10,15 @@ const Component = compose(
   withRouter,
   connect(state => {
     let pathname = state.router.location.pathname
+
+
+    const profile = state.user.authProfile;
+
     let parts =
       pathname && pathname.split('/').filter(str => str.trim().length > 0)
     let controller =
       parts && parts[0] ? startCase(parts[0]).replace(/Ui /g, 'UI ') : 'Welcome'
-    let view = parts && parts[1] ? startCase(parts[1]) : 'Hello, Eric Simpson!'
+    let view = parts && parts[1] ? startCase(parts[1]) : `Hello, ${profile.name}`
     return {
       layout: state.config.layout,
       controller: controller,
@@ -26,6 +30,7 @@ const Component = compose(
       if (
         controller === 'Dashboards' ||
         controller === 'Demos' ||
+        controller === 'Home' ||
         controller === 'Layouts'
       ) {
         return false

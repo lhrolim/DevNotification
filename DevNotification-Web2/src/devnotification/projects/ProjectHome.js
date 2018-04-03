@@ -4,10 +4,12 @@ import ProjectsGrid from './ProjectsGrid';
 import { RingLoader } from 'react-spinners';
 
 import { loadProjectData } from '../core/user/useraction'
+import BaseBodyComponent from '../components/BaseBodyComponent'
+import DashboardWidget from '../components/DashboardWidget';
 
 function mapStateToProps(state) {
     return {
-        projects: state.user.projects.data,
+        projects: state.user.projects,
         loaded: state.user.projects.loaded,
     };
 }
@@ -32,14 +34,16 @@ class ProjectHome extends Component {
 
     render() {
         const loaded = this.props.loaded;
-        const projects = this.props.projects;
-
+        const projects = this.props.projects.data || [];
 
         return (
             <div>
-                {loaded ? (<ProjectsGrid projects={projects} /> ) : (<RingLoader />)}
+                <DashboardWidget title={"Following"} description={"The projects you are following"}>
+                    <ProjectsGrid projects={projects} />
+                </DashboardWidget>
             </div>
-        );
+        )
+
     }
 }
 

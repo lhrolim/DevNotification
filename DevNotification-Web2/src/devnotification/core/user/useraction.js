@@ -1,5 +1,5 @@
 import { LOAD_PROJECT_DATA } from './useractionconstants'
-import restService from '../../util/restservice'
+import agent from '../../util/dnagent'
 
 const projectDataLoaded = (projects) => {
     return {
@@ -10,13 +10,19 @@ const projectDataLoaded = (projects) => {
 
 const loadProjectData = async () => {
 
-    const projects = await restService.getPromise("/Project/Subscribed");
+    try{
+        const projects = await agent.Projects.subscribed();
+        return dispatch => {
 
-    return dispatch => {
-
-        dispatch(projectDataLoaded(projects));
-        
+            dispatch(projectDataLoaded(projects));
+            
+        }
+    }catch (err){
+        console.log(err);
     }
+    
+
+    
 }
 
 export { loadProjectData };
