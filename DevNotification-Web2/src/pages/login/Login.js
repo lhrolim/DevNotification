@@ -4,7 +4,6 @@ import auth0 from 'auth0-js';
 import history from '../../history'
 import { checkAuth,logout } from '../../devnotification/core/authentication/action'
 import { connect } from 'react-redux'
-import { parseHash } from 'auth0-lock';
 
 class Login extends React.Component {
 
@@ -59,7 +58,7 @@ class Login extends React.Component {
 
 
     componentDidUpdate() {
-        const { authenticated, idToken, profile, showLock, logout } = this.props.auth;
+        const { authenticated, showLock, logout } = this.props.auth;
         if (logout || showLock) {
             //if a logout was requested --> show the lock window
             setTimeout(() => this.lock.show(), 0);
@@ -89,12 +88,6 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        checkAuth: (accessToken,) => {
-            dispatch(checkAuth)
-        }
-    }
-}
+
 
 export default connect(mapStateToProps)(Login);

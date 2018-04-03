@@ -9,11 +9,6 @@ const auth0Lock = new Auth0Lock('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.c
     responseType: 'token' // also 'id_token' and 'code' (default)
 });
 
-const auth0JS = new auth0.WebAuth({
-    domain: "plg.auth0.com",
-    clientID: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho"
-});
-
 const initLogin = () => {
     return {
         type: INIT_LOGIN

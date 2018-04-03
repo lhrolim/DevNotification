@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProjectsGrid from './ProjectsGrid';
-import { RingLoader } from 'react-spinners';
 
 import { loadProjectData } from '../core/user/useraction'
-import BaseBodyComponent from '../components/BaseBodyComponent'
 import DashboardWidget from '../components/DashboardWidget';
 
 function mapStateToProps(state) {
@@ -33,7 +31,6 @@ class ProjectHome extends Component {
 
 
     render() {
-        const loaded = this.props.loaded;
         const projects = this.props.projects.data || [];
 
         return (

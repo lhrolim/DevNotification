@@ -7,7 +7,7 @@ const props = require("../../serverapi.json")
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const encode = encodeURIComponent;
+// const encode = encodeURIComponent;
 const responseBody = res => {
     store.dispatch({type: AJAX_END});
     return res.body;

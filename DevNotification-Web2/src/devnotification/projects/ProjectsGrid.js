@@ -5,17 +5,17 @@ import { connect } from 'react-redux'
 import '../../css/devnotification/grid.css'
 
 
-const ProjectsGrid = ({ projects }) => {
+const ProjectsGrid = ({ projects,createfollow }) => {
     return (
 
-        <div class="row col-xs-12 col-md-12">
+        <div className="row col-xs-12 col-md-12">
             {projects.length > 0 && projects.map((item, i) => (
                 <ProjectRow item={item} />
             ))}
             {projects.length === 0 &&
-                <div class="noitems">
+                <div className="noitems">
                     <span>You are currently following 0 projects.</span>
-                        <button type="button" class="btn btn-success middlebutton">Start</button>
+                    <button type="button" className="btn btn-success middlebutton" onClick={createfollow}>Start</button>
                     <span>following something!!</span>
                 </div>
             }
@@ -28,7 +28,17 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {}
+    return {
+        createfollow: () => {
+            dispatch({
+                type: "SHOW_MODAL", modalType: 'CREATE_PROJECT', 
+                modalProps: {
+                    link: true,
+                    title: 'Link'
+                }
+            })
+        }
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectsGrid);

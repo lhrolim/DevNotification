@@ -17,10 +17,10 @@ import Navbar2 from './elements/navbar-2'
 import TopNavigation1 from './elements/top-navigation-1'
 import Jumbotron from './elements/jumbotron'
 import Backdrops from './elements/backdrops'
+import ModalRoot from './devnotification/components/modal/rootmodal'
 
 import Routes from './Routes'
 
-import restService from './devnotification/util/restservice'
 
 class App extends Component {
 
@@ -47,6 +47,7 @@ class App extends Component {
           data-collapsed={collapsed}>
           <NotificationsSystem theme={theme} />
           <Backdrops />
+          <ModalRoot/>
           <RightSidebar />
           <Navbar1 />
           <Navbar2 />
