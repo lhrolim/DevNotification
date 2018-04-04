@@ -15,6 +15,7 @@ require('./utils/stringutils');
 const bluebird = require('bluebird');
 const auth0Key = 'oj8DLWEqvubHefqgIkeqJS30pfsTjQWpTCyheR6hIt0KWjRjjPG5wP02IkDLq6yu';
 
+
 class AppStart {
 
     init(useauth) {
@@ -44,10 +45,8 @@ class AppStart {
         if (useauth) {
             app.use(authenticate);
         }
-
         app.use('/api/', routes);
         app.use(mongooseErrorHandler);
-
         app.listen(port, () => { console.log(`App started on port ${port}`); });
 
     }
