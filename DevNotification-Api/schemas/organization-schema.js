@@ -7,18 +7,20 @@ const OrganizationSchema = new Schema({
     Url: { type: String },
 
     applications: [{
-        //has to match a Application defined schema
-        name: { type: String, required: true },
+        // has to match a Application defined schema
+        name: { type: String, required: true }
     }],
 
     users: [{
-        //has to match a Application defined schema
-        name: { type: Schema.Types.ObjectId, ref:"User" },
+        // has to match a Application defined schema
+        name: { type: Schema.Types.ObjectId, ref: 'User' }
     }]
-
 
 
 });
 
-module.exports = { model: mongoose.model('Organization', OrganizationSchema), schema: OrganizationSchema }
+module.exports = {
+    model: mongoose.model('Organization', OrganizationSchema),
+    schema: OrganizationSchema
+};
 

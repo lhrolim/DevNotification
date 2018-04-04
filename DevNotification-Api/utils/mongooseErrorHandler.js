@@ -3,12 +3,12 @@ class MongooseErrorHandler {
     logErrors(err, req, res, next) {
 
         if (!err) {
-            return next(err, req, res, net);
+            return next(err, req, res, next);
         }
 
         console.log('Error Inserting New Data');
-        if (err.name === "InvalidIdError") {
-            res.status(404).send("route not found");
+        if (err.name === 'InvalidIdError') {
+            res.status(404).send('route not found');
         }
 
         if (err.name === 'ValidationError') {
@@ -19,7 +19,7 @@ class MongooseErrorHandler {
                 errors.push(err.errors[f].message);
             });
             res.status(500).send(errors);
-        } else if (err.name === "MongoError") {
+        } else if (err.name === 'MongoError') {
             res.status(500).json(err.toJSON());
         }
         return next(err, req, res, next);

@@ -1,34 +1,33 @@
 // JWTs
+const jwt = require('express-jwt');
+const cors = require('cors');
+const config = require('./config/config');
+const express = require('express');
+const mongoose = require('mongoose');
+const helmet = require('helmet');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const routes = require('./routes');
+const promisyFy = require('./utils/promisify-all');
+// TODO: check https://github.com/expressjs/errorhandler
+const mongooseErrorHandler = require('./utils/mongooseErrorHandler');
+require('./utils/stringutils');
+const bluebird = require('bluebird');
+const auth0Key = 'oj8DLWEqvubHefqgIkeqJS30pfsTjQWpTCyheR6hIt0KWjRjjPG5wP02IkDLq6yu';
+
 class AppStart {
 
     init(useauth) {
-        var jwt = require('express-jwt');
-        const cors = require('cors');
 
-        const config = require('./config/config');
-
-        const express = require('express');
-        const mongoose = require('mongoose');
-
-        const helmet = require('helmet');
-        const bodyParser = require('body-parser');
-        const morgan = require('morgan');
-
-        const routes = require('./routes');
 
         const port = config.server.port;
         const app = express();
 
-        require('./utils/promisify-all')['bluebird'](['mongoose', 'request', 'request-promise']);
-
-        //TODO: check https://github.com/expressjs/errorhandler
-        const mongooseErrorHandler = require('./utils/mongooseErrorHandler');
-
-        require('./utils/stringutils');
+        promisyFy.bluebird(['mongoose', 'request', 'request-promise']);
 
         mongoose.connect(config.mongo.url);
 
-        mongoose.Promise = require('bluebird');
+        mongoose.Promise = bluebird;
 
         app.use(helmet());
         app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,9 +36,9 @@ class AppStart {
         app.use(morgan('tiny'));
 
 
-        var authenticate = jwt({
-            secret: new Buffer("oj8DLWEqvubHefqgIkeqJS30pfsTjQWpTCyheR6hIt0KWjRjjPG5wP02IkDLq6yu", 'base64'),
-            audience: "oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho"
+        const authenticate = jwt({
+            secret: new Buffer(auth0Key, 'base64'),
+            audience: 'oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho'
         }).unless({ path: ['/'] });
 
         if (useauth) {
@@ -54,7 +53,4 @@ class AppStart {
     }
 
 }
-
-
-
 module.exports = new AppStart().init;

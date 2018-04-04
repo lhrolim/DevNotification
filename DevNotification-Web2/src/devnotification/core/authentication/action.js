@@ -3,7 +3,6 @@ import history from '../../../history';
 import { INIT_LOGIN, AUTH_DENIED, LOGOUT, INIT_PROFILE, AUTH0_REDIRECTED } from './actionconstants'
 
 import Auth0Lock from 'auth0-lock';
-import auth0 from 'auth0-js';
 
 const auth0Lock = new Auth0Lock('oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho', 'plg.auth0.com', {
     responseType: 'token' // also 'id_token' and 'code' (default)
