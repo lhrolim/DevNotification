@@ -3,18 +3,18 @@ const Schema = mongoose.Schema;
 
 
 const ProjectSchema = new Schema({
-    
+
     name: { type: String, required: true, index: { unique: true, internalpk: true } },
 
     deviconpath: String,
 
     description: { type: String },
 
-    longdescription: {type:String},
+    longdescription: { type:String },
 
-    //start page of the project
+    // start page of the project
     startpage: { type: String, required: true },
-    //the url of the code repository project (mainly on git)
+    // the url of the code repository project (mainly on git)
     repourl: { type: String, required: true },
     // a link to the changelog of the project. Might not necessarily exist, hence not required
     releasenotesurl: { type: String },
@@ -31,4 +31,4 @@ const ProjectSchema = new Schema({
 });
 
 
-module.exports = { model: mongoose.model('Project', ProjectSchema), schema: ProjectSchema }
+module.exports = { model: mongoose.model('Project', ProjectSchema), schema: ProjectSchema };

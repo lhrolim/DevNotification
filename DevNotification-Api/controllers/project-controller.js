@@ -30,8 +30,8 @@ class ProjectController extends Controller {
             .catch(err => next(err));
     }
 
-    subscribed(req,res,next){
-           return this.model.subscribed(req.params.name, req.params.lower)
+    subscribed(req, res, next) {
+        return this.model.subscribed(req.params.name, req.params.lower)
             .then(doc => {
                 if (!doc) {
                     return res.status(404).end();

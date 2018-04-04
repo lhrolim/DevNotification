@@ -1,5 +1,5 @@
 const Promise = require('bluebird');
-const promisify = require("promisify-node");
+const promisify = require('promisify-node');
 
 module.exports = {
     bluebird: modules => {

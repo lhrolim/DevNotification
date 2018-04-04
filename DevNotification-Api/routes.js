@@ -1,5 +1,5 @@
 const controllers = require('./controllers');
-var guard = require('express-jwt-permissions')()
+require('express-jwt-permissions')();
 
 
 const Router = require('express').Router;
@@ -23,7 +23,7 @@ router.route('/project/:id')
 
 
 router.route('/project/:name')
-    .get((...args) => controllers.project.findById(...args))
+    .get((...args) => controllers.project.findById(...args));
 
 router.route('/project/:name/releases')
     .get((...args) => controllers.project.releases(...args));
@@ -36,7 +36,6 @@ router.route('/project/:name/releases/:lower')
 
 router.route('/project/:name/releases/:lower/notes')
     .get((...args) => controllers.project.releaseNotes(...args));
-
 
 
 router.route('/user')

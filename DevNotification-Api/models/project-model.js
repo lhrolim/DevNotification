@@ -1,7 +1,7 @@
 const Model = require('../utils/model');
-const promise = require("bluebird");
+const promise = require('bluebird');
 const ProjectSchema = require('../schemas/project-schema');
-const githubService = require("../services/github-service.js");
+const githubService = require('../services/github-service');
 
 const compareVersion = require('compare-version');
 
@@ -18,7 +18,7 @@ function releasesByProject(project, lowerLimit) {
 
         let usingLowerBound = false;
 
-        if (lowerLimit.endsWith("+")) {
+        if (lowerLimit.endsWith('+')) {
             usingLowerBound = true;
             lowerLimit = lowerLimit.substr(0, lowerLimit.length - 1);
         }
@@ -35,13 +35,11 @@ class ProjectModel extends Model {
     }
 
     releaseNotes(name, lowerLimit) {
-        return this.findById(name).then(p => {
-            return releasesByProject(p, lowerLimit).then(tags => {
+        return this.findById(name).then(p => releasesByProject(p, lowerLimit).then(tags => {
                 if (p.usegitnativereleases) {
                     return githubService.listNativeReleaseNotes(p.repourl, tags);
                 }
-            });
-        });
+            }));
     }
 
 
@@ -59,7 +57,7 @@ class ProjectModel extends Model {
             return this.doCreate(project);
         });
     }
-  
+
 
 }
 
