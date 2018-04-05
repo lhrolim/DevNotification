@@ -12,15 +12,18 @@ const UserSchema = new Schema({
   creationDate: { type: Date, required: true },
 
 
-  projects: [{
+  projects: [{ type: Schema.Types.ObjectId, ref: 'Project' }],
+  applications: [{ type: Schema.Types.ObjectId, ref: 'Applications' }]
+
+  /* projects: [{
     // has to match a ProjectSchema defined name
     name: { type: String, required: true }
-  }],
+  }], */
 
-  applications: [{
+  /* applications: [{
     // has to match a Applications defined name
     name: { type: String, required: true }
-  }]
+  }] */
 
 
 });

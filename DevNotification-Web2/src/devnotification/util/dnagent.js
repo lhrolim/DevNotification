@@ -1,7 +1,7 @@
 import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 import store from '../../configureStore';
-import { AJAX_INIT,AJAX_END } from '../core/global/globalconstants';
+import { AJAX_INIT, AJAX_END } from '../core/global/globalconstants';
 
 const props = require("../../serverapi.json")
 
@@ -9,12 +9,12 @@ const superagent = superagentPromise(_superagent, global.Promise);
 
 // const encode = encodeURIComponent;
 const responseBody = res => {
-    store.dispatch({type: AJAX_END});
+    store.dispatch({ type: AJAX_END });
     return res.body;
 }
 
-const failure = error =>{
-    store.dispatch({type: AJAX_END});
+const failure = error => {
+    store.dispatch({ type: AJAX_END });
     return error;
 }
 
@@ -23,9 +23,9 @@ const tokenPlugin = req => {
     const token = state.authState.idToken;
 
     if (token) {
-        req.set('authorization', `Token ${token}`);
+        req.set('authorization', `Bearer ${token}`);
     }
-    store.dispatch({type: AJAX_INIT});
+    store.dispatch({ type: AJAX_INIT });
 }
 
 const Api = () => {
@@ -46,10 +46,15 @@ const requests = {
 };
 
 const Projects = {
-    subscribed: () => requests.get("/project/subscribed")
+    subscribed: () => requests.get("project/subscribed")
+}
+
+const User = {
+    create: (auth0Profile) => requests.put(`user/${auth0Profile.user_id}`, { userId: auth0Profile.user_id, email: auth0Profile.email })
 }
 
 export default {
     Projects,
+    User
     /*    setToken: _token => { token = _token; }*/
 };
