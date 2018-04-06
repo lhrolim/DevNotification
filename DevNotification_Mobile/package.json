@@ -10,10 +10,10 @@
     "installRelease": "cd android && ./gradlew installRelease"
   },
   "dependencies": {
-    "react": "16.0.0",
-    "react-native": "^0.49.5",
+    "react": "16.3.1",
+    "react-native": "^0.55.1",
     "react-native-deprecated-custom-components": "^0.1.1",
-    "react-native-elements": "^0.17.0",
+    "react-native-elements": "^0.19.1",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-lock": "^0.6.1",
     "react-native-material-design-styles": "^0.2.7",
@@ -26,10 +26,10 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "babel-jest": "21.2.0",
+    "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
-    "jest": "21.2.1",
-    "react-test-renderer": "16.0.0"
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"
