@@ -13,23 +13,27 @@ const baseGitURL = 'https://github.com/';
 
 const gihubBaseHeader = { 'User-Agent': 'DevNotification' };
 
-function parseOwnerAndRepo(repourl) {
-    const idx = repourl.indexOf(baseGitURL);
-    if (idx === -1) {
-        return null;
-    }
-    const finalUrl = repourl.substr(idx + baseGitURL.length).split('/');
-    const owner = finalUrl[0];
-    const repo = finalUrl[1];
-    return { owner, repo };
-}
-
 
 class GitHubService {
 
-    listTags(repourl, token) {
 
-        const ob = parseOwnerAndRepo(repourl);
+    constructor() {
+        this.parseOwnerAndRepo = (repourl) => {
+            const idx = repourl.indexOf(baseGitURL);
+            if (idx === -1) {
+                return null;
+            }
+            const finalUrl = repourl.substr(idx + baseGitURL.length).split('/');
+            const owner = finalUrl[0];
+            const repo = finalUrl[1];
+            return { owner, repo };
+        };
+    }
+
+
+    async listTags(repourl, token) {
+
+        const ob = this.parseOwnerAndRepo(repourl);
         if (!ob) {
             return [];
         }
@@ -43,11 +47,12 @@ class GitHubService {
         };
 
         console.log(url);
-        return rp.get(options).then(res => res.map(r => r.name));
+        const res = await rp.get(options);
+        return res.map(r => r.name);
     }
 
-    hasNativeReleaseNotes(repoUrl, token) {
-        const ob = parseOwnerAndRepo(repoUrl);
+    async hasNativeReleaseNotes(repoUrl, token) {
+        const ob = this.parseOwnerAndRepo(repoUrl);
         if (!ob) {
             return [];
         }
@@ -58,10 +63,14 @@ class GitHubService {
             resolveWithFullResponse: true
         };
         console.log(url);
-        return rp.get(options).then(response => response.statusCode !== 404).catch(err => {
+        try {
+            const response = await rp.get(options);
+            return response.statusCode !== 404;
+        } catch (err) {
             console.log(err);
             return false;
-        });
+        }
+
     }
 
     /**
@@ -73,13 +82,13 @@ class GitHubService {
      * @param tags
      * @param token
      */
-    listNativeReleaseNotes(repoUrl, tags, token) {
-        const ob = parseOwnerAndRepo(repoUrl);
+    async listNativeReleaseNotes(repoUrl, tags, token) {
+        const ob = this.parseOwnerAndRepo(repoUrl);
         if (!ob) {
             return [];
         }
 
-        const promises = tags.map(t => {
+        const promises = tags.map((t) => {
             const url = baseReleasesApiUrl.format(ob.owner, ob.repo, t);
             const options = {
                 uri: url,
@@ -89,8 +98,8 @@ class GitHubService {
             return rp.get(options);
         });
 
-
-        return Promise.all(promises).then(results => results.map(r => r.body));
+        const results = await Promise.all(promises);
+        return results.map(r => r.body);
 
     }
 

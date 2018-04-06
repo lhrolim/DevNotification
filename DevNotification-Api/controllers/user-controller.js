@@ -10,15 +10,17 @@ class UserController extends Controller {
 
 	// Example of overwriting update method using findOneAndUpdate from mongoose
 
-	update(req, res, next) {
-		this.model.findById(req.params.id, null, true)
-			.then(res => {
-				if (!res) {
-					this.create(req, res, next);
-				} else {
-					this.update(req, res, next);
-				}
-			}).catch(err => next(err));
+	async update(req, res, next) {
+		try {
+			const user = await this.model.findById(req.params.id, null, true);
+			if (!user) {
+				await super.create(req, res, next);
+			} else {
+				await super.update(req, res, next);
+			}
+		} catch (err) {
+			next(err);
+		}
 	}
 
 }

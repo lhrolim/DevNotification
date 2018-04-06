@@ -8,37 +8,40 @@ const ProjectModel = require('../models/project-model');
 
 class ProjectController extends Controller {
 
-    releases(req, res, next) {
-        return this.model.releases(req.params.name, req.params.lower)
-            .then(doc => {
-                if (!doc) {
-                    return res.status(404).end();
-                }
-                res.status(200).json(doc);
-            })
-            .catch(err => next(err));
+    async releases(req, res, next) {
+        try {
+            const doc = await this.model.releases(req.params.name, req.params.lower);
+            if (!doc) {
+                return res.status(404).end();
+            }
+            res.status(200).json(doc);
+        } catch (err) {
+            next(err);
+        }
     }
 
-    releaseNotes(req, res, next) {
-        return this.model.releaseNotes(req.params.name, req.params.lower)
-            .then(doc => {
-                if (!doc) {
-                    return res.status(404).end();
-                }
-                res.status(200).json(doc);
-            })
-            .catch(err => next(err));
+    async releaseNotes(req, res, next) {
+        try {
+            const doc = await this.model.releaseNotes(req.params.name, req.params.lower);
+            if (!doc) {
+                return res.status(404).end();
+            }
+            res.status(200).json(doc);
+        } catch (err) {
+            next(err);
+        }
     }
 
-    subscribed(req, res, next) {
-        return this.model.subscribed(req.params.name, req.params.lower)
-            .then(doc => {
-                if (!doc) {
-                    return res.status(404).end();
-                }
-                res.status(200).json(doc);
-            })
-            .catch(err => next(err));
+    async subscribed(req, res, next) {
+        try {
+            const doc = await this.model.subscribed(req.params.name, req.params.lower);
+            if (!doc) {
+                return res.status(404).end();
+            }
+            res.status(200).json(doc);
+        } catch (err) {
+            next(err);
+        }
     }
 
 

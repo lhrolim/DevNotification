@@ -10,7 +10,6 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const promisyFy = require('./utils/promisify-all');
 // TODO: check https://github.com/expressjs/errorhandler
-const mongooseErrorHandler = require('./utils/mongooseErrorHandler');
 require('./utils/stringutils');
 const bluebird = require('bluebird');
 const auth0Key = 'oj8DLWEqvubHefqgIkeqJS30pfsTjQWpTCyheR6hIt0KWjRjjPG5wP02IkDLq6yu';
@@ -18,15 +17,15 @@ const auth0Key = 'oj8DLWEqvubHefqgIkeqJS30pfsTjQWpTCyheR6hIt0KWjRjjPG5wP02IkDLq6
 
 class AppStart {
 
-    init(useauth) {
+    static init(useauth) {
 
 
-        const port = config.server.port;
+        const { port } = config.server;
         const app = express();
 
         promisyFy.bluebird(['mongoose', 'request', 'request-promise']);
 
-        mongoose.connect(config.mongo.url);
+        // mongoose.connect(config.mongo.url);
 
         mongoose.Promise = bluebird;
 
@@ -38,7 +37,7 @@ class AppStart {
 
 
         const authenticate = jwt({
-            secret: new Buffer(auth0Key, 'base64'),
+            secret: Buffer.from(auth0Key, 'base64'),
             audience: 'oFMSf9OHqjAWRzj5uHym4Ew8MC0MuAho'
         }).unless({ path: ['/'] });
 
@@ -46,10 +45,29 @@ class AppStart {
             app.use(authenticate);
         }
         app.use('/api/', routes);
-        app.use(mongooseErrorHandler);
+
+
+        // catch 404 and forward to error handler
+      /*   app.use((req, res, next) => {
+            const err = new Error('Not Found');
+            err.status = 404;
+            next(err);
+        });
+
+        // error handler
+        // no stacktraces leaked to user unless in development environment
+        app.use((err, req, res, next) => {
+            res.status(err.status || 500);
+            res.render('error', {
+                message: err.message,
+                error: (app.get('env') === 'development') ? err : {}
+            });
+        }); */
+
+        // app.use(mongooseErrorHandler);
         app.listen(port, () => { console.log(`App started on port ${port}`); });
 
     }
 
 }
-module.exports = new AppStart().init;
+module.exports = AppStart.init;

@@ -1,67 +1,67 @@
 const Model = require('../utils/model');
 const promise = require('bluebird');
-const ProjectSchema = require('../schemas/project-schema');
+const models = require('./entities');
 const githubService = require('../services/github-service');
 
 const compareVersion = require('compare-version');
 
-function releasesByProject(project, lowerLimit) {
+async function releasesByProject(project, lowerLimit) {
 
     if (!project) {
-        Promise.reject();
+        return Promise.reject();
     }
 
-    return githubService.listTags(project.repourl).then(allVersions => {
-        if (lowerLimit == null) {
-            return allVersions;
-        }
+    const allVersions = await githubService.listTags(project.repourl);
 
-        let usingLowerBound = false;
+    if (lowerLimit == null) {
+        return allVersions;
+    }
 
-        if (lowerLimit.endsWith('+')) {
-            usingLowerBound = true;
-            lowerLimit = lowerLimit.substr(0, lowerLimit.length - 1);
-        }
+    let usingLowerBound = false;
 
-        return allVersions.filter(v => compareVersion(v, lowerLimit) === (usingLowerBound ? 1 : 0));
-    });
+    if (lowerLimit.endsWith('+')) {
+        usingLowerBound = true;
+        lowerLimit = lowerLimit.substr(0, lowerLimit.length - 1);
+    }
+
+    return allVersions.filter(v => compareVersion(v, lowerLimit) === (usingLowerBound ? 1 : 0));
+
 }
 
 
 class ProjectModel extends Model {
 
-    releases(name, lowerLimit) {
-        return this.findById(name).then(p => releasesByProject(p, lowerLimit));
+    async releases(name, lowerLimit) {
+        const p = await this.findById(name);
+        return releasesByProject(p, lowerLimit);
     }
 
-    releaseNotes(name, lowerLimit) {
-        return this.findById(name).then(p => releasesByProject(p, lowerLimit).then(tags => {
-            if (p.usegitnativereleases) {
-                return githubService.listNativeReleaseNotes(p.repourl, tags);
-            }
-        }));
+    async releaseNotes(name, lowerLimit) {
+        const entity = await this.findById(name);
+        const tags = await releasesByProject(entity, lowerLimit);
+        if (entity.usegitnativereleases) {
+            return githubService.listNativeReleaseNotes(entity.repourl, tags);
+        }
     }
 
+    async create(project) {
 
-    create(project) {
+        const { repourl } = project;
+        const results = await promise.all([githubService.hasNativeReleaseNotes(repourl),
+            githubService.listTags(repourl)]);
 
-        const repourl = project.repourl;
-        return promise.all(
-            [githubService.hasNativeReleaseNotes(repourl),
-            githubService.listTags(repourl)])
-            .then(results => {
-                const hasNativeReleaseNotes = results[0];
-                const rels = results[1];
+        const hasNativeReleaseNotes = results[0];
+        const rels = results[1];
 
-                if (rels) {
-                    project.latestversion = rels[0];
-                }
-                project.usegitnativereleases = hasNativeReleaseNotes;
-                return this.doCreate(project);
-            });
+        if (rels) {
+            const { latestversion } = rels;
+            project.latestversion = latestversion;
+        }
+        project.usegitnativereleases = hasNativeReleaseNotes;
+        return super.create(project);
     }
 
 
 }
 
-module.exports = new ProjectModel(ProjectSchema);
+module.exports = new ProjectModel(models.Project);
