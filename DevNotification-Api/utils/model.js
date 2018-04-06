@@ -1,45 +1,46 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const { Op } = Sequelize;
 
 class Model {
 
-    constructor(mongooseData) {
-        this.SchemaModel = mongooseData.model;
-        this.Schema = mongooseData.schema;
+    constructor(model) {
+        this.model = model;
     }
 
-    isObjectId(id) {
-        return mongoose.Types.ObjectId.isValid(id);
-    }
 
     // TODO: find a better sulution
     // / for mocking purposes
-    doCreate(input) {
+    async doCreate(input) {
         const newSchemaModel = new this.SchemaModel(input);
         return newSchemaModel.saveAsync();
     }
 
-    create(input) {
-        return this.doCreate(input);
+    async create(input) {
+        return this.model.create(input);
     }
 
+    async countall() {
+        return this.model.count();
+    }
 
-    update(id, updatedModel, ignoreIdCheck = false) {
+    async update(id, updatedModel, ignoreIdCheck = false) {
 
-        if (this.isObjectId(id) && !ignoreIdCheck) {
-            return this.SchemaModel
-                .findByIdAndUpdate(id, updatedModel, { new: true })
-                .execAsync();
+        if (Number.isInteger(id) && !ignoreIdCheck) {
+            const entity = await this.findById(id);
+            return entity.update(updatedModel);
         }
 
-        const paths = this.Schema.paths;
+        const paths = this.model.attributes;
         const internalPk = Object.keys(paths)
-            .find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+            .find(p => (paths[p] && paths[p].internalpk));
         if (internalPk) {
-            const type = paths[internalPk].instance;
-            if ((type === 'String' && isNaN(id)) || (type === 'Number' && !isNaN(id))) {
-                return this.SchemaModel
-                    .findOneAndUpdate({ [internalPk]: id }, updatedModel, { new: true })
-                    .execAsync();
+            if (!Number.isInteger(id)) {
+                const entity = await this.findOne({
+                    where: {
+                        [internalPk]: id
+                    }
+                });
+                return entity.update(updatedModel);
             }
         }
 
@@ -47,46 +48,46 @@ class Model {
 
     }
 
-    find(query) {
-        return this.SchemaModel
-            .find(query)
-            .execAsync();
+    async find(query) {
+        return this.model.findAll(query);
     }
 
-    findOne(query, populate) {
-        return this.SchemaModel
-            .findOne(query)
-            .populate(populate || '')
-            .execAsync();
+    async findOne(query) {
+        const result = await this.model.findOne(query);
+        return result;
     }
 
-    findById(id, populate, ignoreIdCheck = false) {
-
-        if (this.isObjectId(id) && !ignoreIdCheck) {
-            return this.SchemaModel
-                .findById(id)
-                .populate(populate || '')
-                .execAsync();
+    async findById(id, populate, ignoreIdCheck = false) {
+        if (!id) {
+            throw new Error('id is required');
         }
 
-        const paths = this.Schema.paths;
+        if (Number.isInteger(id) && !ignoreIdCheck) {
+            const entity = await this.model.findById(id);
+            return entity;
+        }
+
+        const paths = this.model.attributes;
         const internalPk = Object.keys(paths)
-            .find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+            .find(p => (paths[p] && paths[p].internalpk));
         // locates the unique identifier from the given model
         if (internalPk) {
-            const type = paths[internalPk].instance;
-            if (type === 'Number' && !isNaN(id)) {
-                return this.findOne({ [internalPk]: id });
-            }
-            if (type === 'String' && isNaN(id)) {
+            if (!Number.isInteger(id)) {
                 if (id.endsWith('%')) {
                     // use %25 to encode this on browser
-                    return this.findOne({
-                        [internalPk]:
-                            { $regex: id.slice(0, -1), $options: 'i' }
+                    return this.find({
+                        where: {
+                            [internalPk]: { [Op.like]: id }
+                        }
+
+
                     });
                 }
-                return this.findOne({ [internalPk]: id });
+                return this.findOne({
+                    where: {
+                        [internalPk]: id
+                    }
+                });
 
             }
         }
@@ -95,24 +96,27 @@ class Model {
 
     }
 
-    remove(id) {
+    async remove(id) {
 
-        if (this.isObjectId(id)) {
-            return this.SchemaModel
-                .findByIdAndRemove(id)
-                .execAsync();
+        if (!id) {
+            throw new Error('id is required');
         }
 
-        const paths = this.Schema.paths;
+        if (Number.isInteger(id)) {
+
+            const r = await this.model.destroy({
+                where: { id }
+            });
+            return r === 1;
+        }
+        const paths = this.model.attributes;
         const internalPk = Object.keys(paths)
-            .find(p => (paths[p]._index != null && paths[p]._index.internalpk));
+            .find(p => (paths[p] && paths[p].internalpk));
         if (internalPk) {
-            const type = paths.name.instance;
-            if ((type === 'String' && isNaN(id)) || (type === 'Number' && !isNaN(id))) {
-                return this.SchemaModel
-                    .findOneAndRemove({ [internalPk]: id })
-                    .execAsync();
-            }
+            const r = await this.model.destroy({
+                where: { [internalPk]: id }
+            });
+            return r === 1;
         }
 
         throw new Error({ name: 'InvalidIdError', id });

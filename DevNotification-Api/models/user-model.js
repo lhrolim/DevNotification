@@ -1,5 +1,5 @@
 const Model = require('../utils/model');
-const UserSchema  = require('../schemas/user-schema');
+const models  = require('./entities');
 
 
 // Business Model layer, in this instance you can manage your business logic. For example,
@@ -13,12 +13,6 @@ const UserSchema  = require('../schemas/user-schema');
 
 class UserModel extends Model {
 
-    create(input) {
-        const newSchemaModel = new this.SchemaModel(input);
-        newSchemaModel.creationDate = new Date();
-        return newSchemaModel.saveAsync();
-    }
-
 }
 
-module.exports = new UserModel(UserSchema);
+module.exports = new UserModel(models.User);

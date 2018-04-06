@@ -7,7 +7,30 @@ const config = milieu('dev-notification', {
   },
   mongo: {
     url: 'mongodb://localhost/dev-notification'
+  },
+
+
+  development: {
+    dialect: 'mysql',
+    username: 'dn',
+    password: 'dn',
+    database: 'dn',
+    host: 'localhost',
+    operatorsAliases: false
+  },
+  test: {
+    dialect: 'sqlite',
+    storage: ':memory:'
+  },
+  production: {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOSTNAME,
+    dialect: 'mysql'
   }
+
+
 });
 
 
