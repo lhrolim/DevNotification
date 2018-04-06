@@ -1,0 +1,22 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - 9
+  - 8
+
+notifications:
+  email: false
+
+  
+ env:
+  - TEST_DIR=DevNotification-Api
+  - TEST_DIR=DevNotification-Web2
+script: cd $TEST_DIR && npm install && npm test
+  
+branches:
+  only:
+    - master
+    
+    
