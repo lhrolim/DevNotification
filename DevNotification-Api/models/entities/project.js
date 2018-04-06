@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         // start page of the project, containing documentation for instance
         startpage: { type: DataTypes.STRING, allowNull:false },
         // the url of the code repository project (mainly on git)
-        repoUrl: { type: DataTypes.STRING, allowNull:false },
+        repourl: { type: DataTypes.STRING, allowNull:false },
         // a link to the changelog of the project. Might not necessarily exist, hence not required
         releasenotesurl: { type: DataTypes.STRING, allowNull:true },
         // we won´t know it by the time of creation of the entry, therefore not required

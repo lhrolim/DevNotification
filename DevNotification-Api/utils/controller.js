@@ -25,7 +25,14 @@ class Controller {
 
   async findById(req, res, next) {
     try {
-      const doc = await this.model.findById(req.query);
+      let { id } = req.params;
+      if (!id) {
+        id = req.params.name;
+      }
+      if (!id) {
+        id = req.query;
+      }
+      const doc = await this.model.findById(id);
       if (!doc) {
         res.status(404).end();
       }

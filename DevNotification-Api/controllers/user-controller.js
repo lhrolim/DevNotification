@@ -12,11 +12,11 @@ class UserController extends Controller {
 
 	async update(req, res, next) {
 		try {
-			const res = await this.model.findById(req.params.id, null, true);
-			if (!res) {
-				this.create(req, res, next);
+			const user = await this.model.findById(req.params.id, null, true);
+			if (!user) {
+				await super.create(req, res, next);
 			} else {
-				this.update(req, res, next);
+				await super.update(req, res, next);
 			}
 		} catch (err) {
 			next(err);

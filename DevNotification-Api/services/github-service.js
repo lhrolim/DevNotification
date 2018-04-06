@@ -63,10 +63,14 @@ class GitHubService {
             resolveWithFullResponse: true
         };
         console.log(url);
-        return rp.get(options).then(response => response.statusCode !== 404).catch((err) => {
+        try {
+            const response = await rp.get(options);
+            return response.statusCode !== 404;
+        } catch (err) {
             console.log(err);
             return false;
-        });
+        }
+
     }
 
     /**
