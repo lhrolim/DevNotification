@@ -44,17 +44,31 @@ class ProjectModel extends Model {
         }
     }
 
+    async subscribed(user) {
+        const linkedProjects = this.model.findAll({
+            include: [{
+                attributes:[],
+                model: models.User,
+                as: 'links',
+                where: {
+                    userid: user.sub
+                }
+            }]
+        });
+        return linkedProjects;
+    }
+
     async create(project) {
 
         const { repourl } = project;
         const results = await promise.all([githubService.hasNativeReleaseNotes(repourl),
-            githubService.listTags(repourl)]);
+        githubService.listTags(repourl)]);
 
         const hasNativeReleaseNotes = results[0];
         const rels = results[1];
 
         if (rels) {
-            const { latestversion } = rels;
+            const [latestversion] = rels;
             project.latestversion = latestversion;
         }
         project.usegitnativereleases = hasNativeReleaseNotes;

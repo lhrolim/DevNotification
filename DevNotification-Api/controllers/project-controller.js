@@ -34,7 +34,7 @@ class ProjectController extends Controller {
 
     async subscribed(req, res, next) {
         try {
-            const doc = await this.model.subscribed(req.params.name, req.params.lower);
+            const doc = await this.model.subscribed(req.user);
             if (!doc) {
                 return res.status(404).end();
             }

@@ -23,7 +23,7 @@ class AppStart {
         const { port } = config.server;
         const app = express();
 
-        promisyFy.bluebird(['mongoose', 'request', 'request-promise']);
+        promisyFy.bluebird(['request', 'request-promise']);
 
         // mongoose.connect(config.mongo.url);
 
@@ -48,21 +48,21 @@ class AppStart {
 
 
         // catch 404 and forward to error handler
-      /*   app.use((req, res, next) => {
-            const err = new Error('Not Found');
-            err.status = 404;
-            next(err);
-        });
+        /*   app.use((req, res, next) => {
+              const err = new Error('Not Found');
+              err.status = 404;
+              next(err);
+          });
 
-        // error handler
-        // no stacktraces leaked to user unless in development environment
-        app.use((err, req, res, next) => {
-            res.status(err.status || 500);
-            res.render('error', {
-                message: err.message,
-                error: (app.get('env') === 'development') ? err : {}
-            });
-        }); */
+          // error handler
+          // no stacktraces leaked to user unless in development environment
+          app.use((err, req, res, next) => {
+              res.status(err.status || 500);
+              res.render('error', {
+                  message: err.message,
+                  error: (app.get('env') === 'development') ? err : {}
+              });
+          }); */
 
         // app.use(mongooseErrorHandler);
         app.listen(port, () => { console.log(`App started on port ${port}`); });
