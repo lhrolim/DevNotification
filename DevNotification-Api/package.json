@@ -9,9 +9,11 @@
     "dev": "nodemon --inspect  index.js",
     "devna": "nodemon --inspect  index_no_auth.js",
     "start": "node index.js",
-    "test": "istanbul cover --include-all-sources node_modules\\jasmine-node\\bin\\jasmine-node spec",
+    "test": "istanbul cover --include-all-sources node_modules/jasmine-node/bin/jasmine-node spec",
     "tdd": "jasmine-node spec --autotest  --watch .",
-    "testd": "nodemon --inspect node_modules\\jasmine-node\\lib\\jasmine-node\\cli.js spec"
+    "testd": "nodemon --inspect node_modules/jasmine-node/lib/jasmine-node/cli.js spec",
+    "testw": "istanbul cover --include-all-sources node_modules\\jasmine-node\\bin\\jasmine-node spec",
+    "testdw": "nodemon --inspect node_modules\\jasmine-node\\lib\\jasmine-node\\cli.js spec"
   },
   "engines": {
     "node": ">=6"
@@ -29,7 +31,6 @@
     "express-jwt": "^5.3.1",
     "express-jwt-permissions": "^1.1.0",
     "helmet": "^3.12.0",
-    "istanbul": "^0.4.5",
     "jasmine-node": "^1.14.5",
     "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
@@ -53,6 +54,7 @@
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "istanbul": "^1.1.0-alpha.1",
     "nodemon": "^1.17.3",
     "use-strict": "^1.0.1"
   }
