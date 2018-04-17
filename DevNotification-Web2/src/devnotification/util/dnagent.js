@@ -30,7 +30,9 @@ const tokenPlugin = req => {
 
 const Api = () => {
     var env = process.env.NODE_ENV;
-    //TODO: set dev and production urls somewhat better, properties file??
+    if (!!sessionStorage.mockserver){
+        return "http://localhost:3004/"
+    }
     return env === "development" ? props.dev : props.prod;
 }
 
@@ -46,11 +48,11 @@ const requests = {
 };
 
 const Projects = {
-    subscribed: () => requests.get("project/subscribed")
+    subscribed: async () => requests.get("project/subscribed")
 }
 
 const User = {
-    create: (auth0Profile) => requests.put(`user/${auth0Profile.user_id}`, { userId: auth0Profile.user_id, email: auth0Profile.email })
+    create: async (auth0Profile) => requests.put(`user/${auth0Profile.user_id}`, { userId: auth0Profile.user_id, email: auth0Profile.email })
 }
 
 export default {

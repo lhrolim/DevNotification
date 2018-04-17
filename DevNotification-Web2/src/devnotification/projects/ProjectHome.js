@@ -15,17 +15,17 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         load: () => {
-            dispatch(loadProjectData)
+            dispatch(loadProjectData())
         }
     }
 }
 
 class ProjectHome extends Component {
 
-    componentWillMount() {
+    async componentWillMount() {
         const loaded = this.props.loaded;
         if (!loaded) {
-            this.props.load();
+            await this.props.load();
         }
     }
 

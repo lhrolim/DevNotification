@@ -17,6 +17,7 @@ import {securitySettings} from './pages/security-settings'
 import {reducer as notificationsReducer} from 'reapop'
 
 import global from '../devnotification/core/global/globalreducer'
+import projects from '../devnotification/core/project/projectreducer'
 import authState from '../devnotification/core/authentication/reducer';
 import user from '../devnotification/core/user/reducer';
 import modal from '../devnotification/components/modal/modalreducer';
@@ -24,6 +25,7 @@ import modal from '../devnotification/components/modal/modalreducer';
 const rootReducer = combineReducers({
   authState,
   global,
+  projects,
   modal,
   user,
   config,

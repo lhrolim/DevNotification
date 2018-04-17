@@ -9,10 +9,11 @@ function mapStateToProps(state) {
 
 class ProjectRow extends Component {
     render() {
+        const {item} = this.props;
         return (
-            <div>
-
-            </div>
+            <ul>
+                <li>{item.name}</li>
+            </ul>
         );
     }
 }

@@ -1,5 +1,6 @@
 // These are regular React components we will write soon
 import CreateProjectModal from '../../projects/createprojectmodal'
+import LinkProjectModal from '../../projects/linkprojectmodal'
 
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
@@ -8,6 +9,7 @@ import BaseCrudModal from './basecrudmodal'
 
 const MODAL_COMPONENTS = {
     'CREATE_PROJECT': CreateProjectModal,
+    'LINK_PROJECT': LinkProjectModal,
 }
 
 const ModalRoot = ({ modalType, modalProps }) => {

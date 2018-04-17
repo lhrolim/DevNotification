@@ -10,6 +10,9 @@ class CreateProjectmodal extends Component {
 
         return (
             <form onSubmit={e => e.preventDefault()}>
+                that.this.props.create 
+
+
                 <div className="form-group">
                     <label>Project Name</label>
                     <input type="text" className="form-control" placeholder="Name" />

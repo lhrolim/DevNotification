@@ -23,7 +23,8 @@ const user = (state = nameInitialState, action) => {
         }
 
         case LOAD_PROJECT_DATA:
-            return Object.assign(state, { projects: { data: action.projects, loaded: true } })
+            return {...state, projects:{ data: action.projects, loaded:true }}
+            // return Object.assign({},state, { projects: { data: action.projects, loaded:true } })
         default:
             return state
     }

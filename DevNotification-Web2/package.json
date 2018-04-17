@@ -59,6 +59,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/scss --include-path ./node_modules src/scss -o src/css --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build"
+    "build": "npm run build-css && react-scripts build",
+    "fake" : "json-server tests/fakeserver/data.json --routes tests/fakeserver/routes.json --port 3004"
   }
 }

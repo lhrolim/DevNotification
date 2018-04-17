@@ -8,21 +8,20 @@ const projectDataLoaded = (projects) => {
     }
 }
 
-const loadProjectData = async () => {
+const loadProjectData = () => {
 
-    try{
-        const projects = await agent.Projects.subscribed();
-        return dispatch => {
-
+    return async dispatch => {
+        console.log("ok");
+        try {
+            const projects = await agent.Projects.subscribed();
             dispatch(projectDataLoaded(projects));
-            
+        } catch (err) {
+            console.log(err);
         }
-    }catch (err){
-        console.log(err);
     }
-    
 
-    
+
+
 }
 
 export { loadProjectData };
