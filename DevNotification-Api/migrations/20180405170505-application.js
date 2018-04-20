@@ -1,8 +1,7 @@
-'use strict';
+
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('application', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('application', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -23,13 +22,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }).then(r=> {queryInterface.addConstraint('Application', ['name'], {
-      type: 'unique',
-      name: 'uq_app_name'
-    })})
-  },
+    }).then((r) => {
+      queryInterface.addConstraint('application', ['name'], {
+        type: 'unique',
+        name: 'uq_app_name'
+      });
+    }),
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('application');
-  }
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('application')
 };

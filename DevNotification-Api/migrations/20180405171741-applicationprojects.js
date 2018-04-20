@@ -24,7 +24,7 @@ module.exports = {
       application_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Application',
+          model: 'application',
           key: 'id'
         }
       },
@@ -32,7 +32,7 @@ module.exports = {
       project_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Project',
+          model: 'project',
           key: 'id'
         }
       }

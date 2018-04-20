@@ -1,11 +1,10 @@
 import React from 'react'
-import {Table, Thead, Th, Tr, Td} from 'reactable'
+import { Table, Thead, Th, Tr, Td } from 'reactable'
 import '../../css/tables/reactable.css'
 
 const DefaultTable = ({
   items,
   columns,
-  columnNames,
   itemsPerPage,
   search,
   onSearch,
@@ -60,18 +59,21 @@ const DefaultTable = ({
             noDataText="No matching records found">
             <Thead>
               {columns.map((column, i) => (
-                <Th key={i} column={column}>
-                  {columnNames[i]}
+                <Th key={i} column={column.name}>
+                  {column.label}
                 </Th>
               ))}
             </Thead>
             {items.map((item, i) => (
               <Tr key={i}>
-                {columns.map((column, j) => (
-                  <Td key={j} column={column} data={item[column]}>
-                    <span>{item[column]}</span>
-                  </Td>
-                ))}
+                {columns.map((column, j) => {
+                  let data = column.type === "icon" ? "" : item[column.name];
+                  return (
+                    <Td key={j} column={column.name} data={data} className={item[column.name]}>
+                      <span>{data}</span>
+                    </Td>
+                  )
+                })}
               </Tr>
             ))}
           </Table>

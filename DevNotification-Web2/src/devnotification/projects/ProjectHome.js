@@ -36,7 +36,7 @@ class ProjectHome extends Component {
         return (
             <div>
                 <DashboardWidget title={"Following"} description={"The projects you are following"}>
-                    <ProjectsGrid projects={projects} />
+                    <ProjectsGrid />
                 </DashboardWidget>
             </div>
         )

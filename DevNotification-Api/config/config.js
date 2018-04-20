@@ -11,7 +11,7 @@ const config = milieu('dev-notification', {
 
 
   development: {
-    dialect: 'mysql',
+    dialect: 'postgres',
     username: 'dn',
     password: 'dn',
     database: 'dn',

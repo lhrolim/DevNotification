@@ -5,15 +5,31 @@
             "startpage": "https://angularjs.org/",
             "repourl": "https://github.com/angular/angular.js",
             "releasenotesurl": "https://github.com/angular/angular.js/blob/master/CHANGELOG.md",
-            "deviconpath": "devicon-angularjs-plain-wordmark colored"
+            "deviconpath": "devicon-angularjs-plain colored",
+            "description": "AngularJS - HTML enhanced for web apps!",
+            "latestversion": "1.6.10",
+            "githubdata": {
+                "stars": 50000,
+                "watchers": 500,
+                "contributors": 300,
+                "openissues": 10,
+                "lastcommit": "03/10/2018 23:30:00"
+            }
         },
         {
             "name": "bootstrap",
             "startpage": "http://getbootstrap.com/",
             "repourl": "https://github.com/twbs/bootstrap",
-            "deviconpath": "devicon-bootstrap-plain-wordmark colored"
-
+            "deviconpath": "devicon-bootstrap-plain colored",
+            "description": "The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.",
+            "latestversion": "4.5.0",
+            "githubdata": {
+                "stars": 40000,
+                "watchers": 500,
+                "contributors": 300,
+                "openissues": 10,
+                "lastcommit": "03/10/2018 23:30:00"
+            }
         }
     ]
-    
 }

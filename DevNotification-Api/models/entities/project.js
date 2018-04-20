@@ -42,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         Project.belongsToMany(models.User, {
             through: 'userproject', as: 'links', foreignKey: 'project_id', otherKey: 'user_id'
         });
+        Project.hasOne(models.ProjectGithubData, { as: 'githubdata' });
     };
 
     return Project;

@@ -2,5 +2,6 @@
   "name": "angularjs",
   "startpage": "https://angularjs.org/",
   "repourl": "https://github.com/angular/angular.js",
-  "releasenotesurl": "https://github.com/angular/angular.js/blob/master/CHANGELOG.md"
+  "releasenotesurl": "https://github.com/angular/angular.js/blob/master/CHANGELOG.md",
+  "deviconpath": "devicon-angularjs-plain-wordmark colored"
 }

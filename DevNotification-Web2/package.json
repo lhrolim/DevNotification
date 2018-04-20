@@ -23,6 +23,7 @@
     "react-datamaps": "^0.4.1",
     "react-datetime": "^2.14.0",
     "react-dom": "^16.3.0",
+    "react-dom-factories": "^1.0.2",
     "react-google-maps": "^9.4.5",
     "react-loadable": "^5.3.1",
     "react-modal": "^3.3.2",
@@ -33,7 +34,7 @@
     "react-select": "^1.2.1",
     "react-spinners": "^0.2.6",
     "react-transition-group": "^2.3.0",
-    "reactable": "^0.14.1",
+    "reactable": "git+https://github.com/lhrolim/reactable.git",
     "reactstrap": "^5.0.0",
     "reapop": "^1.2.0",
     "recharts": "^1.0.0-beta.10",
@@ -60,6 +61,6 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
-    "fake" : "json-server tests/fakeserver/data.json --routes tests/fakeserver/routes.json --port 3004"
+    "fake": "json-server --watch tests/fakeserver/data.json --routes tests/fakeserver/routes.json --port 3004"
   }
 }

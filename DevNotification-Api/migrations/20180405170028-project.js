@@ -58,7 +58,7 @@ module.exports = {
 				type: Sequelize.DATE
 			}
 		}).then((r) => {
-			queryInterface.addConstraint('Project', ['name'], {
+			queryInterface.addConstraint('project', ['name'], {
 				type: 'unique',
 				name: 'uq_project_name'
 			});
